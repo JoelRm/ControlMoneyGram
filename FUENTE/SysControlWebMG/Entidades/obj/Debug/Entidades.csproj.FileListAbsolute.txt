@@ -1,0 +1,6 @@
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.pdb
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
