@@ -59,7 +59,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         @*<h6 class="collapse-header">Mantenimiento</h6>*@
-                        <a class="collapse-item" href="#">Caja y Tipo de Cambio</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Caja")">Configuración Caja</a>
                         <a class="collapse-item" href="@Url.Action("Index","TipoMovimiento")">Tipos de Movimiento</a>
                         <a class="collapse-item" href="#">Perfiles</a>
                         <a class="collapse-item" href="#">Usuarios y Permisos</a>
@@ -76,8 +76,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @*<h6 class="collapse-header">Option lv2</h6>*@
-                        <a class="collapse-item" href="#">Registro de Operación</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Operacion")">Registro de Operación</a>
+                        <a class="collapse-item" href="@Url.Action("ListaOperaciones","Operacion")">Ver Operaciónes</a>
                     </div>
                 </div>
             </li>

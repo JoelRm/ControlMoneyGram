@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Operación";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Registro de Operación</h1>
+    </div>
+    <div class="panel-body">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label>Tipo Cambio Dólar</label>
+                    <input type="text" class="form-control" id="txtTipoCambioDolar" value="3.30" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Tipo Cambio Euro</label>
+                    <input type="text" class="form-control" id="txtTipoCambioEuro" value="3.60" disabled>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Caja Actual</label>
+                    <input type="text" class="form-control" id="txtCajaActual" value="300.00" disabled>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label>Tipo Operación</label>
+                    <select id="cboTipoOperacion" class="form-control">
+                        <option>Ingreso</option>
+                        <option>Envío</option>
+                        <option>Pago</option>
+                        <option>Gasto</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Monto</label>
+                    <input type="text" class="form-control" id="txtMonto">
+                </div>
+                <div class="form-group col-md-4"></div>
+                <div class="form-group col-md-12">
+                    <label>Comentario</label>
+                    <textarea class="form-control" id="txtComentario" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-10"></div>
+                <div class="form-group col-md-2">
+                    <button class="btn btn-danger" id="btnGuardar">Guardar Movimiento</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
