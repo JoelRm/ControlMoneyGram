@@ -5,10 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6392d2608f594d8ba32ad4e57054aa06" Name="Diagram1">
-        <EntityTypeShape EntityType="BDControlMGModel.Movimiento" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BDControlMGModel.Movimiento" Width="1.5" PointX="5.5" PointY="0.75" />
         <EntityTypeShape EntityType="BDControlMGModel.TipoMovimiento" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="BDControlMGModel.Rol" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BDControlMGModel.Usuario" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BDControlMGModel.Caja" Width="1.5" PointX="5.5" PointY="1.125" />
+        <EntityTypeShape EntityType="BDControlMGModel.DatoGeneral" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BDControlMGModel.DatoGeneralDetalle" Width="1.5" PointX="3.25" PointY="5.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -61,5 +61,72 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Caja">
+      <EntityTypeMapping TypeName="BDControlMGModel.Caja">
+        <MappingFragment StoreEntitySet="Caja">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="VentaEuros" ColumnName="VentaEuros" />
+          <ScalarProperty Name="CompraEuros" ColumnName="CompraEuros" />
+          <ScalarProperty Name="VentaDolares" ColumnName="VentaDolares" />
+          <ScalarProperty Name="CompraDolares" ColumnName="CompraDolares" />
+          <ScalarProperty Name="CajaEuros" ColumnName="CajaEuros" />
+          <ScalarProperty Name="CajaDolares" ColumnName="CajaDolares" />
+          <ScalarProperty Name="CajaSoles" ColumnName="CajaSoles" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaHoraCierre" ColumnName="FechaHoraCierre" />
+          <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+          <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatoGeneral">
+      <EntityTypeMapping TypeName="BDControlMGModel.DatoGeneral">
+        <MappingFragment StoreEntitySet="DatoGeneral">
+          <ScalarProperty Name="FechaModifica" ColumnName="FechaModifica" />
+          <ScalarProperty Name="UsuarioModifica" ColumnName="UsuarioModifica" />
+          <ScalarProperty Name="FechaRegistra" ColumnName="FechaRegistra" />
+          <ScalarProperty Name="UsuarioRegistra" ColumnName="UsuarioRegistra" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="PuedeCrecer" ColumnName="PuedeCrecer" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Dominio" ColumnName="Dominio" />
+          <ScalarProperty Name="DatoGeneralId" ColumnName="DatoGeneralId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DatoGeneralDetalle">
+      <EntityTypeMapping TypeName="BDControlMGModel.DatoGeneralDetalle">
+        <MappingFragment StoreEntitySet="DatoGeneralDetalle">
+          <ScalarProperty Name="FechaModifica" ColumnName="FechaModifica" />
+          <ScalarProperty Name="UsuarioModifica" ColumnName="UsuarioModifica" />
+          <ScalarProperty Name="FechaRegistra" ColumnName="FechaRegistra" />
+          <ScalarProperty Name="UsuarioRegistra" ColumnName="UsuarioRegistra" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="Editable" ColumnName="Editable" />
+          <ScalarProperty Name="ValorFecha" ColumnName="ValorFecha" />
+          <ScalarProperty Name="ValorDecimal" ColumnName="ValorDecimal" />
+          <ScalarProperty Name="ValorEntero" ColumnName="ValorEntero" />
+          <ScalarProperty Name="ValorTexto2" ColumnName="ValorTexto2" />
+          <ScalarProperty Name="ValorTexto1" ColumnName="ValorTexto1" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="ValorTabla" ColumnName="ValorTabla" />
+          <ScalarProperty Name="DatoGeneralId" ColumnName="DatoGeneralId" />
+          <ScalarProperty Name="DatoGeneralDetalleId" ColumnName="DatoGeneralDetalleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Usp_ListaCatalogo" FunctionName="BDControlMGModel.Store.Usp_ListaCatalogo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDControlMGModel.Usp_ListaCatalogo_Result">
+          <ScalarProperty Name="IdItem" ColumnName="IdItem" />
+          <ScalarProperty Name="NombreItem" ColumnName="NombreItem" />
+          <ScalarProperty Name="ValorItem" ColumnName="ValorItem" />
+          <ScalarProperty Name="IdTabla" ColumnName="IdTabla" />
+          <ScalarProperty Name="NombreTabla" ColumnName="NombreTabla" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
