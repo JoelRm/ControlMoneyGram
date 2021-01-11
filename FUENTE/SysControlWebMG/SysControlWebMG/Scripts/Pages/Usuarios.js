@@ -35,3 +35,43 @@
     });
     //ocultarLoader();
 };
+
+function agregarUsuario() {
+    //if (validarUnidades()) {
+        var usu = {};
+        usu.NombreUsuario = $("#NombreUsuario").val();
+        usu.ApPaternoUsuario = $("#APaternoUsuario").val();
+        usu.ApMaternoUsuario = $("#AMaternoUsuario").val();
+        usu.Usser = $("#Usuario").val();
+        usu.Password = $("#Conrasenia").val();
+        usu.EmailUsuario = $("#EmailUsuario").val();
+        usu.TelefonoUsuario = $("#TelefonoUsuario").val();
+        usu.IdRol = $("#idCargoUsario").val();
+        $.ajax({
+            type: "POST",
+            url: "/Usuarios/AgregarUsuario",
+            data: '{usu: ' + JSON.stringify(usu) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response.Code == 2) {
+                    toastr.error('Ya existen registros con un nombre similar, intente otro', 'Error');
+                }
+                else {
+                    if (response.Code == 1) {
+                        $('#modalNuevoUsuario').modal('hide');
+                        //limpiarValoresUnidad();
+                        cargarTablaUsuarios();
+                        toastr.success('Se agregaron los datos correctamente', 'Éxito');
+                    }
+                    else {
+                        toastr.error('Error al agregar los datos', 'Error');
+                    }
+                }
+            },
+            error: function () {
+                toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
+            }
+        });
+    //}
+}

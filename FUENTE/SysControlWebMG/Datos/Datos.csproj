@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\RolDA.cs" />
     <Compile Include="Clases\TipoMovimientoDA.cs" />
     <Compile Include="Clases\UsuariosDA.cs" />
     <Compile Include="Modelos\ModelBDControlMG.Context.cs">

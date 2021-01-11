@@ -290,6 +290,7 @@
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Operacion\Index.cshtml" />
     <Content Include="Views\Operacion\ListaOperaciones.cshtml" />
+    <Content Include="Views\Usuarios\_ModalNuevoUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

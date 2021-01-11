@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
@@ -15,6 +11,7 @@ namespace Entidades
         public string Usser { get; set; }
         public string Password { get; set; }
         public string EmailUsuario { get; set; }
+        public string TelefonoUsuario { get; set; }
         public int IdRol { get; set; }
         public string UsuarioCreacion { get; set; }
         public DateTime FechaCreacion { get; set; }
