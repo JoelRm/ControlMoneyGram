@@ -2,31 +2,68 @@
 @{
     ViewBag.Title = "Caja";
 }
-
-<div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Configuración de Caja</h1>
-    </div>
+<div class="panel panel-default">
+    <div class="panel-heading">Configuración Caja</div>
     <div class="panel-body">
         <form>
             <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label>Tipo Cambio Dólar</label>
-                    <input type="text" class="form-control" id="txtTipoCambioDolar" maxlength="4">
+                <div class="form-group col-md-3">
+                    <label>Caja Actual Soles</label>
+                    <input type="text" class="form-control" id="txtCajaActualSoles">
                 </div>
-                <div class="form-group col-md-4">
-                    <label>Tipo Cambio Euro</label>
-                    <input type="text" class="form-control" id="txtTipoCambioEuro" maxlength="4">
+                <div class="form-group col-md-3">
+                    <label>Caja Actual Dólares</label>
+                    <input type="text" class="form-control" id="txtCajaActualDolares">
                 </div>
-                <div class="form-group col-md-4">
-                    <label>Caja Actual</label>
-                    <input type="text" class="form-control" id="txtCajaActual">
+                <div class="form-group col-md-3">
+                    <label>Caja Actual Euros</label>
+                    <input type="text" class="form-control" id="txtCajaActualEuros">
+                </div>
+                <div class="form-group col-md-3">
+                    <br>
+                    <button class="btn btn-danger" id="btnGuardarConfCaja">Guardar</button>
                 </div>
             </div>
+        </form>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Configuración Tipo Cambio Dólares ($)</div>
+    <div class="panel-body">
+        <form>
             <div class="form-row">
-                <div class="form-group col-md-10"></div>
-                <div class="form-group col-md-2">
-                    <button class="btn btn-danger" id="btnGuardar">Guardar Configuración</button>
+                <div class="form-group col-md-3">
+                    <label>Tipo Cambio Compra $</label>
+                    <input type="text" class="form-control" id="txtTCCompraDolar">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Tipo Cambio Venta $</label>
+                    <input type="text" class="form-control" id="txtTCVentaDolar">
+                </div>
+                <div class="form-group col-md-3">
+                    <br>
+                    <button class="btn btn-danger" id="txtGuardarConfTCDolar">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Configuración Tipo Cambio Euros (€)</div>
+    <div class="panel-body">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>Tipo Cambio Compra €</label>
+                    <input type="text" class="form-control" id="txtTCCompraEuro">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Tipo Cambio Venta €</label>
+                    <input type="text" class="form-control" id="txtTCVentaEuro">
+                </div>
+                <div class="form-group col-md-3">
+                    <br>
+                    <button class="btn btn-danger" id="txtGuardarConfTCEuro">Guardar</button>
                 </div>
             </div>
         </form>

@@ -10,45 +10,117 @@
     <div class="panel-body">
         <form>
             <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label>Tipo Cambio Dólar</label>
-                    <input type="text" class="form-control" id="txtTipoCambioDolar" value="3.30" disabled>
+                <div class="form-group col-md-6" id="divTipoCambioCompra">
+                    <div class="form-group col-md-6">
+                        <label>Tipo Cambio Compra Dólar</label>
+                        <input type="text" class="form-control" id="txtTCCompraDolar" value="3.10" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Tipo Cambio Compra Euro</label>
+                        <input type="text" class="form-control" id="txtTCCompraEuro" value="3.20" disabled>
+                    </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <label>Tipo Cambio Euro</label>
-                    <input type="text" class="form-control" id="txtTipoCambioEuro" value="3.60" disabled>
+                <div class="form-group col-md-6" id="divTipoCambioVenta">
+                    <div class="form-group col-md-6">
+                        <label>Tipo Cambio Venta Dólar</label>
+                        <input type="text" class="form-control" id="txtTCVentaDolar" value="3.50" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Tipo Cambio Venta Euro</label>
+                        <input type="text" class="form-control" id="txtTCVentaEuro" value="3.60" disabled>
+                    </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <label>Caja Actual</label>
-                    <input type="text" class="form-control" id="txtCajaActual" value="300.00" disabled>
+
+                <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
+                        <label>Caja Actual Soles</label>
+                        <input type="text" class="form-control" id="txtCajaActualSoles" value="4000.00" disabled>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Caja Actual Dólares</label>
+                        <input type="text" class="form-control" id="txtCajaActualDolares" value="1000.00" disabled>
+                    </div>
                 </div>
             </div>
+    </form>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Operación</div>
+        <div class="panel-body">
             <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label>Tipo Operación</label>
-                    <select id="cboTipoOperacion" class="form-control">
-                        <option>Ingreso</option>
-                        <option>Envío</option>
-                        <option>Pago</option>
-                        <option>Gasto</option>
-                    </select>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-3">
+                        <label>Tipo Operación</label>
+                        <select id="cboTipoOperacion" class="form-control">
+                            <option value="1">Compra</option>
+                            <option value="2">Venta</option>
+                            <option value="3">Ingreso</option>
+                            <option value="4">Envío</option>
+                            <option value="5">Pago</option>
+                            <option value="6">Gasto</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6"></div>
+                    <div class="form-group col-md-2">
+                        <br>
+                        <button class="btn btn-danger" id="btnGuardarOperacion">Guardar Operación</button>
+                    </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <label>Monto</label>
-                    <input type="text" class="form-control" id="txtMonto">
+                <div class="form-group col-md-6" id="cboTOVentaCompra">
+                    <div class="form-group col-md-6">
+                        <label>De:</label>
+                        <select id="cboMonedaDe" class="form-control">
+                            <option value="1">Soles(S/)</option>
+                            <option value="2">Dólares($)</option>
+                            <option value="3">Euros(€)</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>A:</label>
+                        <select id="cboMonedaA" class="form-control">
+                            <option value="1">Soles(S/)</option>
+                            <option value="2">Dólares($)</option>
+                            <option value="3">Euros(€)</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group col-md-4"></div>
+                <div class="form-group col-md-3" id="cboTOGeneral">
+                    <div class="form-group col-md-12">
+                        <label>Moneda</label>
+                        <select id="cboMoneda" class="form-control">
+                            <option value="1">Soles(S/)</option>
+                            <option value="2">Dólares($)</option>
+                            <option value="3">Euros(€)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <div class="form-group col-md-12">
+                        <label>Monto</label>
+                        <input type="text" class="form-control" id="txtMonto">
+                    </div>
+                </div>
+                <div class="form-group col-md-3" id="divCalcularOperacion">
+                    <div class="form-group col-md-12">
+                        <br>
+                        <button class="btn btn-danger" id="btnCalcularOperacion">Calcular Operación</button>
+                    </div>
+                </div>
                 <div class="form-group col-md-12">
                     <label>Comentario</label>
                     <textarea class="form-control" id="txtComentario" rows="3"></textarea>
                 </div>
             </div>
+        </div>
+        <div class="panel-footer" id="divMontoEntrega">
             <div class="form-row">
-                <div class="form-group col-md-10"></div>
-                <div class="form-group col-md-2">
-                    <button class="btn btn-danger" id="btnGuardar">Guardar Movimiento</button>
+                <div class="form-group col-md-4">
+                    <label>Monto a entregar</label>
+                    <input type="text" class="form-control" id="txtMontoEntrega" disabled>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
+<script src="~/Scripts/Pages/Configuración/Caja.js"></script>
