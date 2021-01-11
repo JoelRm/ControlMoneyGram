@@ -12,6 +12,8 @@ namespace Datos.Modelos
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BDControlMGEntities : DbContext
     {
@@ -29,5 +31,13 @@ namespace Datos.Modelos
         public virtual DbSet<TipoMovimiento> TipoMovimiento { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Caja> Caja { get; set; }
+        public virtual DbSet<DatoGeneral> DatoGeneral { get; set; }
+        public virtual DbSet<DatoGeneralDetalle> DatoGeneralDetalle { get; set; }
+    
+        public virtual ObjectResult<Usp_ListaCatalogo_Result> Usp_ListaCatalogo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListaCatalogo_Result>("Usp_ListaCatalogo");
+        }
     }
 }

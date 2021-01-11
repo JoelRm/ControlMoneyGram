@@ -50,9 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\RolDA.cs" />
+    <Compile Include="Clases\OperacionDA.cs" />
     <Compile Include="Clases\TipoMovimientoDA.cs" />
     <Compile Include="Clases\UsuariosDA.cs" />
+    <Compile Include="Modelos\Caja.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\DatoGeneral.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\DatoGeneralDetalle.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\ModelBDControlMG.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,6 +84,9 @@
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\TipoMovimiento.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Usp_ListaCatalogo_Result.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Usuario.cs">

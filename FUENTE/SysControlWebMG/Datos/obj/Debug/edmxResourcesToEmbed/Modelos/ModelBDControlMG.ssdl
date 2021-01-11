@@ -1,5 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BDControlMGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Caja">
+    <Key>
+      <PropertyRef Name="IdCaja" />
+    </Key>
+    <Property Name="IdCaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaHoraInicio" Type="datetime" />
+    <Property Name="FechaHoraCierre" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="CajaSoles" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="CajaDolares" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="CajaEuros" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="CompraDolares" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="VentaDolares" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="CompraEuros" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="VentaEuros" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaModificacion" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneral' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="DatoGeneral">
+    <Key>
+      <PropertyRef Name="DatoGeneralId" />
+    </Key>
+    <Property Name="DatoGeneralId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dominio" Type="varchar" MaxLength="6" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="PuedeCrecer" Type="bit" />
+    <Property Name="Habilitado" Type="bit" />
+    <Property Name="UsuarioRegistra" Type="varchar" MaxLength="20" />
+    <Property Name="FechaRegistra" Type="datetime" />
+    <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" />
+    <Property Name="FechaModifica" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="DatoGeneralDetalle">
+    <Key>
+      <PropertyRef Name="DatoGeneralDetalleId" />
+    </Key>
+    <Property Name="DatoGeneralDetalleId" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="DatoGeneralId" Type="int" />
+    <Property Name="ValorTabla" Type="int" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+    <Property Name="ValorTexto1" Type="varchar" MaxLength="50" />
+    <Property Name="ValorTexto2" Type="varchar" MaxLength="500" />
+    <Property Name="ValorEntero" Type="int" />
+    <Property Name="ValorDecimal" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ValorFecha" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Editable" Type="bit" />
+    <Property Name="Habilitado" Type="bit" />
+    <Property Name="UsuarioRegistra" Type="varchar" MaxLength="20" />
+    <Property Name="FechaRegistra" Type="datetime" />
+    <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" />
+    <Property Name="FechaModifica" Type="datetime" />
+  </EntityType>
   <EntityType Name="Movimiento">
     <Key>
       <PropertyRef Name="IdMovimiento" />
@@ -56,10 +113,44 @@
     <Property Name="EstadoUsuario" Type="bit" Nullable="false" />
     <Property Name="EstadoEliminacion" Type="bit" Nullable="false" />
   </EntityType>
+  <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="BDControlMGModelStoreContainer">
+    <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DatoGeneral" EntityType="Self.DatoGeneral" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DatoGeneral].[DatoGeneralId] AS [DatoGeneralId], 
+    [DatoGeneral].[Dominio] AS [Dominio], 
+    [DatoGeneral].[Descripcion] AS [Descripcion], 
+    [DatoGeneral].[PuedeCrecer] AS [PuedeCrecer], 
+    [DatoGeneral].[Habilitado] AS [Habilitado], 
+    [DatoGeneral].[UsuarioRegistra] AS [UsuarioRegistra], 
+    [DatoGeneral].[FechaRegistra] AS [FechaRegistra], 
+    [DatoGeneral].[UsuarioModifica] AS [UsuarioModifica], 
+    [DatoGeneral].[FechaModifica] AS [FechaModifica]
+    FROM [dbo].[DatoGeneral] AS [DatoGeneral]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DatoGeneralDetalle" EntityType="Self.DatoGeneralDetalle" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DatoGeneralDetalle].[DatoGeneralDetalleId] AS [DatoGeneralDetalleId], 
+    [DatoGeneralDetalle].[DatoGeneralId] AS [DatoGeneralId], 
+    [DatoGeneralDetalle].[ValorTabla] AS [ValorTabla], 
+    [DatoGeneralDetalle].[Descripcion] AS [Descripcion], 
+    [DatoGeneralDetalle].[ValorTexto1] AS [ValorTexto1], 
+    [DatoGeneralDetalle].[ValorTexto2] AS [ValorTexto2], 
+    [DatoGeneralDetalle].[ValorEntero] AS [ValorEntero], 
+    [DatoGeneralDetalle].[ValorDecimal] AS [ValorDecimal], 
+    [DatoGeneralDetalle].[ValorFecha] AS [ValorFecha], 
+    [DatoGeneralDetalle].[Editable] AS [Editable], 
+    [DatoGeneralDetalle].[Habilitado] AS [Habilitado], 
+    [DatoGeneralDetalle].[UsuarioRegistra] AS [UsuarioRegistra], 
+    [DatoGeneralDetalle].[FechaRegistra] AS [FechaRegistra], 
+    [DatoGeneralDetalle].[UsuarioModifica] AS [UsuarioModifica], 
+    [DatoGeneralDetalle].[FechaModifica] AS [FechaModifica]
+    FROM [dbo].[DatoGeneralDetalle] AS [DatoGeneralDetalle]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>
