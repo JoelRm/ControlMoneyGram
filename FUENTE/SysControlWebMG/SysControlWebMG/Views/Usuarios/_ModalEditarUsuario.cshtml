@@ -2,13 +2,13 @@
 @{
     List<RolCLS> listaRoles = (List<RolCLS>)ViewBag.listaRoles;
 }
-<!--Inicio Modal Nueva Linea-->
-<div id="modalNuevoUsuario" class="modal fade">
+<!--Inicio Modal Editar-->
+<div id="modalEditarUsuario" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">
-                    Nuevo Usuario
+                    Editar Usuario
                 </h4>
             </div>
             <div class="modal-body">
@@ -16,37 +16,38 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Nombre : </label>
-                            <input id="NombreUsuario" name="NombreUsuario" type="text" placeholder="Ingrese Nombre" class="form-control" autocomplete="off" />
+                            <input id="idUsuarioEditar" name="idUsuarioEditar" type="hidden" class="form-control" />
+                            <input id="NombreUsuarioEditar" name="NombreUsuarioEditar" type="text" placeholder="Ingrese Nombre" class="form-control" autocomplete="off" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>A. Paterno : </label>
-                            <input id="APaternoUsuario" name="APaternoUsuario" type="text" placeholder="Ingrese Ap. Paterno" class="form-control" autocomplete="off" />
+                            <input id="APaternoUsuarioEditar" name="APaternoUsuarioEditar" type="text" placeholder="Ingrese Ap. Paterno" class="form-control" autocomplete="off" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>A. Materno : </label>
-                            <input id="AMaternoUsuario" name="AMaternoUsuario" type="text" placeholder="Ingrese Ap. Materno" class="form-control" autocomplete="off" />
+                            <input id="AMaternoUsuarioEditar" name="AMaternoUsuarioEditar" type="text" placeholder="Ingrese Ap. Materno" class="form-control" autocomplete="off" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>E-Mail : </label>
-                            <input id="EmailUsuario" name="EmailUsuario" type="text" placeholder="Ingrese E-Mail" class="form-control" autocomplete="off" />
+                            <input id="EmailUsuarioEditar" name="EmailUsuarioEditar" type="text" placeholder="Ingrese E-Mail" class="form-control" autocomplete="off" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Teléfono : </label>
-                            <input id="TelefonoUsuario" name="TelefonoUsuario" type="text" placeholder="Ingrese Nro. Teléfono" maxlength="9" class="form-control" autocomplete="off" />
+                            <input id="TelefonoUsuarioEditar" name="TelefonoUsuarioEditar" type="text" placeholder="Ingrese Nro. Teléfono" maxlength="9" class="form-control" autocomplete="off" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Cargo : </label>
-                            <select id="idCargoUsario" class="form-control">
+                            <select id="idCargoUsarioEditar" class="form-control">
                                 @foreach (var item in listaRoles)
                                 {
                                     <option value="@item.IdRol">@item.NombreRol</option>
@@ -57,26 +58,26 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Ususario : </label>
-                            <input id="Usuario" name="Usuario" type="text" placeholder="Ingrese Usuario" class="form-control" autocomplete="off" />
+                            <input id="UsuarioEditar" name="UsuarioEditar" type="text" placeholder="Ingrese Usuario" class="form-control" autocomplete="off" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Contraseña : </label>
-                            <input id="Conrasenia" name="Conrasenia" type="password" placeholder="Ingrese Contraseña" class="form-control" autocomplete="off" />
+                            <input id="ConraseniaEditar" name="ConraseniaEditar" type="password" placeholder="Ingrese Contraseña" class="form-control" autocomplete="off" />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="CerrarPopUpUsuario" data-dismiss="modal" class="btn btn-danger">
+                <button type="button" id="CerrarPopUpUsuarioEditar" data-dismiss="modal" class="btn btn-danger">
                     Cancelar
                 </button>
-                <button type="button" onclick="agregarUsuario()" class="btn btn-primary">
+                <button type="button" onclick="editarUsuario()" class="btn btn-primary">
                     Guardar
                 </button>
             </div>
         </div>
     </div>
 </div>
-<!--Fin Modal Nueva Linea-->
+<!--Fin Modal Editar-->

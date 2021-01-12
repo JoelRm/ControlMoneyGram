@@ -110,6 +110,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="Usser" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EmailUsuario" Type="varchar" MaxLength="50" />
+          <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
           <Property Name="IdRol" Type="int" Nullable="false" />
           <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
@@ -118,7 +119,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="EstadoUsuario" Type="bit" Nullable="false" />
           <Property Name="EstadoEliminacion" Type="bit" Nullable="false" />
         </EntityType>
-        <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="BDControlMGModelStoreContainer">
           <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
@@ -163,71 +163,22 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <edmx:ConceptualModels>
       <Schema Namespace="BDControlMGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BDControlMGEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Movimiento" EntityType="BDControlMGModel.Movimiento" />
-          <EntitySet Name="TipoMovimiento" EntityType="BDControlMGModel.TipoMovimiento" />
-          <EntitySet Name="Rol" EntityType="BDControlMGModel.Rol" />
-          <EntitySet Name="Usuario" EntityType="BDControlMGModel.Usuario" />
+          <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
           <EntitySet Name="Caja" EntityType="BDControlMGModel.Caja" />
+          <EntitySet Name="Movimiento" EntityType="BDControlMGModel.Movimiento" />
+          <EntitySet Name="Rol" EntityType="BDControlMGModel.Rol" />
+          <EntitySet Name="TipoMovimiento" EntityType="BDControlMGModel.TipoMovimiento" />
+          <EntitySet Name="Usuario" EntityType="BDControlMGModel.Usuario" />
           <EntitySet Name="DatoGeneral" EntityType="BDControlMGModel.DatoGeneral" />
           <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
-          <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
         </EntityContainer>
-        <EntityType Name="Movimiento">
-          <Key>
-            <PropertyRef Name="IdMovimiento" />
-          </Key>
-          <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MontoMovimiento" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="ComentarioMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TipoMovimiento" Type="Int32" />
-          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TipoMovimiento">
-          <Key>
-            <PropertyRef Name="IdTipoMovimiento" />
-          </Key>
-          <Property Name="IdTipoMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreTipoMovimiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EstadoTipoMovimiento" Type="Boolean" Nullable="false" />
-          <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Rol">
-          <Key>
-            <PropertyRef Name="IdRol" />
-          </Key>
-          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EstadoRol" Type="Boolean" Nullable="false" />
-          <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="IdUsuario" />
-          </Key>
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ApPaternoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ApMaternoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Usser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmailUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdRol" Type="Int32" Nullable="false" />
-          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EstadoUsuario" Type="Boolean" Nullable="false" />
-          <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
-        </EntityType>
+        <ComplexType Name="Usp_ListaCatalogo_Result">
+          <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ValorItem" Nullable="true" />
+          <Property Type="Int32" Name="IdTabla" Nullable="false" />
+          <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
+        </ComplexType>
         <EntityType Name="Caja">
           <Key>
             <PropertyRef Name="IdCaja" />
@@ -246,6 +197,63 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="VentaEuros" Type="Decimal" Precision="9" Scale="2" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="IdMovimiento" />
+          </Key>
+          <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MontoMovimiento" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="ComentarioMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoMovimiento" Type="Int32" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EstadoRol" Type="Boolean" Nullable="false" />
+          <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMovimiento">
+          <Key>
+            <PropertyRef Name="IdTipoMovimiento" />
+          </Key>
+          <Property Name="IdTipoMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreTipoMovimiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EstadoTipoMovimiento" Type="Boolean" Nullable="false" />
+          <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApPaternoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApMaternoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Usser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoUsuario" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EstadoUsuario" Type="Boolean" Nullable="false" />
+          <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="DatoGeneral">
           <Key>
@@ -281,79 +289,12 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FechaModifica" Type="DateTime" Precision="3" />
         </EntityType>
-        <ComplexType Name="Usp_ListaCatalogo_Result">
-          <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
-          <Property Type="Int32" Name="ValorItem" Nullable="true" />
-          <Property Type="Int32" Name="IdTabla" Nullable="false" />
-          <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BDControlMGModelStoreContainer" CdmEntityContainer="BDControlMGEntities">
-          <EntitySetMapping Name="Movimiento">
-            <EntityTypeMapping TypeName="BDControlMGModel.Movimiento">
-              <MappingFragment StoreEntitySet="Movimiento">
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
-                <ScalarProperty Name="ComentarioMovimiento" ColumnName="ComentarioMovimiento" />
-                <ScalarProperty Name="MontoMovimiento" ColumnName="MontoMovimiento" />
-                <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoMovimiento">
-            <EntityTypeMapping TypeName="BDControlMGModel.TipoMovimiento">
-              <MappingFragment StoreEntitySet="TipoMovimiento">
-                <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
-                <ScalarProperty Name="EstadoTipoMovimiento" ColumnName="EstadoTipoMovimiento" />
-                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-                <ScalarProperty Name="NombreTipoMovimiento" ColumnName="NombreTipoMovimiento" />
-                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rol">
-            <EntityTypeMapping TypeName="BDControlMGModel.Rol">
-              <MappingFragment StoreEntitySet="Rol">
-                <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
-                <ScalarProperty Name="EstadoRol" ColumnName="EstadoRol" />
-                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
-                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="BDControlMGModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
-                <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
-                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-                <ScalarProperty Name="EmailUsuario" ColumnName="EmailUsuario" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Usser" ColumnName="Usser" />
-                <ScalarProperty Name="ApMaternoUsuario" ColumnName="ApMaternoUsuario" />
-                <ScalarProperty Name="ApPaternoUsuario" ColumnName="ApPaternoUsuario" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Caja">
             <EntityTypeMapping TypeName="BDControlMGModel.Caja">
               <MappingFragment StoreEntitySet="Caja">
@@ -371,6 +312,67 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
                 <ScalarProperty Name="FechaHoraCierre" ColumnName="FechaHoraCierre" />
                 <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
                 <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimiento">
+            <EntityTypeMapping TypeName="BDControlMGModel.Movimiento">
+              <MappingFragment StoreEntitySet="Movimiento">
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+                <ScalarProperty Name="ComentarioMovimiento" ColumnName="ComentarioMovimiento" />
+                <ScalarProperty Name="MontoMovimiento" ColumnName="MontoMovimiento" />
+                <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="BDControlMGModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
+                <ScalarProperty Name="EstadoRol" ColumnName="EstadoRol" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMovimiento">
+            <EntityTypeMapping TypeName="BDControlMGModel.TipoMovimiento">
+              <MappingFragment StoreEntitySet="TipoMovimiento">
+                <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
+                <ScalarProperty Name="EstadoTipoMovimiento" ColumnName="EstadoTipoMovimiento" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="NombreTipoMovimiento" ColumnName="NombreTipoMovimiento" />
+                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="BDControlMGModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
+                <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="TelefonoUsuario" ColumnName="TelefonoUsuario" />
+                <ScalarProperty Name="EmailUsuario" ColumnName="EmailUsuario" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Usser" ColumnName="Usser" />
+                <ScalarProperty Name="ApMaternoUsuario" ColumnName="ApMaternoUsuario" />
+                <ScalarProperty Name="ApPaternoUsuario" ColumnName="ApPaternoUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -410,17 +412,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Usp_ListaCatalogo" FunctionName="BDControlMGModel.Store.Usp_ListaCatalogo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BDControlMGModel.Usp_ListaCatalogo_Result">
-                <ScalarProperty Name="IdItem" ColumnName="IdItem" />
-                <ScalarProperty Name="NombreItem" ColumnName="NombreItem" />
-                <ScalarProperty Name="ValorItem" ColumnName="ValorItem" />
-                <ScalarProperty Name="IdTabla" ColumnName="IdTabla" />
-                <ScalarProperty Name="NombreTabla" ColumnName="NombreTabla" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

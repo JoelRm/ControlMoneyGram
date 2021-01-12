@@ -1,71 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BDControlMGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="BDControlMGEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Movimiento" EntityType="BDControlMGModel.Movimiento" />
-    <EntitySet Name="TipoMovimiento" EntityType="BDControlMGModel.TipoMovimiento" />
-    <EntitySet Name="Rol" EntityType="BDControlMGModel.Rol" />
-    <EntitySet Name="Usuario" EntityType="BDControlMGModel.Usuario" />
+    <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
     <EntitySet Name="Caja" EntityType="BDControlMGModel.Caja" />
+    <EntitySet Name="Movimiento" EntityType="BDControlMGModel.Movimiento" />
+    <EntitySet Name="Rol" EntityType="BDControlMGModel.Rol" />
+    <EntitySet Name="TipoMovimiento" EntityType="BDControlMGModel.TipoMovimiento" />
+    <EntitySet Name="Usuario" EntityType="BDControlMGModel.Usuario" />
     <EntitySet Name="DatoGeneral" EntityType="BDControlMGModel.DatoGeneral" />
     <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
-    <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
   </EntityContainer>
-  <EntityType Name="Movimiento">
-    <Key>
-      <PropertyRef Name="IdMovimiento" />
-    </Key>
-    <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MontoMovimiento" Type="Decimal" Precision="9" Scale="2" />
-    <Property Name="ComentarioMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="TipoMovimiento" Type="Int32" />
-    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="TipoMovimiento">
-    <Key>
-      <PropertyRef Name="IdTipoMovimiento" />
-    </Key>
-    <Property Name="IdTipoMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NombreTipoMovimiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="EstadoTipoMovimiento" Type="Boolean" Nullable="false" />
-    <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Rol">
-    <Key>
-      <PropertyRef Name="IdRol" />
-    </Key>
-    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="EstadoRol" Type="Boolean" Nullable="false" />
-    <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Usuario">
-    <Key>
-      <PropertyRef Name="IdUsuario" />
-    </Key>
-    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ApPaternoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ApMaternoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Usser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EmailUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="IdRol" Type="Int32" Nullable="false" />
-    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="EstadoUsuario" Type="Boolean" Nullable="false" />
-    <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
-  </EntityType>
+  <ComplexType Name="Usp_ListaCatalogo_Result">
+    <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ValorItem" Nullable="true" />
+    <Property Type="Int32" Name="IdTabla" Nullable="false" />
+    <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
+  </ComplexType>
   <EntityType Name="Caja">
     <Key>
       <PropertyRef Name="IdCaja" />
@@ -84,6 +35,63 @@
     <Property Name="VentaEuros" Type="Decimal" Precision="9" Scale="2" />
     <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
     <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Movimiento">
+    <Key>
+      <PropertyRef Name="IdMovimiento" />
+    </Key>
+    <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MontoMovimiento" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="ComentarioMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TipoMovimiento" Type="Int32" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EstadoRol" Type="Boolean" Nullable="false" />
+    <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoMovimiento">
+    <Key>
+      <PropertyRef Name="IdTipoMovimiento" />
+    </Key>
+    <Property Name="IdTipoMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreTipoMovimiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EstadoTipoMovimiento" Type="Boolean" Nullable="false" />
+    <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApPaternoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApMaternoUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoUsuario" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="IdRol" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EstadoUsuario" Type="Boolean" Nullable="false" />
+    <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="DatoGeneral">
     <Key>
@@ -119,11 +127,4 @@
     <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="FechaModifica" Type="DateTime" Precision="3" />
   </EntityType>
-  <ComplexType Name="Usp_ListaCatalogo_Result">
-    <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
-    <Property Type="Int32" Name="ValorItem" Nullable="true" />
-    <Property Type="Int32" Name="IdTabla" Nullable="false" />
-    <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
-  </ComplexType>
 </Schema>

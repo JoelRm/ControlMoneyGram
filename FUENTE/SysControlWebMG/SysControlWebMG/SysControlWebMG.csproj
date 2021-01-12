@@ -147,6 +147,7 @@
     <Content Include="Content\img\moneygram-logo.png" />
     <Content Include="Content\img\signup.jpg" />
     <Content Include="Content\img\undraw_profile.svg" />
+    <Content Include="Content\LoaderVR.css" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\styles-lay.min.css" />
     <Content Include="Content\style.css" />
@@ -268,6 +269,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\LoaderVR.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
@@ -292,6 +294,7 @@
     <Content Include="Views\Operacion\Index.cshtml" />
     <Content Include="Views\Operacion\ListaOperaciones.cshtml" />
     <Content Include="Views\Usuarios\_ModalNuevoUsuario.cshtml" />
+    <Content Include="Views\Usuarios\_ModalEditarUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

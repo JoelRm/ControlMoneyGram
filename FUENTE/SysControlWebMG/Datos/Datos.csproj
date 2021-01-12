@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\OperacionDA.cs" />
+    <Compile Include="Clases\RolDA.cs" />
     <Compile Include="Clases\TipoMovimientoDA.cs" />
     <Compile Include="Clases\UsuariosDA.cs" />
     <Compile Include="Modelos\Caja.cs">

@@ -21,6 +21,7 @@ namespace Datos.Modelos
         public string Usser { get; set; }
         public string Password { get; set; }
         public string EmailUsuario { get; set; }
+        public string TelefonoUsuario { get; set; }
         public int IdRol { get; set; }
         public string UsuarioCreacion { get; set; }
         public System.DateTime FechaCreacion { get; set; }

@@ -105,6 +105,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="Usser" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="EmailUsuario" Type="varchar" MaxLength="50" />
+    <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
     <Property Name="IdRol" Type="int" Nullable="false" />
     <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
@@ -113,7 +114,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="EstadoUsuario" Type="bit" Nullable="false" />
     <Property Name="EstadoEliminacion" Type="bit" Nullable="false" />
   </EntityType>
-  <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="BDControlMGModelStoreContainer">
     <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />

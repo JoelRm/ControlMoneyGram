@@ -12,7 +12,7 @@ namespace SysControlWebMG.Controllers
         public ActionResult Index()
         {
             var listaRoles = objRol.ListarRolesForCombo();
-            listaRoles.Insert(0, new Entidades.RolCLS { NombreRol = "SELECCIONE CARGO", IdRol = 0 });
+            listaRoles.Insert(0, new RolCLS { NombreRol = "SELECCIONE CARGO", IdRol = 0 });
             ViewBag.listaRoles = listaRoles;
 
             return View();
@@ -28,9 +28,36 @@ namespace SysControlWebMG.Controllers
         [HttpPost]
         public JsonResult AgregarUsuario(UsuariosCLS usu)
         {
-            int codigoRpt = 1;// objUsuario.AgregarUnidad(und);
+            int codigoRpt = objUsuario.AgregarUsuario(usu);
             return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
         }
 
+        [HttpPost]
+        public JsonResult CambiarEstadoUsuario(UsuariosCLS usu)
+        {
+            var codigRpt = objUsuario.CambiarEstadoUsuario(usu);
+            return Json(new { Code = codigRpt, JsonRequestBehavior.AllowGet });
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerUsuarioPorId(int usu)
+        {
+            var usuarioCLS = objUsuario.ObtenerUsuarioPorId(usu);
+            return Json(new { usuarioCLS, JsonRequestBehavior.AllowGet });
+        }
+
+        [HttpPost]
+        public JsonResult EditarUsuario(UsuariosCLS usu)
+        {
+            int codigoRpt = objUsuario.EditarUsuario(usu);
+            return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
+        }
+
+        [HttpPost]
+        public JsonResult EliminarUnidad(UsuariosCLS usu)
+        {
+            int codigoRpt = objUsuario.EliminarUsuario(usu);
+            return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
+        }
     }
 }
