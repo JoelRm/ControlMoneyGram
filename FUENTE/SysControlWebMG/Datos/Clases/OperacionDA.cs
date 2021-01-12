@@ -16,7 +16,7 @@ namespace Datos.Clases
             using (var db = new BDControlMGEntities())
             {
                 lstCatalogo = (from catalogo in db.DatoGeneralDetalle
-                               where catalogo.Habilitado == true 
+                               where catalogo.Habilitado == true
                                select new CalatogoCLS
                                {
                                    IdItem = catalogo.DatoGeneralDetalleId,

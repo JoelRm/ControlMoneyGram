@@ -1,7 +1,7 @@
 ﻿var app_Caja = (function (win, doc) {
 
 	const data = {
-		urlCargaInicial: '/Caja/CargaInicial',
+		urlGuardarConf: '/Caja/GuardarConfiguracion',
 		valores: {
 			IdSoles: "1",
 			IdDolares: "2",
@@ -15,15 +15,122 @@
 
 
 	function init() {
-		cargaInicial();
-		document.getElementById("cboTipoOperacion").addEventListener("change", changeTipoOperacion);
-		document.getElementById("btnCalcularOperacion").addEventListener("click", calculoMonto);
-		document.getElementById("txtMonto").addEventListener("blur", ForceDecimalOnly);
-		changeTipoOperacion('inicio');
+		document.getElementById("txtCajaActualSoles").addEventListener("blur", FormatCajaActualSoles);
+		document.getElementById("txtCajaActualDolares").addEventListener("blur", FormatCajaActualDolares);
+		document.getElementById("txtCajaActualEuros").addEventListener("blur", FormatCajaActualEuros);
+		document.getElementById("txtTCCompraDolar").addEventListener("blur", FormatTCCompraDolar);
+		document.getElementById("txtTCVentaDolar").addEventListener("blur", FormatTCVentaDolar);
+		document.getElementById("txtTCCompraEuro").addEventListener("blur", FormatTCCompraEuro);
+		document.getElementById("txtTCVentaEuro").addEventListener("blur", FormatTCVentaEuro);
+		document.getElementById("btnGuardarConf").addEventListener("click", guardarConfiguracion);
 	}
 
-	function ForceDecimalOnly() {
-		var $control = $("#txtMonto");
+	function validarDatosConfiguracion() {
+		var CajaActualSoles = $("#txtCajaActualSoles").val();
+		var CajaActualDolares = $("#txtCajaActualDolares").val();
+		var CajaActualEuros = $("#txtCajaActualEuros").val();
+		var TCCompraDolar = $("#txtTCCompraDolar").val();
+		var TCVentaDolar = $("#txtTCVentaDolar").val();
+		var TCCompraEuro = $("#txtTCCompraEuro").val();
+		var TCVentaEuro = $("#txtTCVentaEuro").val();
+
+		if (CajaActualSoles == '') {
+			toastr.error('Debe ingresar el monto de caja en soles', 'Error');
+			return false;
+		}
+		if (CajaActualDolares == '') {
+			toastr.error('Debe ingresar el monto de caja en dólares', 'Error');
+			return false;
+		}
+		if (CajaActualEuros == '') {
+			toastr.error('Debe ingresar el monto de caja en euros', 'Error');
+			return false;
+		}
+		if (TCCompraDolar == '') {
+			toastr.error('Debe ingresar el tipo de cambio de compra en dólares', 'Error');
+			return false;
+		}
+		if (TCVentaDolar == '') {
+			toastr.error('Debe ingresar el tipo de cambio de venta en dólares', 'Error');
+			return false;
+		}
+		if (TCCompraEuro == '') {
+			toastr.error('Debe ingresar el tipo de cambio de compra en euros', 'Error');
+			return false;
+		}
+		if (TCVentaEuro == '') {
+			toastr.error('Debe ingresar el tipo de cambio de venta en euros', 'Error');
+			return false;
+		}
+		return true;
+	};
+
+	function guardarConfiguracion() {
+		if (validarDatosConfiguracion()) {
+			var confCaja = {};
+			confCaja.CajaActualSoles = parseFloat($("#txtCajaActualSoles").val()).toFixed(2);
+			confCaja.CajaActualDolares = parseFloat($("#txtCajaActualDolares").val()).toFixed(2);
+			confCaja.CajaActualEuros = parseFloat($("#txtCajaActualEuros").val()).toFixed(2);
+			confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar").val()).toFixed(2);
+			confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar").val()).toFixed(2);
+			confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro").val()).toFixed(2);
+			confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro").val()).toFixed(2);
+			$.ajax({
+				type: "POST",
+				url: data.urlGuardarConf,
+				data: '{confCaja: ' + JSON.stringify(confCaja) + '}',
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				success: function (response) {
+					debugger;
+					//if (response.Code == 2) {
+					//	toastr.error('Ya existen registros con un nombre similar, intente otro', 'Error');
+					//	ocultarLoader();
+					//}
+					//else {
+					//	if (response.Code == 1) {
+					//		$('#modalNuevoUsuario').modal('hide');
+					//		limpiarValoresUsuarios();
+					//		cargarTablaUsuarios();
+					//		toastr.success('Se agregaron los datos correctamente', 'Éxito');
+					//		ocultarLoader();
+					//	}
+					//	else {
+					//		toastr.error('Error al agregar los datos', 'Error');
+					//		ocultarLoader();
+					//	}
+					//}
+				},
+				error: function () {
+					toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
+					ocultarLoader;
+				}
+			});
+        }
+    }
+
+
+
+
+
+
+
+
+
+	function FormatCajaActualSoles() {
+			var $control = $("#txtCajaActualSoles");
+			$control.on("input", function (evt) {
+				var self = $(this);
+				self.val(self.val().replace(/[^0-9\.]/g, ''));
+				if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+					evt.preventDefault();
+				}
+			});
+			var valor = parseFloat($control.val()).toFixed(2);
+			$control.val(valor);
+	}
+	function FormatCajaActualDolares() {
+		var $control = $("#txtCajaActualDolares");
 		$control.on("input", function (evt) {
 			var self = $(this);
 			self.val(self.val().replace(/[^0-9\.]/g, ''));
@@ -34,85 +141,66 @@
 		var valor = parseFloat($control.val()).toFixed(2);
 		$control.val(valor);
 	}
-
-
-	function changeTipoOperacion(ini) {
-		var TipoOperacion = document.getElementById("cboTipoOperacion").value;
-		if (TipoOperacion == "1" || TipoOperacion == "2" || ini == 'inicio') {
-			$("#cboTOVentaCompra").show();
-			$("#divCalcularOperacion").show();
-			$("#divMontoEntrega").show();
-			$("#cboTOGeneral").hide();
-			if (TipoOperacion == "1") {				
-				$("#divTipoCambioCompra").show();
-				$("#divTipoCambioVenta").hide();
-			}
-			if (TipoOperacion == "2") {
-				$("#divTipoCambioCompra").hide();
-				$("#divTipoCambioVenta").show();
-			}
-		}
-		else {
-			$("#divCalcularOperacion").hide();
-			$("#divMontoEntrega").hide();
-			$("#cboTOVentaCompra").hide();
-			$("#cboTOGeneral").show();
-        }
-    }
-	function calculoMonto() {
-		var tipoMonedaDe = document.getElementById("cboMonedaDe").value;
-		var tipoMonedaA = document.getElementById("cboMonedaA").value;
-		var monto = parseFloat(document.getElementById("txtMonto").value);
-		var TipoOperacion = parseFloat(document.getElementById("cboTipoOperacion").value);
-		var TipoCambioCompraDolar = document.getElementById("txtTCCompraDolar").value;
-		var TipoCambioVentaDolar = document.getElementById("txtTCVentaDolar").value;
-		
-		if (tipoMonedaDe == tipoMonedaA)
-			alert('Los tipos de moneda de cambio no puedes ser iguales');
-		// De soles a dólares
-		if (tipoMonedaDe == data.valores.IdSoles && tipoMonedaA == data.valores.IdDolares) {
-			// Compra
-			if (TipoOperacion == data.valores.TipoOperacionCompra)			
-				document.getElementById("txtMontoEntrega").value = parseFloat(monto / TipoCambioCompraDolar)
-			// Venta
-			if (TipoOperacion == data.valores.TipoOperacionVenta) 				
-				document.getElementById("txtMontoEntrega").value = parseFloat(monto / TipoCambioVentaDolar)
-		}
-		// De dólares a soles
-		if (tipoMonedaDe == data.valores.IdDolares && tipoMonedaA == data.valores.IdSoles) {
-			// Compra
-			if (TipoOperacion == data.valores.TipoOperacionCompra)
-				document.getElementById("txtMontoEntrega").value = parseFloat(monto * TipoCambioCompraDolar)
-			// Venta
-			if (TipoOperacion == data.valores.TipoOperacionVenta)
-				document.getElementById("txtMontoEntrega").value = parseFloat(monto * TipoCambioVentaDolar)
-		}
-	}
-	function cargaInicial() {
-		$.ajax({
-			type: "POST",
-			url: data.urlCargaInicial,
-			dataType: "json",
-			contentType: "application/json; charset=utf-8",
-			success: function (d) {
-				var lista = d.lstCargaInicial;
-				for (var i = 0; i < lista.length; i++) {
-					if (lista[i].IdTabla === data.valores.TblTipoOperacion)
-						$("#cboTipoOperacion").append('<option value=' + lista[i].ValorItem + '>' + lista[i].NombreItem + '</option>');
-					if (lista[i].IdTabla === data.valores.TblMoneda) {
-						$("#cboMonedaDe").append('<option value=' + lista[i].ValorItem + '>' + lista[i].NombreItem + '</option>');
-						$("#cboMonedaA").append('<option value=' + lista[i].ValorItem + '>' + lista[i].NombreItem + '</option>');
-						$("#cboMoneda").append('<option value=' + lista[i].ValorItem + '>' + lista[i].NombreItem + '</option>');
-						}
-					}					
-			},
-			error: function (ex) {
-				alert(ex.responseText);
-				//ocultarLoader();
+	function FormatCajaActualEuros() {
+		var $control = $("#txtCajaActualEuros");
+		$control.on("input", function (evt) {
+			var self = $(this);
+			self.val(self.val().replace(/[^0-9\.]/g, ''));
+			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+				evt.preventDefault();
 			}
 		});
-
-    }
+		var valor = parseFloat($control.val()).toFixed(2);
+		$control.val(valor);
+	}
+	function FormatTCCompraDolar() {
+		var $control = $("#txtTCCompraDolar");
+		$control.on("input", function (evt) {
+			var self = $(this);
+			self.val(self.val().replace(/[^0-9\.]/g, ''));
+			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+				evt.preventDefault();
+			}
+		});
+		var valor = parseFloat($control.val()).toFixed(2);
+		$control.val(valor);
+	}
+	function FormatTCVentaDolar() {
+		var $control = $("#txtTCVentaDolar");
+		$control.on("input", function (evt) {
+			var self = $(this);
+			self.val(self.val().replace(/[^0-9\.]/g, ''));
+			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+				evt.preventDefault();
+			}
+		});
+		var valor = parseFloat($control.val()).toFixed(2);
+		$control.val(valor);
+	}
+	function FormatTCCompraEuro() {
+		var $control = $("#txtTCCompraEuro");
+		$control.on("input", function (evt) {
+			var self = $(this);
+			self.val(self.val().replace(/[^0-9\.]/g, ''));
+			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+				evt.preventDefault();
+			}
+		});
+		var valor = parseFloat($control.val()).toFixed(2);
+		$control.val(valor);
+	}
+	function FormatTCVentaEuro() {
+		var $control = $("#txtTCVentaEuro");
+		$control.on("input", function (evt) {
+			var self = $(this);
+			self.val(self.val().replace(/[^0-9\.]/g, ''));
+			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+				evt.preventDefault();
+			}
+		});
+		var valor = parseFloat($control.val()).toFixed(2);
+		$control.val(valor);
+	}
 
 
 	//funcion de inicio

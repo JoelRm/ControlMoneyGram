@@ -1,7 +1,9 @@
-﻿using Negocio;
+﻿using Entidades;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,18 +11,19 @@ namespace SysControlWebMG.Controllers
 {
     public class CajaController : Controller
     {
-        OperacionNE objOperacion = new OperacionNE();
+        ConfiguracionCajaNE objConfCaja = new ConfiguracionCajaNE();
         // GET: Caja
         public ActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-        public JsonResult CargaInicial()
+        [HttpPost()]
+        public async Task<JsonResult> GuardarConfiguracion(ConfiguracionCajaCLS confCaja)
         {
-            var lstCargaInicial = objOperacion.CargaInicial();
-            return Json(new { lstCargaInicial, JsonRequestBehavior.AllowGet });
+            int codigoRpt = objConfCaja.GuardarConfiguracion(confCaja);
+            return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
         }
+
     }
 }

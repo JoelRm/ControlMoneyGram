@@ -271,6 +271,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LoaderVR.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Pages\Configuración\Operacion.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
     <Content Include="Scripts\Pages\TipoMovimiento.js" />

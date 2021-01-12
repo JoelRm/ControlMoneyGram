@@ -10,39 +10,32 @@
     <div class="panel-body">
         <form>
             <div class="form-row">
-                <div class="form-group col-md-6" id="divTipoCambioCompra">
-                    <div class="form-group col-md-6">
-                        <label>Tipo Cambio Compra Dólar</label>
-                        <input type="text" class="form-control" id="txtTCCompraDolar" value="3.10" disabled>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Tipo Cambio Compra Euro</label>
-                        <input type="text" class="form-control" id="txtTCCompraEuro" value="3.20" disabled>
-                    </div>
+                <div class="form-group col-md-2">
+                    <label>Compra Dólar</label>
+                    <input type="text" class="form-control" id="txtTCCompraDolar" value="3.10" disabled>
                 </div>
-                <div class="form-group col-md-6" id="divTipoCambioVenta">
-                    <div class="form-group col-md-6">
-                        <label>Tipo Cambio Venta Dólar</label>
-                        <input type="text" class="form-control" id="txtTCVentaDolar" value="3.50" disabled>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Tipo Cambio Venta Euro</label>
-                        <input type="text" class="form-control" id="txtTCVentaEuro" value="3.60" disabled>
-                    </div>
+                <div class="form-group col-md-2">
+                    <label>Compra Euro</label>
+                    <input type="text" class="form-control" id="txtTCCompraEuro" value="3.20" disabled>
                 </div>
-
-                <div class="form-group col-md-6">
-                    <div class="form-group col-md-6">
-                        <label>Caja Actual Soles</label>
-                        <input type="text" class="form-control" id="txtCajaActualSoles" value="4000.00" disabled>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Caja Actual Dólares</label>
-                        <input type="text" class="form-control" id="txtCajaActualDolares" value="1000.00" disabled>
-                    </div>
+                <div class="form-group col-md-2">
+                    <label>Venta Dólar</label>
+                    <input type="text" class="form-control" id="txtTCVentaDolar" value="3.50" disabled>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Venta Euro</label>
+                    <input type="text" class="form-control" id="txtTCVentaEuro" value="3.60" disabled>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Caja Soles</label>
+                    <input type="text" class="form-control" id="txtCajaActualSoles" value="4000.00" disabled>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Caja Dólares</label>
+                    <input type="text" class="form-control" id="txtCajaActualDolares" value="1000.00" disabled>
                 </div>
             </div>
-    </form>
+        </form>
     </div>
 
     <div class="panel panel-default">
@@ -52,14 +45,7 @@
                 <div class="form-group col-md-12">
                     <div class="form-group col-md-3">
                         <label>Tipo Operación</label>
-                        <select id="cboTipoOperacion" class="form-control">
-                            @*<option value="1">Compra</option>
-                            <option value="2">Venta</option>
-                            <option value="3">Ingreso</option>
-                            <option value="4">Envío</option>
-                            <option value="5">Pago</option>
-                            <option value="6">Gasto</option>*@
-                        </select>
+                        <select id="cboTipoOperacion" class="form-control"></select>
                     </div>
                     <div class="form-group col-md-6"></div>
                     <div class="form-group col-md-2">
@@ -70,29 +56,17 @@
                 <div class="form-group col-md-6" id="cboTOVentaCompra">
                     <div class="form-group col-md-6">
                         <label>De:</label>
-                        <select id="cboMonedaDe" class="form-control">
-                            @*<option value="1">Soles(S/)</option>
-                            <option value="2">Dólares($)</option>
-                            <option value="3">Euros(€)</option>*@
-                        </select>
+                        <select id="cboMonedaDe" class="form-control"></select>
                     </div>
                     <div class="form-group col-md-6">
                         <label>A:</label>
-                        <select id="cboMonedaA" class="form-control">
-                            @*<option value="1">Soles(S/)</option>
-                            <option value="2">Dólares($)</option>
-                            <option value="3">Euros(€)</option>*@
-                        </select>
+                        <select id="cboMonedaA" class="form-control"></select>
                     </div>
                 </div>
                 <div class="form-group col-md-3" id="cboTOGeneral">
                     <div class="form-group col-md-12">
                         <label>Moneda</label>
-                        <select id="cboMoneda" class="form-control">
-                            @*<option value="1">Soles(S/)</option>
-                            <option value="2">Dólares($)</option>
-                            <option value="3">Euros(€)</option>*@
-                        </select>
+                        <select id="cboMoneda" class="form-control"></select>
                     </div>
                 </div>
                 <div class="form-group col-md-3">
@@ -123,4 +97,4 @@
         </div>
     </div>
 </div>
-<script src="~/Scripts/Pages/Configuración/Caja.js"></script>
+<script src="~/Scripts/Pages/Configuración/Operacion.js"></script>
