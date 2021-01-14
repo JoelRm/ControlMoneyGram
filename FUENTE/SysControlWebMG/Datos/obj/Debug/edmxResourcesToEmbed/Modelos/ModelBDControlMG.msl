@@ -21,18 +21,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Movimiento">
-      <EntityTypeMapping TypeName="BDControlMGModel.Movimiento">
-        <MappingFragment StoreEntitySet="Movimiento">
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-          <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
-          <ScalarProperty Name="ComentarioMovimiento" ColumnName="ComentarioMovimiento" />
-          <ScalarProperty Name="MontoMovimiento" ColumnName="MontoMovimiento" />
-          <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Rol">
       <EntityTypeMapping TypeName="BDControlMGModel.Rol">
         <MappingFragment StoreEntitySet="Rol">
@@ -115,6 +103,42 @@
           <ScalarProperty Name="ValorTabla" ColumnName="ValorTabla" />
           <ScalarProperty Name="DatoGeneralId" ColumnName="DatoGeneralId" />
           <ScalarProperty Name="DatoGeneralDetalleId" ColumnName="DatoGeneralDetalleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Usp_ListaCatalogo1" FunctionName="BDControlMGModel.Store.Usp_ListaCatalogo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDControlMGModel.Usp_ListaCatalogo1_Result">
+          <ScalarProperty Name="IdItem" ColumnName="IdItem" />
+          <ScalarProperty Name="NombreItem" ColumnName="NombreItem" />
+          <ScalarProperty Name="ValorItem" ColumnName="ValorItem" />
+          <ScalarProperty Name="IdTabla" ColumnName="IdTabla" />
+          <ScalarProperty Name="NombreTabla" ColumnName="NombreTabla" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Operacion">
+      <EntityTypeMapping TypeName="BDControlMGModel.Operacion">
+        <MappingFragment StoreEntitySet="Operacion">
+          <ScalarProperty Name="MontoSalida" ColumnName="MontoSalida" />
+          <ScalarProperty Name="FechaMovimiento" ColumnName="FechaMovimiento" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="HoraMovimiento" ColumnName="HoraMovimiento" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+          <ScalarProperty Name="FlagRestaCajaEuro" ColumnName="FlagRestaCajaEuro" />
+          <ScalarProperty Name="FlagSumaCajaEuro" ColumnName="FlagSumaCajaEuro" />
+          <ScalarProperty Name="FlagRestaCajaDolar" ColumnName="FlagRestaCajaDolar" />
+          <ScalarProperty Name="FlagSumaCajaDolar" ColumnName="FlagSumaCajaDolar" />
+          <ScalarProperty Name="FlagRestaCajaSol" ColumnName="FlagRestaCajaSol" />
+          <ScalarProperty Name="FlagSumaCajaSol" ColumnName="FlagSumaCajaSol" />
+          <ScalarProperty Name="MonedaA" ColumnName="MonedaA" />
+          <ScalarProperty Name="MonedaDe" ColumnName="MonedaDe" />
+          <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+          <ScalarProperty Name="MontoIngreso" ColumnName="MontoIngreso" />
+          <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

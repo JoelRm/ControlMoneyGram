@@ -8,34 +8,40 @@
         <h1 class="h3 mb-0 text-gray-800">Registro de Operación</h1>
     </div>
     <div class="panel-body">
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-2">
-                    <label>Compra Dólar</label>
-                    <input type="text" class="form-control" id="txtTCCompraDolar" value="3.10" disabled>
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Compra Euro</label>
-                    <input type="text" class="form-control" id="txtTCCompraEuro" value="3.20" disabled>
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Venta Dólar</label>
-                    <input type="text" class="form-control" id="txtTCVentaDolar" value="3.50" disabled>
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Venta Euro</label>
-                    <input type="text" class="form-control" id="txtTCVentaEuro" value="3.60" disabled>
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Caja Soles</label>
-                    <input type="text" class="form-control" id="txtCajaActualSoles" value="4000.00" disabled>
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Caja Dólares</label>
-                    <input type="text" class="form-control" id="txtCajaActualDolares" value="1000.00" disabled>
-                </div>
+        <div class="form-row">
+            <div class="form-group col-md-1">
+                <label>Cambio ($)</label>
+                <input type="text" class="form-control" id="txtTCCompraDolar" value="3.10" disabled>
             </div>
-        </form>
+            <div class="form-group col-md-1">
+                <label>Venta ($)</label>
+                <input type="text" class="form-control" id="txtTCVentaDolar" value="3.50" disabled>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Cambio (€)</label>
+                <input type="text" class="form-control" id="txtTCCompraEuro" value="3.20" disabled>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Venta (€)</label>
+                <input type="text" class="form-control" id="txtTCVentaEuro" value="3.60" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Caja Soles (S/)</label>
+                <input type="text" class="form-control" id="txtCajaActualSoles" value="4000.00" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Caja Dólares ($)</label>
+                <input type="text" class="form-control" id="txtCajaActualDolares" value="1000.00" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Caja Euros (€)</label>
+                <input type="text" class="form-control" id="txtCajaActualEuros" value="500.00" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <br>
+                <button class="form-control btn btn-danger" id="btnEditarTipoCambio">Editar Tipo de Cambio</button>
+            </div>
+        </div>
     </div>
 
     <div class="panel panel-default">
@@ -43,30 +49,29 @@
         <div class="panel-body">
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <div class="form-group col-md-3">
-                        <label>Tipo Operación</label>
+                    <div class="form-group col-md-4" >
+                        <div id="divODolar" class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <radio type="button" id="btnCompraDolar"> Cambio Dólar ($)</radio>
+                            </label>
+                            <label class="btn btn-primary">
+                                <radio type="button" id="btnVentaDolar"> Venta Dólar ($)</radio>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4" id="divOEuro">
+                        <div id="divODolar" class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-warning">
+                                <radio type="button" id="btnCompraEuro"> Cambio Euro (€)</radio>
+                            </label>
+                            <label class="btn btn-warning">
+                                <radio type="button" id="btnVentaEuro"> Venta Euro (€)</radio>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Otras Operaciones</label>
                         <select id="cboTipoOperacion" class="form-control"></select>
-                    </div>
-                    <div class="form-group col-md-6"></div>
-                    <div class="form-group col-md-2">
-                        <br>
-                        <button class="btn btn-danger" id="btnGuardarOperacion">Guardar Operación</button>
-                    </div>
-                </div>
-                <div class="form-group col-md-6" id="cboTOVentaCompra">
-                    <div class="form-group col-md-6">
-                        <label>De:</label>
-                        <select id="cboMonedaDe" class="form-control"></select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>A:</label>
-                        <select id="cboMonedaA" class="form-control"></select>
-                    </div>
-                </div>
-                <div class="form-group col-md-3" id="cboTOGeneral">
-                    <div class="form-group col-md-12">
-                        <label>Moneda</label>
-                        <select id="cboMoneda" class="form-control"></select>
                     </div>
                 </div>
                 <div class="form-group col-md-3">
@@ -75,10 +80,16 @@
                         <input type="text" class="form-control" id="txtMonto">
                     </div>
                 </div>
-                <div class="form-group col-md-3" id="divCalcularOperacion">
+                <div class="form-group col-md-3" id="divOtrasOpe">
+                    <div class="form-group col-md-12">
+                        <label>Moneda</label>
+                        <select id="cboMoneda" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
                     <div class="form-group col-md-12">
                         <br>
-                        <button class="btn btn-danger" id="btnCalcularOperacion">Calcular Operación</button>
+                        <button class="form-control btn btn-danger" id="btnCalcularOperacion">Registrar Operación</button>
                     </div>
                 </div>
                 <div class="form-group col-md-12">

@@ -127,7 +127,7 @@
 				}
 			});
 			var valor = parseFloat($control.val()).toFixed(2);
-			$control.val(valor);
+			if ($.isNumeric(valor)) { $control.val(valor) }
 	}
 	function FormatCajaActualDolares() {
 		var $control = $("#txtCajaActualDolares");
@@ -139,7 +139,7 @@
 			}
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
-		$control.val(valor);
+		if ($.isNumeric(valor)) { $control.val(valor) }
 	}
 	function FormatCajaActualEuros() {
 		var $control = $("#txtCajaActualEuros");
@@ -151,7 +151,7 @@
 			}
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
-		$control.val(valor);
+		if ($.isNumeric(valor)) { $control.val(valor) }
 	}
 	function FormatTCCompraDolar() {
 		var $control = $("#txtTCCompraDolar");
@@ -163,7 +163,7 @@
 			}
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
-		$control.val(valor);
+		if ($.isNumeric(valor)) { $control.val(valor) }
 	}
 	function FormatTCVentaDolar() {
 		var $control = $("#txtTCVentaDolar");
@@ -175,7 +175,7 @@
 			}
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
-		$control.val(valor);
+		if ($.isNumeric(valor)) { $control.val(valor) }
 	}
 	function FormatTCCompraEuro() {
 		var $control = $("#txtTCCompraEuro");
@@ -187,7 +187,7 @@
 			}
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
-		$control.val(valor);
+		if ($.isNumeric(valor)) { $control.val(valor) }
 	}
 	function FormatTCVentaEuro() {
 		var $control = $("#txtTCVentaEuro");
@@ -199,7 +199,7 @@
 			}
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
-		$control.val(valor);
+		if ($.isNumeric(valor)) { $control.val(valor) }
 	}
 
 

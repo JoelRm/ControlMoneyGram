@@ -3,12 +3,13 @@
   <EntityContainer Name="BDControlMGEntities" annotation:LazyLoadingEnabled="true">
     <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
     <EntitySet Name="Caja" EntityType="BDControlMGModel.Caja" />
-    <EntitySet Name="Movimiento" EntityType="BDControlMGModel.Movimiento" />
     <EntitySet Name="Rol" EntityType="BDControlMGModel.Rol" />
     <EntitySet Name="TipoMovimiento" EntityType="BDControlMGModel.TipoMovimiento" />
     <EntitySet Name="Usuario" EntityType="BDControlMGModel.Usuario" />
     <EntitySet Name="DatoGeneral" EntityType="BDControlMGModel.DatoGeneral" />
     <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
+    <FunctionImport Name="Usp_ListaCatalogo1" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo1_Result)" />
+    <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
   </EntityContainer>
   <ComplexType Name="Usp_ListaCatalogo_Result">
     <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
@@ -35,17 +36,6 @@
     <Property Name="VentaEuros" Type="Decimal" Precision="9" Scale="2" />
     <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
     <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="Movimiento">
-    <Key>
-      <PropertyRef Name="IdMovimiento" />
-    </Key>
-    <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MontoMovimiento" Type="Decimal" Precision="9" Scale="2" />
-    <Property Name="ComentarioMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="TipoMovimiento" Type="Int32" />
-    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -126,5 +116,36 @@
     <Property Name="FechaRegistra" Type="DateTime" Precision="3" />
     <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="FechaModifica" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="Usp_ListaCatalogo1_Result">
+    <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ValorItem" Nullable="true" />
+    <Property Type="Int32" Name="IdTabla" Nullable="false" />
+    <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <EntityType Name="Operacion">
+    <Key>
+      <PropertyRef Name="IdOperacion" />
+    </Key>
+    <Property Name="IdOperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MontoIngreso" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="TipoOperacion" Type="Int32" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Moneda" Type="Int32" />
+    <Property Name="MonedaDe" Type="Int32" />
+    <Property Name="MonedaA" Type="Int32" />
+    <Property Name="FlagSumaCajaSol" Type="Boolean" />
+    <Property Name="FlagRestaCajaSol" Type="Boolean" />
+    <Property Name="FlagSumaCajaDolar" Type="Boolean" />
+    <Property Name="FlagRestaCajaDolar" Type="Boolean" />
+    <Property Name="FlagSumaCajaEuro" Type="Boolean" />
+    <Property Name="FlagRestaCajaEuro" Type="Boolean" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <Property Name="HoraMovimiento" Type="DateTime" Precision="3" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaMovimiento" Type="DateTime" Precision="0" />
+    <Property Name="MontoSalida" Type="Decimal" Precision="9" Scale="2" />
   </EntityType>
 </Schema>

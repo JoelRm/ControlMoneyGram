@@ -79,7 +79,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBDControlMG.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\Movimiento.cs">
+    <Compile Include="Modelos\Operacion.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Rol.cs">
