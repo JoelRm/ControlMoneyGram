@@ -1,23 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BDControlMGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="BDControlMGEntities" annotation:LazyLoadingEnabled="true">
-    <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
     <EntitySet Name="Caja" EntityType="BDControlMGModel.Caja" />
     <EntitySet Name="Rol" EntityType="BDControlMGModel.Rol" />
     <EntitySet Name="TipoMovimiento" EntityType="BDControlMGModel.TipoMovimiento" />
     <EntitySet Name="Usuario" EntityType="BDControlMGModel.Usuario" />
     <EntitySet Name="DatoGeneral" EntityType="BDControlMGModel.DatoGeneral" />
     <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
-    <FunctionImport Name="Usp_ListaCatalogo1" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo1_Result)" />
     <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
+    <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
   </EntityContainer>
-  <ComplexType Name="Usp_ListaCatalogo_Result">
-    <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
-    <Property Type="Int32" Name="ValorItem" Nullable="true" />
-    <Property Type="Int32" Name="IdTabla" Nullable="false" />
-    <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
-  </ComplexType>
   <EntityType Name="Caja">
     <Key>
       <PropertyRef Name="IdCaja" />
@@ -74,7 +66,6 @@
     <Property Name="Usser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="EmailUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="TelefonoUsuario" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
     <Property Name="IdRol" Type="Int32" Nullable="false" />
     <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
@@ -82,6 +73,7 @@
     <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="EstadoUsuario" Type="Boolean" Nullable="false" />
     <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
+    <Property Name="TelefonoUsuario" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="DatoGeneral">
     <Key>
@@ -117,13 +109,6 @@
     <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="FechaModifica" Type="DateTime" Precision="3" />
   </EntityType>
-  <ComplexType Name="Usp_ListaCatalogo1_Result">
-    <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
-    <Property Type="Int32" Name="ValorItem" Nullable="true" />
-    <Property Type="Int32" Name="IdTabla" Nullable="false" />
-    <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
-  </ComplexType>
   <EntityType Name="Operacion">
     <Key>
       <PropertyRef Name="IdOperacion" />
@@ -134,8 +119,6 @@
     <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Moneda" Type="Int32" />
-    <Property Name="MonedaDe" Type="Int32" />
-    <Property Name="MonedaA" Type="Int32" />
     <Property Name="FlagSumaCajaSol" Type="Boolean" />
     <Property Name="FlagRestaCajaSol" Type="Boolean" />
     <Property Name="FlagSumaCajaDolar" Type="Boolean" />
@@ -147,5 +130,13 @@
     <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
     <Property Name="FechaMovimiento" Type="DateTime" Precision="0" />
     <Property Name="MontoSalida" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="TipoCambio" Type="Decimal" Precision="9" Scale="2" />
   </EntityType>
+  <ComplexType Name="Usp_ListaCatalogo_Result">
+    <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="ValorItem" Nullable="true" />
+    <Property Type="Int32" Name="IdTabla" Nullable="false" />
+    <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
+  </ComplexType>
 </Schema>

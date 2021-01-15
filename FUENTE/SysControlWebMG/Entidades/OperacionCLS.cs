@@ -13,6 +13,7 @@ namespace Entidades
 		public decimal MontoSalida { get; set; }
 		public int Moneda { get; set; }
 		public string Comentario { get; set; }
+		public decimal TipoCambio { get; set; }		
 		public bool FlagSumaCajaSol { get; set; }
 		public bool FlagRestaCajaSol { get; set; }
 		public bool FlagSumaCajaDolar { get; set; }

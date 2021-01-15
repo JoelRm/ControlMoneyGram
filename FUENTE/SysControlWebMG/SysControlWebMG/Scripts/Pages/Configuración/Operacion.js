@@ -262,6 +262,14 @@
 							ope.TipoOperacion = data.flagValorTipoOperacion;
 							ope.Moneda = 0;
 							ope.MontoSalida = document.getElementById("txtMontoEntrega").value;
+							if (data.flagValorTipoOperacion == 1)
+								ope.TipoCambio = document.getElementById("txtTCCompraDolar").value;
+							if (data.flagValorTipoOperacion == 2)
+								ope.TipoCambio = document.getElementById("txtTCVentaDolar").value;
+							if (data.flagValorTipoOperacion == 3)
+								ope.TipoCambio = document.getElementById("txtTCCompraEuro").value;
+							if (data.flagValorTipoOperacion == 4)
+								ope.TipoCambio = document.getElementById("txtTCVentaEuro").value;
 						} else { // operaciones generales		
 							ope.TipoOperacion = parseInt(document.getElementById("cboTipoOperacion").value);
 							ope.Moneda = document.getElementById("cboMoneda").value;
@@ -274,6 +282,8 @@
 							dataType: "json",
 							contentType: "application/json; charset=utf-8",
 							success: function (response) {
+								ocultarLoader();
+								limpiarFormulario();
 								debugger;
 
 							},
@@ -289,25 +299,11 @@
 		}
 	};
 
-	function guardarOperacion() {
-		if (validarDatosOperacion()) {
-
-			//$.ajax({
-			//	type: "POST",
-			//	url: data.urlGuardarOperacion,
-			//	data: '{ope: ' + JSON.stringify(ope) + '}',
-			//	dataType: "json",
-			//	contentType: "application/json; charset=utf-8",
-			//	success: function (response) {
-			//		debugger;
-
-			//	},
-			//	error: function () {
-			//		toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
-			//		ocultarLoader;
-			//	}
-			//});
-		}
+	function limpiarFormulario() {
+		document.getElementById("txtMonto").value = "";
+		document.getElementById("txtMontoEntrega").value = "";
+		document.getElementById("txtComentario").value = "";
+		data.flagValorTipoOperacion = 0;
 	}
 
 	function ForceDecimalOnly() {

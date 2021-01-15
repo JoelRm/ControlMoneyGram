@@ -10,20 +10,19 @@ namespace Datos.Clases
 {
     public class OperacionDA
     {
-        public List<CalatogoCLS> CargaInicial()
-        {
+        public List<CalatogoCLS> CargaInicial()        {
             List<CalatogoCLS> lstCatalogo = null;
             using (var db = new BDControlMGEntities())
             {
                 lstCatalogo = (from catalogo in db.DatoGeneralDetalle
-                               where catalogo.Habilitado == true
-                               select new CalatogoCLS
-                               {
-                                   IdItem = catalogo.DatoGeneralDetalleId,
-                                   ValorItem = catalogo.ValorTabla.ToString(),
-                                   NombreItem = catalogo.Descripcion,
-                                   IdTabla = catalogo.DatoGeneralId
-                               }).ToList();
+                              where catalogo.Habilitado == true
+                              select new CalatogoCLS
+                              {
+                                  IdItem = catalogo.DatoGeneralDetalleId,
+                                  ValorItem = catalogo.ValorTabla.ToString(),
+                                  NombreItem = catalogo.Descripcion,
+                                  IdTabla = catalogo.DatoGeneralId
+                              }).ToList();
                 return lstCatalogo;
             }
         }
@@ -38,7 +37,10 @@ namespace Datos.Clases
                     Operacion objOperacion = new Operacion();
                     objOperacion.TipoOperacion = ope.TipoOperacion;
                     objOperacion.MontoIngreso = ope.MontoIngreso;
+                    objOperacion.MontoSalida = ope.MontoSalida;
                     objOperacion.Comentario = ope.Comentario;
+                    objOperacion.Moneda = ope.Moneda;
+                    objOperacion.TipoCambio = ope.TipoCambio;
 
                     objOperacion.FlagSumaCajaSol = false;
                     objOperacion.FlagRestaCajaSol = false;
@@ -46,39 +48,28 @@ namespace Datos.Clases
                     objOperacion.FlagRestaCajaDolar = false;
                     objOperacion.FlagSumaCajaEuro = false;
                     objOperacion.FlagRestaCajaEuro = false;
-                    if (ope.TipoOperacion == 1 || ope.TipoOperacion == 2)
+                    if (ope.TipoOperacion == 1)
                     {
-      
-                        objOperacion.MontoSalida = ope.MontoSalida;
-
-                        //Cambio de Dólares a Soles
-                        if (objOperacion.MonedaDe == 2 && objOperacion.MonedaA == 1)
-                        {
-                            objOperacion.FlagSumaCajaDolar = true;
-                            objOperacion.FlagRestaCajaSol = true;
-                        }
-                        //Cambio de Soles a Dólares
-                        if (objOperacion.MonedaDe == 1 && objOperacion.MonedaA == 2)
-                        {
-                            objOperacion.FlagSumaCajaSol = true;
-                            objOperacion.FlagRestaCajaDolar = true;
-                        }
-                        //Cambio de Euros a Soles
-                        if (objOperacion.MonedaDe == 3 && objOperacion.MonedaA == 1)
-                        {
-                            objOperacion.FlagSumaCajaEuro = true;
-                            objOperacion.FlagRestaCajaSol = true;
-                        }
-                        //Cambio de Soles a Euros
-                        if (objOperacion.MonedaDe == 1 && objOperacion.MonedaA == 3)
-                        {
-                            objOperacion.FlagSumaCajaSol = true;
-                            objOperacion.FlagRestaCajaEuro = true;
-                        }
+                        objOperacion.FlagSumaCajaDolar = true;
+                        objOperacion.FlagRestaCajaSol = true;
+                    }
+                    else if (ope.TipoOperacion == 2)
+                    {
+                        objOperacion.FlagSumaCajaSol = true;
+                        objOperacion.FlagRestaCajaDolar = true;
+                    }
+                    else if (ope.TipoOperacion == 3)
+                    {
+                        objOperacion.FlagSumaCajaEuro = true;
+                        objOperacion.FlagRestaCajaSol = true;
+                    }
+                    else if (ope.TipoOperacion == 4)
+                    {
+                        objOperacion.FlagSumaCajaSol = true;
+                        objOperacion.FlagRestaCajaEuro = true;
                     }
                     else
                     {
-                        objOperacion.Moneda = ope.Moneda;
                         objOperacion.FlagSumaCajaSol = true;
                     }
 

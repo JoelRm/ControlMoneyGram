@@ -20,8 +20,6 @@ namespace Datos.Modelos
         public string UsuarioCreacion { get; set; }
         public string Comentario { get; set; }
         public Nullable<int> Moneda { get; set; }
-        public Nullable<int> MonedaDe { get; set; }
-        public Nullable<int> MonedaA { get; set; }
         public Nullable<bool> FlagSumaCajaSol { get; set; }
         public Nullable<bool> FlagRestaCajaSol { get; set; }
         public Nullable<bool> FlagSumaCajaDolar { get; set; }
@@ -33,5 +31,6 @@ namespace Datos.Modelos
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public Nullable<System.DateTime> FechaMovimiento { get; set; }
         public Nullable<decimal> MontoSalida { get; set; }
+        public Nullable<decimal> TipoCambio { get; set; }
     }
 }

@@ -57,8 +57,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" />
     <Property Name="FechaModifica" Type="datetime" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'BDControlMG.dbo.Operacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="Operacion">
     <Key>
       <PropertyRef Name="IdOperacion" />
@@ -69,8 +67,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.Operacion' no tiene definida
     <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
     <Property Name="Comentario" Type="varchar(max)" />
     <Property Name="Moneda" Type="int" />
-    <Property Name="MonedaDe" Type="int" />
-    <Property Name="MonedaA" Type="int" />
     <Property Name="FlagSumaCajaSol" Type="bit" />
     <Property Name="FlagRestaCajaSol" Type="bit" />
     <Property Name="FlagSumaCajaDolar" Type="bit" />
@@ -82,6 +78,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.Operacion' no tiene definida
     <Property Name="FechaCreacion" Type="datetime" />
     <Property Name="FechaMovimiento" Type="date" />
     <Property Name="MontoSalida" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="TipoCambio" Type="decimal" Precision="9" Scale="2" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -132,6 +129,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.Operacion' no tiene definida
   <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="BDControlMGModelStoreContainer">
     <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operacion" EntityType="Self.Operacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
@@ -166,29 +164,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.Operacion' no tiene definida
     [DatoGeneralDetalle].[UsuarioModifica] AS [UsuarioModifica], 
     [DatoGeneralDetalle].[FechaModifica] AS [FechaModifica]
     FROM [dbo].[DatoGeneralDetalle] AS [DatoGeneralDetalle]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="Operacion" EntityType="Self.Operacion" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Operacion].[IdOperacion] AS [IdOperacion], 
-    [Operacion].[MontoIngreso] AS [MontoIngreso], 
-    [Operacion].[TipoOperacion] AS [TipoOperacion], 
-    [Operacion].[UsuarioCreacion] AS [UsuarioCreacion], 
-    [Operacion].[Comentario] AS [Comentario], 
-    [Operacion].[Moneda] AS [Moneda], 
-    [Operacion].[MonedaDe] AS [MonedaDe], 
-    [Operacion].[MonedaA] AS [MonedaA], 
-    [Operacion].[FlagSumaCajaSol] AS [FlagSumaCajaSol], 
-    [Operacion].[FlagRestaCajaSol] AS [FlagRestaCajaSol], 
-    [Operacion].[FlagSumaCajaDolar] AS [FlagSumaCajaDolar], 
-    [Operacion].[FlagRestaCajaDolar] AS [FlagRestaCajaDolar], 
-    [Operacion].[FlagSumaCajaEuro] AS [FlagSumaCajaEuro], 
-    [Operacion].[FlagRestaCajaEuro] AS [FlagRestaCajaEuro], 
-    [Operacion].[Eliminado] AS [Eliminado], 
-    [Operacion].[HoraMovimiento] AS [HoraMovimiento], 
-    [Operacion].[FechaCreacion] AS [FechaCreacion], 
-    [Operacion].[FechaMovimiento] AS [FechaMovimiento], 
-    [Operacion].[MontoSalida] AS [MontoSalida]
-    FROM [dbo].[Operacion] AS [Operacion]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>
