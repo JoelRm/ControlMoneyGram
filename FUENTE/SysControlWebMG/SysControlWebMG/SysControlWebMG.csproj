@@ -130,6 +130,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OperacionController.cs" />
+    <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\TipoMovimientoController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -273,6 +274,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
+    <Content Include="Scripts\Pages\Rol.js" />
     <Content Include="Scripts\Pages\TipoMovimiento.js" />
     <Content Include="Scripts\Pages\Usuarios.js" />
     <Content Include="Scripts\sb-admin-2.min.js" />
@@ -295,6 +297,9 @@
     <Content Include="Views\Operacion\ListaOperaciones.cshtml" />
     <Content Include="Views\Usuarios\_ModalNuevoUsuario.cshtml" />
     <Content Include="Views\Usuarios\_ModalEditarUsuario.cshtml" />
+    <Content Include="Views\Rol\Index.cshtml" />
+    <Content Include="Views\Rol\_ModalNuevoRol.cshtml" />
+    <Content Include="Views\Rol\_ModalEditarRol.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
