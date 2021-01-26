@@ -62,16 +62,28 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" />
           <Property Name="FechaModifica" Type="datetime" />
         </EntityType>
-        <EntityType Name="Movimiento">
+        <EntityType Name="Operacion">
           <Key>
-            <PropertyRef Name="IdMovimiento" />
+            <PropertyRef Name="IdOperacion" />
           </Key>
-          <Property Name="IdMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MontoMovimiento" Type="decimal" Precision="9" Scale="2" />
-          <Property Name="ComentarioMovimiento" Type="varchar" MaxLength="50" />
-          <Property Name="TipoMovimiento" Type="int" />
+          <Property Name="IdOperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MontoIngreso" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="TipoOperacion" Type="int" />
           <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
-          <Property Name="FechaCreacion" Type="varchar" MaxLength="50" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="Moneda" Type="int" />
+          <Property Name="FlagSumaCajaSol" Type="bit" />
+          <Property Name="FlagRestaCajaSol" Type="bit" />
+          <Property Name="FlagSumaCajaDolar" Type="bit" />
+          <Property Name="FlagRestaCajaDolar" Type="bit" />
+          <Property Name="FlagSumaCajaEuro" Type="bit" />
+          <Property Name="FlagRestaCajaEuro" Type="bit" />
+          <Property Name="Eliminado" Type="bit" />
+          <Property Name="HoraMovimiento" Type="datetime" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaMovimiento" Type="date" />
+          <Property Name="MontoSalida" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="TipoCambio" Type="decimal" Precision="9" Scale="2" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -110,7 +122,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="Usser" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EmailUsuario" Type="varchar" MaxLength="50" />
-          <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
           <Property Name="IdRol" Type="int" Nullable="false" />
           <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
@@ -118,10 +129,12 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
           <Property Name="EstadoUsuario" Type="bit" Nullable="false" />
           <Property Name="EstadoEliminacion" Type="bit" Nullable="false" />
+          <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
         </EntityType>
+        <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="BDControlMGModelStoreContainer">
           <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operacion" EntityType="Self.Operacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
@@ -163,22 +176,15 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <edmx:ConceptualModels>
       <Schema Namespace="BDControlMGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BDControlMGEntities" annotation:LazyLoadingEnabled="true">
-          <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
           <EntitySet Name="Caja" EntityType="BDControlMGModel.Caja" />
-          <EntitySet Name="Movimiento" EntityType="BDControlMGModel.Movimiento" />
           <EntitySet Name="Rol" EntityType="BDControlMGModel.Rol" />
           <EntitySet Name="TipoMovimiento" EntityType="BDControlMGModel.TipoMovimiento" />
           <EntitySet Name="Usuario" EntityType="BDControlMGModel.Usuario" />
           <EntitySet Name="DatoGeneral" EntityType="BDControlMGModel.DatoGeneral" />
           <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
+          <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
+          <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
         </EntityContainer>
-        <ComplexType Name="Usp_ListaCatalogo_Result">
-          <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
-          <Property Type="Int32" Name="ValorItem" Nullable="true" />
-          <Property Type="Int32" Name="IdTabla" Nullable="false" />
-          <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
-        </ComplexType>
         <EntityType Name="Caja">
           <Key>
             <PropertyRef Name="IdCaja" />
@@ -197,17 +203,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="VentaEuros" Type="Decimal" Precision="9" Scale="2" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="Movimiento">
-          <Key>
-            <PropertyRef Name="IdMovimiento" />
-          </Key>
-          <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MontoMovimiento" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="ComentarioMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TipoMovimiento" Type="Int32" />
-          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -246,7 +241,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="Usser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmailUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TelefonoUsuario" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="IdRol" Type="Int32" Nullable="false" />
           <Property Name="UsuarioCreacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
@@ -254,6 +248,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EstadoUsuario" Type="Boolean" Nullable="false" />
           <Property Name="EstadoEliminacion" Type="Boolean" Nullable="false" />
+          <Property Name="TelefonoUsuario" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DatoGeneral">
           <Key>
@@ -289,6 +284,36 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="FechaModifica" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="Operacion">
+          <Key>
+            <PropertyRef Name="IdOperacion" />
+          </Key>
+          <Property Name="IdOperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MontoIngreso" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="TipoOperacion" Type="Int32" />
+          <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Moneda" Type="Int32" />
+          <Property Name="FlagSumaCajaSol" Type="Boolean" />
+          <Property Name="FlagRestaCajaSol" Type="Boolean" />
+          <Property Name="FlagSumaCajaDolar" Type="Boolean" />
+          <Property Name="FlagRestaCajaDolar" Type="Boolean" />
+          <Property Name="FlagSumaCajaEuro" Type="Boolean" />
+          <Property Name="FlagRestaCajaEuro" Type="Boolean" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <Property Name="HoraMovimiento" Type="DateTime" Precision="3" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaMovimiento" Type="DateTime" Precision="0" />
+          <Property Name="MontoSalida" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="TipoCambio" Type="Decimal" Precision="9" Scale="2" />
+        </EntityType>
+        <ComplexType Name="Usp_ListaCatalogo_Result">
+          <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="ValorItem" Nullable="true" />
+          <Property Type="Int32" Name="IdTabla" Nullable="false" />
+          <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -312,18 +337,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
                 <ScalarProperty Name="FechaHoraCierre" ColumnName="FechaHoraCierre" />
                 <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
                 <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Movimiento">
-            <EntityTypeMapping TypeName="BDControlMGModel.Movimiento">
-              <MappingFragment StoreEntitySet="Movimiento">
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
-                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
-                <ScalarProperty Name="ComentarioMovimiento" ColumnName="ComentarioMovimiento" />
-                <ScalarProperty Name="MontoMovimiento" ColumnName="MontoMovimiento" />
-                <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -358,6 +371,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="BDControlMGModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="TelefonoUsuario" ColumnName="TelefonoUsuario" />
                 <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
                 <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
@@ -365,7 +379,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
                 <ScalarProperty Name="IdRol" ColumnName="IdRol" />
-                <ScalarProperty Name="TelefonoUsuario" ColumnName="TelefonoUsuario" />
                 <ScalarProperty Name="EmailUsuario" ColumnName="EmailUsuario" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Usser" ColumnName="Usser" />
@@ -412,6 +425,41 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Operacion">
+            <EntityTypeMapping TypeName="BDControlMGModel.Operacion">
+              <MappingFragment StoreEntitySet="Operacion">
+                <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
+                <ScalarProperty Name="MontoSalida" ColumnName="MontoSalida" />
+                <ScalarProperty Name="FechaMovimiento" ColumnName="FechaMovimiento" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="HoraMovimiento" ColumnName="HoraMovimiento" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="FlagRestaCajaEuro" ColumnName="FlagRestaCajaEuro" />
+                <ScalarProperty Name="FlagSumaCajaEuro" ColumnName="FlagSumaCajaEuro" />
+                <ScalarProperty Name="FlagRestaCajaDolar" ColumnName="FlagRestaCajaDolar" />
+                <ScalarProperty Name="FlagSumaCajaDolar" ColumnName="FlagSumaCajaDolar" />
+                <ScalarProperty Name="FlagRestaCajaSol" ColumnName="FlagRestaCajaSol" />
+                <ScalarProperty Name="FlagSumaCajaSol" ColumnName="FlagSumaCajaSol" />
+                <ScalarProperty Name="Moneda" ColumnName="Moneda" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+                <ScalarProperty Name="MontoIngreso" ColumnName="MontoIngreso" />
+                <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListaCatalogo" FunctionName="BDControlMGModel.Store.Usp_ListaCatalogo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDControlMGModel.Usp_ListaCatalogo_Result">
+                <ScalarProperty Name="IdItem" ColumnName="IdItem" />
+                <ScalarProperty Name="NombreItem" ColumnName="NombreItem" />
+                <ScalarProperty Name="ValorItem" ColumnName="ValorItem" />
+                <ScalarProperty Name="IdTabla" ColumnName="IdTabla" />
+                <ScalarProperty Name="NombreTabla" ColumnName="NombreTabla" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

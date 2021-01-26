@@ -57,16 +57,28 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="UsuarioModifica" Type="varchar" MaxLength="20" />
     <Property Name="FechaModifica" Type="datetime" />
   </EntityType>
-  <EntityType Name="Movimiento">
+  <EntityType Name="Operacion">
     <Key>
-      <PropertyRef Name="IdMovimiento" />
+      <PropertyRef Name="IdOperacion" />
     </Key>
-    <Property Name="IdMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MontoMovimiento" Type="decimal" Precision="9" Scale="2" />
-    <Property Name="ComentarioMovimiento" Type="varchar" MaxLength="50" />
-    <Property Name="TipoMovimiento" Type="int" />
+    <Property Name="IdOperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MontoIngreso" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="TipoOperacion" Type="int" />
     <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
-    <Property Name="FechaCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="Comentario" Type="varchar(max)" />
+    <Property Name="Moneda" Type="int" />
+    <Property Name="FlagSumaCajaSol" Type="bit" />
+    <Property Name="FlagRestaCajaSol" Type="bit" />
+    <Property Name="FlagSumaCajaDolar" Type="bit" />
+    <Property Name="FlagRestaCajaDolar" Type="bit" />
+    <Property Name="FlagSumaCajaEuro" Type="bit" />
+    <Property Name="FlagRestaCajaEuro" Type="bit" />
+    <Property Name="Eliminado" Type="bit" />
+    <Property Name="HoraMovimiento" Type="datetime" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaMovimiento" Type="date" />
+    <Property Name="MontoSalida" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="TipoCambio" Type="decimal" Precision="9" Scale="2" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -105,7 +117,6 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="Usser" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="EmailUsuario" Type="varchar" MaxLength="50" />
-    <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
     <Property Name="IdRol" Type="int" Nullable="false" />
     <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
@@ -113,10 +124,12 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
     <Property Name="EstadoUsuario" Type="bit" Nullable="false" />
     <Property Name="EstadoEliminacion" Type="bit" Nullable="false" />
+    <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
   </EntityType>
+  <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="BDControlMGModelStoreContainer">
     <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operacion" EntityType="Self.Operacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />

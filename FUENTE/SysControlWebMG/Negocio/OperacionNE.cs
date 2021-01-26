@@ -16,5 +16,9 @@ namespace Negocio
         {
             return obj.CargaInicial();
         }
+        public int GuardarOperacion(OperacionCLS ope)
+        {
+            return obj.GuardarOperacion(ope);
+        }
     }
 }

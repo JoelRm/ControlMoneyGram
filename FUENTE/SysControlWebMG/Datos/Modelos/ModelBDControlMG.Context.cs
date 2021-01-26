@@ -28,12 +28,12 @@ namespace Datos.Modelos
         }
     
         public virtual DbSet<Caja> Caja { get; set; }
-        public virtual DbSet<Movimiento> Movimiento { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<TipoMovimiento> TipoMovimiento { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<DatoGeneral> DatoGeneral { get; set; }
         public virtual DbSet<DatoGeneralDetalle> DatoGeneralDetalle { get; set; }
+        public virtual DbSet<Operacion> Operacion { get; set; }
     
         public virtual ObjectResult<Usp_ListaCatalogo_Result> Usp_ListaCatalogo()
         {
