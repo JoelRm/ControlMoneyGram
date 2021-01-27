@@ -1,0 +1,32 @@
+﻿<!--Inicio Modal Editar-->
+<div id="modalEditarRol" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Editar Rol
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-body pal">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Nombre Rol : </label>
+                            <input id="idRolEditar" name="idRolEditar" type="hidden" class="form-control" />
+                            <input id="NombreRolEditar" name="NombreRolEditar" type="text" placeholder="Ingrese Nombre Rol" class="form-control" autocomplete="off" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="CerrarPopUpRolEditar" data-dismiss="modal" class="btn btn-danger">
+                    Cancelar
+                </button>
+                <button type="button" onclick="editarRol()" class="btn btn-primary">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin Modal Editar-->
