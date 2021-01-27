@@ -141,5 +141,38 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_getUltimaConfCaja" FunctionName="BDControlMGModel.Store.Usp_getUltimaConfCaja">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDControlMGModel.Usp_getUltimaConfCaja_Result">
+          <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+          <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+          <ScalarProperty Name="FechaHoraCierre" ColumnName="FechaHoraCierre" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="CajaSoles" ColumnName="CajaSoles" />
+          <ScalarProperty Name="CajaDolares" ColumnName="CajaDolares" />
+          <ScalarProperty Name="CajaEuros" ColumnName="CajaEuros" />
+          <ScalarProperty Name="CompraDolares" ColumnName="CompraDolares" />
+          <ScalarProperty Name="VentaDolares" ColumnName="VentaDolares" />
+          <ScalarProperty Name="CompraEuros" ColumnName="CompraEuros" />
+          <ScalarProperty Name="VentaEuros" ColumnName="VentaEuros" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_obtenerConfCaja" FunctionName="BDControlMGModel.Store.Usp_obtenerConfCaja">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDControlMGModel.Usp_obtenerConfCaja_Result">
+          <ScalarProperty Name="TCCompraDolar" ColumnName="TCCompraDolar" />
+          <ScalarProperty Name="TCVentaDolar" ColumnName="TCVentaDolar" />
+          <ScalarProperty Name="TCCompraEuro" ColumnName="TCCompraEuro" />
+          <ScalarProperty Name="TCVentaEuro" ColumnName="TCVentaEuro" />
+          <ScalarProperty Name="CajaActualSoles" ColumnName="CajaActualSoles" />
+          <ScalarProperty Name="CajaActualDolares" ColumnName="CajaActualDolares" />
+          <ScalarProperty Name="CajaActualEuros" ColumnName="CajaActualEuros" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

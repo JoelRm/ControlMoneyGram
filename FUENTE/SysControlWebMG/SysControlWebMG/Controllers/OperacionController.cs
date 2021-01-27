@@ -28,11 +28,26 @@ namespace SysControlWebMG.Controllers
             var lstCargaInicial = objOperacion.CargaInicial();
             return Json(new { lstCargaInicial, JsonRequestBehavior.AllowGet });
         }
+
+        [HttpPost]
+        public JsonResult ObtenerConfCaja()
+        {
+            var lstConfCaja = objOperacion.ObtenerConfCaja();
+            return Json(new { lstConfCaja, JsonRequestBehavior.AllowGet });
+        }       
+
         [HttpPost()]
         public async Task<JsonResult> GuardarOperacion(OperacionCLS ope)
         {
             int codigoRpt = objOperacion.GuardarOperacion(ope);
             return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerConfiguracionCaja()
+        {
+            var lstConfCaja = objOperacion.ObtenerConfiguracionCaja();
+            return Json(new { lstConfCaja, JsonRequestBehavior.AllowGet });
         }
     }
 }

@@ -109,14 +109,6 @@
         }
     }
 
-
-
-
-
-
-
-
-
 	function FormatCajaActualSoles() {
 			var $control = $("#txtCajaActualSoles");
 			$control.on("input", function (evt) {

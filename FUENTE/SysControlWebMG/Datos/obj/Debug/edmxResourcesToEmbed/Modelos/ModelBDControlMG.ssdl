@@ -126,7 +126,9 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="EstadoEliminacion" Type="bit" Nullable="false" />
     <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
   </EntityType>
+  <Function Name="Usp_getUltimaConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_obtenerConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="BDControlMGModelStoreContainer">
     <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Operacion" EntityType="Self.Operacion" Schema="dbo" store:Type="Tables" />

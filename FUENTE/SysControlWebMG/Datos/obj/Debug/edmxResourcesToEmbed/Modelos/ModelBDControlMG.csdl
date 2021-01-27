@@ -9,6 +9,8 @@
     <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
     <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
     <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
+    <FunctionImport Name="Usp_getUltimaConfCaja" ReturnType="Collection(BDControlMGModel.Usp_getUltimaConfCaja_Result)" />
+    <FunctionImport Name="Usp_obtenerConfCaja" ReturnType="Collection(BDControlMGModel.Usp_obtenerConfCaja_Result)" />
   </EntityContainer>
   <EntityType Name="Caja">
     <Key>
@@ -138,5 +140,30 @@
     <Property Type="Int32" Name="ValorItem" Nullable="true" />
     <Property Type="Int32" Name="IdTabla" Nullable="false" />
     <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <ComplexType Name="Usp_getUltimaConfCaja_Result">
+    <Property Type="Int32" Name="IdCaja" Nullable="false" />
+    <Property Type="DateTime" Name="FechaHoraInicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaHoraCierre" Nullable="true" Precision="23" />
+    <Property Type="String" Name="UsuarioCreacion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UsuarioModificacion" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="CajaSoles" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CajaDolares" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CajaEuros" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CompraDolares" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="VentaDolares" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CompraEuros" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="VentaEuros" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Usp_obtenerConfCaja_Result">
+    <Property Type="Decimal" Name="TCCompraDolar" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="TCVentaDolar" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="TCCompraEuro" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="TCVentaEuro" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CajaActualSoles" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CajaActualDolares" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CajaActualEuros" Nullable="true" Precision="9" Scale="2" />
   </ComplexType>
 </Schema>

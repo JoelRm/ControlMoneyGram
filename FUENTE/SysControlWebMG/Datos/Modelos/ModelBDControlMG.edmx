@@ -131,7 +131,9 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="EstadoEliminacion" Type="bit" Nullable="false" />
           <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
         </EntityType>
+        <Function Name="Usp_getUltimaConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_obtenerConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="BDControlMGModelStoreContainer">
           <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Operacion" EntityType="Self.Operacion" Schema="dbo" store:Type="Tables" />
@@ -184,6 +186,8 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
           <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
           <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
+          <FunctionImport Name="Usp_getUltimaConfCaja" ReturnType="Collection(BDControlMGModel.Usp_getUltimaConfCaja_Result)" />
+          <FunctionImport Name="Usp_obtenerConfCaja" ReturnType="Collection(BDControlMGModel.Usp_obtenerConfCaja_Result)" />
         </EntityContainer>
         <EntityType Name="Caja">
           <Key>
@@ -313,6 +317,31 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Type="Int32" Name="ValorItem" Nullable="true" />
           <Property Type="Int32" Name="IdTabla" Nullable="false" />
           <Property Type="String" Name="NombreTabla" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="Usp_getUltimaConfCaja_Result">
+          <Property Type="Int32" Name="IdCaja" Nullable="false" />
+          <Property Type="DateTime" Name="FechaHoraInicio" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaHoraCierre" Nullable="true" Precision="23" />
+          <Property Type="String" Name="UsuarioCreacion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UsuarioModificacion" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="CajaSoles" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="CajaDolares" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="CajaEuros" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="CompraDolares" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="VentaDolares" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="CompraEuros" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="VentaEuros" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Usp_obtenerConfCaja_Result">
+          <Property Type="Decimal" Name="TCCompraDolar" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TCVentaDolar" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TCCompraEuro" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="TCVentaEuro" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="CajaActualSoles" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="CajaActualDolares" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="CajaActualEuros" Nullable="true" Precision="9" Scale="2" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -457,6 +486,39 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
                 <ScalarProperty Name="ValorItem" ColumnName="ValorItem" />
                 <ScalarProperty Name="IdTabla" ColumnName="IdTabla" />
                 <ScalarProperty Name="NombreTabla" ColumnName="NombreTabla" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_getUltimaConfCaja" FunctionName="BDControlMGModel.Store.Usp_getUltimaConfCaja">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDControlMGModel.Usp_getUltimaConfCaja_Result">
+                <ScalarProperty Name="IdCaja" ColumnName="IdCaja" />
+                <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+                <ScalarProperty Name="FechaHoraCierre" ColumnName="FechaHoraCierre" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="CajaSoles" ColumnName="CajaSoles" />
+                <ScalarProperty Name="CajaDolares" ColumnName="CajaDolares" />
+                <ScalarProperty Name="CajaEuros" ColumnName="CajaEuros" />
+                <ScalarProperty Name="CompraDolares" ColumnName="CompraDolares" />
+                <ScalarProperty Name="VentaDolares" ColumnName="VentaDolares" />
+                <ScalarProperty Name="CompraEuros" ColumnName="CompraEuros" />
+                <ScalarProperty Name="VentaEuros" ColumnName="VentaEuros" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_obtenerConfCaja" FunctionName="BDControlMGModel.Store.Usp_obtenerConfCaja">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDControlMGModel.Usp_obtenerConfCaja_Result">
+                <ScalarProperty Name="TCCompraDolar" ColumnName="TCCompraDolar" />
+                <ScalarProperty Name="TCVentaDolar" ColumnName="TCVentaDolar" />
+                <ScalarProperty Name="TCCompraEuro" ColumnName="TCCompraEuro" />
+                <ScalarProperty Name="TCVentaEuro" ColumnName="TCVentaEuro" />
+                <ScalarProperty Name="CajaActualSoles" ColumnName="CajaActualSoles" />
+                <ScalarProperty Name="CajaActualDolares" ColumnName="CajaActualDolares" />
+                <ScalarProperty Name="CajaActualEuros" ColumnName="CajaActualEuros" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

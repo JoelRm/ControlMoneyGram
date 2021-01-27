@@ -39,5 +39,15 @@ namespace Datos.Modelos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListaCatalogo_Result>("Usp_ListaCatalogo");
         }
+    
+        public virtual ObjectResult<Usp_getUltimaConfCaja_Result> Usp_getUltimaConfCaja()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_getUltimaConfCaja_Result>("Usp_getUltimaConfCaja");
+        }
+    
+        public virtual ObjectResult<Usp_obtenerConfCaja_Result> Usp_obtenerConfCaja()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_obtenerConfCaja_Result>("Usp_obtenerConfCaja");
+        }
     }
 }

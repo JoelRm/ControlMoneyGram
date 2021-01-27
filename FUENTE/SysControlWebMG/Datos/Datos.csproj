@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -88,7 +89,13 @@
     <Compile Include="Modelos\TipoMovimiento.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Usp_getUltimaConfCaja_Result.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Usp_ListaCatalogo_Result.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Usp_obtenerConfCaja_Result.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Usuario.cs">
