@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Entidades;
+using Negocio;
 using System.Web.Mvc;
 
 namespace SysControlWebMG.Controllers
@@ -9,6 +10,9 @@ namespace SysControlWebMG.Controllers
         // GET: TipoOperacion
         public ActionResult Index()
         {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
             return View();
         }
 

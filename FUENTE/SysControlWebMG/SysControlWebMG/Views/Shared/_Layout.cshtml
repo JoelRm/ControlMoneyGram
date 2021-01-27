@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Entidades
+@{
+   UsuariosCLS obUsuario = (UsuariosCLS)ViewBag.Usuario;
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,7 +20,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <link rel="stylesheet" href="~/Content/LoaderVR.css"/>
+    <link rel="stylesheet" href="~/Content/LoaderVR.css" />
     <script src="~/Scripts/LoaderVR.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
@@ -71,9 +75,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         @*<h6 class="collapse-header">Mantenimiento</h6>*@
                         <a class="collapse-item" href="@Url.Action("Index","Caja")">Configuración Caja</a>
-                        <a class="collapse-item" href="@Url.Action("Index","TipoMovimiento")">Tipos de Movimiento</a>
-                        <a class="collapse-item" href="#">Perfiles</a>
-                        <a class="collapse-item" href="@Url.Action("Index","Usuarios")">Usuarios y Permisos</a>
+                        @if (obUsuario.IdRol == 1)
+                        {
+                            <a class="collapse-item" href="@Url.Action("Index","Usuarios")">Usuarios</a>
+                        }
                     </div>
                 </div>
             </li>
@@ -93,6 +98,8 @@
                 </div>
             </li>
             <!-- Divider -->
+            @if (obUsuario.IdRol == 1)
+            {
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReportes"
                    aria-expanded="true" aria-controls="collapseUtilities" style="width:100%">
@@ -102,12 +109,13 @@
                 <div id="collapseReportes" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        @*<h6 class="collapse-header">Option lv2</h6>*@
                         <a class="collapse-item" href="#">Rep. Diario</a>
                         <a class="collapse-item" href="#">Rep. Por Rango Fechas</a>
                     </div>
                 </div>
             </li>
+            }
+                
 
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -246,7 +254,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Joel Rojas</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@obUsuario.NombreUsuario @obUsuario.ApPaternoUsuario</span>
                                 <img class="img-profile rounded-circle"
                                      src="~/Content/img/undraw_profile.svg">
                             </a>

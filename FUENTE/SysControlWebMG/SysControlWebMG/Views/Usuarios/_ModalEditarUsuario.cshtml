@@ -1,6 +1,6 @@
 ﻿@using Entidades
 @{
-    List<RolCLS> listaRoles = (List<RolCLS>)ViewBag.listaRoles;
+    List<CalatogoCLS> listaRoles = (List<CalatogoCLS>)ViewBag.listaRoles;
 }
 <!--Inicio Modal Editar-->
 <div id="modalEditarUsuario" class="modal fade">
@@ -50,7 +50,7 @@
                             <select id="idCargoUsarioEditar" class="form-control">
                                 @foreach (var item in listaRoles)
                                 {
-                                    <option value="@item.IdRol">@item.NombreRol</option>
+                                    <option value="@item.ValorItem">@item.NombreItem</option>
                                 }
                             </select>
                         </div>

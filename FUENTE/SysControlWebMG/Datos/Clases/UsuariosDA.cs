@@ -24,7 +24,7 @@ namespace Datos.Clases
                                   ApPaternoUsuario = usu.ApPaternoUsuario,
                                   IdRol = usu.IdRol,
                                   Usser = usu.Usser,
-                                  Password=usu.Password,
+                                  Password = usu.Password,
                                   EmailUsuario = usu.EmailUsuario,
                                   FechaCreacion = usu.FechaCreacion,
                                   UsuarioCreacion = usu.UsuarioCreacion,
@@ -73,7 +73,7 @@ namespace Datos.Clases
                     {
                         CodResult = 2;
                     }
-                    
+
                 }
             }
             catch (Exception)
@@ -90,7 +90,7 @@ namespace Datos.Clases
             using (var db = new BDControlMGEntities())
             {
                 lstUsuario = (from usu in db.Usuario
-                              where usu.EstadoEliminacion == false && usu.EstadoUsuario == true &&  usu.Usser.ToUpper().Equals(nombreUsuario.ToUpper())
+                              where usu.EstadoEliminacion == false && usu.EstadoUsuario == true && usu.Usser.ToUpper().Equals(nombreUsuario.ToUpper())
                               select new UsuariosCLS
                               {
                                   IdRol = usu.IdUsuario
@@ -200,6 +200,45 @@ namespace Datos.Clases
                 cdgoRpt = 0;
             }
             return cdgoRpt;
+        }
+
+        public List<CalatogoCLS> CargaInicial()
+        {
+            List<CalatogoCLS> lstCatalogo = null;
+            using (var db = new BDControlMGEntities())
+            {
+                lstCatalogo = (from catalogo in db.DatoGeneralDetalle
+                               where catalogo.Habilitado == true && catalogo.DatoGeneralId == 3
+                               select new CalatogoCLS
+                               {
+                                   IdItem = catalogo.DatoGeneralDetalleId,
+                                   ValorItem = catalogo.ValorTabla.ToString(),
+                                   NombreItem = catalogo.Descripcion,
+                                   IdTabla = catalogo.DatoGeneralId
+                               }).ToList();
+                return lstCatalogo;
+            }
+        }
+
+        public UsuariosCLS ObtenerDatosUsuario(string usser, string pass)
+        {
+            UsuariosCLS objUsuariosCLS = new UsuariosCLS();
+            using (var db = new BDControlMGEntities())
+            {
+                Usuario oUsuario = db.Usuario.Where(p => p.Usser.ToUpper().Trim() == usser.ToUpper().Trim() && p.Password == pass).SingleOrDefault();
+
+                if (oUsuario != null)
+                {
+                    objUsuariosCLS.IdUsuario = oUsuario.IdUsuario;
+                    objUsuariosCLS.NombreUsuario = oUsuario.NombreUsuario;
+                    objUsuariosCLS.ApPaternoUsuario = oUsuario.ApPaternoUsuario;
+                    objUsuariosCLS.ApMaternoUsuario = oUsuario.ApMaternoUsuario;
+                    objUsuariosCLS.EmailUsuario = oUsuario.EmailUsuario;
+                    objUsuariosCLS.TelefonoUsuario = oUsuario.TelefonoUsuario;
+                    objUsuariosCLS.IdRol = oUsuario.IdRol;
+                }
+            }
+            return objUsuariosCLS;
         }
 
     }

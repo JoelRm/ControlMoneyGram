@@ -32,5 +32,13 @@ namespace Negocio
         {
             return obj.EliminarUsuario(objUsuarioCls);
         }
+        public List<CalatogoCLS> CargaInicial()
+        {
+            return obj.CargaInicial();
+        }
+        public UsuariosCLS ObtenerDatosUsuario(string usser, string pass)
+        {
+            return obj.ObtenerDatosUsuario(usser, pass);
+        }
     }
 }

@@ -11,8 +11,8 @@ namespace SysControlWebMG.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
-            var listaRoles = objRol.ListarRolesForCombo();
-            listaRoles.Insert(0, new RolCLS { NombreRol = "SELECCIONE CARGO", IdRol = 0 });
+            var listaRoles = objUsuario.CargaInicial();
+            listaRoles.Insert(0, new CalatogoCLS { NombreItem = "SELECCIONE CARGO", ValorItem = "0" });
             ViewBag.listaRoles = listaRoles;
 
             return View();

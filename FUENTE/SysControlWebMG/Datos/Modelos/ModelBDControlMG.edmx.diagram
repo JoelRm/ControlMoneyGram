@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6392d2608f594d8ba32ad4e57054aa06" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="6392d2608f594d8ba32ad4e57054aa06" Name="Diagram1" ZoomLevel="101">
         <EntityTypeShape EntityType="BDControlMGModel.Caja" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BDControlMGModel.Rol" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="BDControlMGModel.TipoMovimiento" Width="1.5" PointX="4.75" PointY="0.75" />

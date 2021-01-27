@@ -15,6 +15,9 @@ namespace SysControlWebMG.Controllers
         // GET: Operacion
         public ActionResult Index()
         {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
             return View();
         }
         public ActionResult ListaOperaciones()

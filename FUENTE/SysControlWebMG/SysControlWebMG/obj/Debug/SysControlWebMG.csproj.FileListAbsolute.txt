@@ -88,8 +88,6 @@ C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlW
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.csproj.CopyComplete
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.dll
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.pdb
-C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.csprojAssemblyReference.cache
-C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.csproj.CoreCompileInputs.cache
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\bin\SysControlWebMG.dll.config
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\bin\SysControlWebMG.dll
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\bin\SysControlWebMG.pdb
@@ -179,6 +177,8 @@ C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\bin\
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\bin\es\System.Web.WebPages.resources.dll
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.csprojAssemblyReference.cache
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.csproj.CoreCompileInputs.cache
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.csproj.CopyComplete
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.dll
 C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\SysControlWebMG\obj\Debug\SysControlWebMG.pdb

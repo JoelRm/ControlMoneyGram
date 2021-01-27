@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,9 @@ namespace SysControlWebMG.Controllers
     {
         public ActionResult Index()
         {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
             return View();
         }
     }
