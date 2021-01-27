@@ -272,16 +272,13 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LoaderVR.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-<<<<<<< HEAD
     <Content Include="Scripts\Pages\Operaciones\Operacion.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
     <Content Include="Scripts\Pages\Operaciones\_EditarConfiguracionTipoCambio.js" />
-=======
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
     <Content Include="Scripts\Pages\Rol.js" />
->>>>>>> 5780aee9a97c64186cdc856c7237bda1f72c5e95
     <Content Include="Scripts\Pages\TipoMovimiento.js" />
     <Content Include="Scripts\Pages\Usuarios.js" />
     <Content Include="Scripts\sb-admin-2.min.js" />
@@ -304,14 +301,11 @@
     <Content Include="Views\Operacion\ListaOperaciones.cshtml" />
     <Content Include="Views\Usuarios\_ModalNuevoUsuario.cshtml" />
     <Content Include="Views\Usuarios\_ModalEditarUsuario.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Operacion\_EditarConfiguracionTipoCambio.cshtml" />
-=======
     <Content Include="Views\Rol\Index.cshtml" />
     <Content Include="Views\Rol\_ModalNuevoRol.cshtml" />
     <Content Include="Views\Rol\_ModalEditarRol.cshtml" />
     <Content Include="Views\Operacion\_ModalGuardarOperacion.cshtml" />
->>>>>>> 5780aee9a97c64186cdc856c7237bda1f72c5e95
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

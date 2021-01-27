@@ -8,3 +8,4 @@ C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlW
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
