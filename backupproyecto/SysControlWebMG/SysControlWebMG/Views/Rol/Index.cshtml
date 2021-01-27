@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Roles</h1>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#modalNuevoRol">
+            Nuevo Rol
+        </a>
+    </div>
+    <div class="panel-body">
+        <table id="tbTipoOperacion" class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre Rol</th>
+                    <th>Usuario Creacion</th>
+                    <th>Fecha Creación</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="bodytbRoles">
+                <tr>
+                    <td colspan="6">No existen registros</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/Pages/Rol.js"></script>
+@Html.Partial("_ModalNuevoRol");
+@Html.Partial("_ModalEditarRol");
+<script type="text/javascript">
+    $(document).ready(function () {
+        cargarTablaRoles();
+    });
+</script>
+
