@@ -25,9 +25,9 @@ namespace Negocio
         {
             return obj.GuardarOperacion(ope);
         }
-        public List<ConfiguracionCajaCLS> ObtenerConfiguracionCaja()
+        public int GuardarOperacionCalculadora(CalculadoraCLS ope)
         {
-            return obj.ObtenerConfiguracionCaja();
+            return obj.GuardarOperacionCalculadora(ope);
         }
         
     }

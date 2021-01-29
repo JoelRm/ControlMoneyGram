@@ -96,6 +96,7 @@
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
 		if ($.isNumeric(valor)) { $control.val(valor) }
+		if (isNaN(valor)) { $control.val("") }
 	}
 	function FormatTCVentaDolar() {
 		var $control = $("#txtTCVentaDolar_ME");
@@ -108,6 +109,7 @@
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
 		if ($.isNumeric(valor)) { $control.val(valor) }
+		if (isNaN(valor)) { $control.val("") }
 	}
 	function FormatTCCompraEuro() {
 		var $control = $("#txtTCCompraEuro_ME");
@@ -120,6 +122,7 @@
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
 		if ($.isNumeric(valor)) { $control.val(valor) }
+		if (isNaN(valor)) { $control.val("") }
 	}
 	function FormatTCVentaEuro() {
 		var $control = $("#txtTCVentaEuro_ME");
@@ -132,17 +135,16 @@
 		});
 		var valor = parseFloat($control.val()).toFixed(2);
 		if ($.isNumeric(valor)) { $control.val(valor) }
+		if (isNaN(valor)) { $control.val("") }
 	}
 	function guardarConfCaja() {
 		if (validarDatosConfiguracion()) {
 			var confCaja = {};
-			confCaja.CajaActualSoles = parseFloat($("#txtCajaActualSoles_ME").val()).toFixed(2);
-			confCaja.CajaActualDolares = parseFloat($("#txtCajaActualDolares_ME").val()).toFixed(2);
-			confCaja.CajaActualEuros = parseFloat($("#txtCajaActualEuros_ME").val()).toFixed(2);
 			confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar_ME").val()).toFixed(2);
 			confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar_ME").val()).toFixed(2);
 			confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro_ME").val()).toFixed(2);
 			confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro_ME").val()).toFixed(2);
+			confCaja.TipoOpeIU = "Editar";
 			$.ajax({
 				type: "POST",
 				url: data.urlGuardarConf,
@@ -166,8 +168,6 @@
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: function (d) {
-				debugger;
-				//var lista = d.lstConfCaja;
 				document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar;
 				document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar;
 				document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro;

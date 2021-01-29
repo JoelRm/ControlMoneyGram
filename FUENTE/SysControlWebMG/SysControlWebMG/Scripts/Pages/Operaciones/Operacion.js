@@ -3,6 +3,7 @@
 	const data = {
 		urlCargaInicial: '/Operacion/CargaInicial',
 		urlGuardarOperacion: '/Operacion/GuardarOperacion',
+		urlGuardarOperacionCalculadora: '/Operacion/GuardarOperacionCalculadora',
 		urlEditarConfiguracionTipoCambio: '/Operacion/_EditarConfiguracionTipoCambio',
 		urlObtenerConfCaja: '/Operacion/ObtenerConfCaja',
 		valores: {
@@ -47,7 +48,59 @@
 		document.getElementById("btnDolAEuro").addEventListener("click", click_DolAEuro);
 		document.getElementById("btnEuroADol").addEventListener("click", click_EuroADol);
 		document.getElementById("btnRegistrarOperacion").addEventListener("click", btnRegistrarOperacion_Click);
-		document.getElementById("btnEditarTipoCambio").addEventListener("click", btnEditarTipoCambio_Click);		
+		document.getElementById("btnEditarTipoCambio").addEventListener("click", btnEditarTipoCambio_Click);
+		document.getElementById("btn_g").addEventListener("click", btn_g_Click);			
+	}
+
+	function validarGuardarOperacionCalculadora() {
+		var operacion = $("#opr").text();
+		var resultado = $("#tResult").val();
+		if (operacion == "") {
+			toastr.error('Debe realizar una operación', 'Error');
+			return false;
+		}
+		if (resultado == "") {
+			toastr.error('Debe calcular la operación', 'Error');
+			return false;
+		}
+		return true;
+	};
+
+	function btn_g_Click() {
+		if (validarGuardarOperacionCalculadora()) {
+			swal({
+				title: "¿Desea registrar la operación?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonClass: "btn-danger",
+				confirmButtonText: "Registrar",
+				cancelButtonText: "Cancelar"
+			},
+				function (isConfirm) {
+					if (isConfirm) {
+						var ope = {
+							idOperacion: 0,
+							Operacion: $("#opr").text(),
+							Resultado: $("#tResult").val(),
+							Comentario: $("#txtComentarioCalc").val()
+                        }
+						$.ajax({
+							type: "POST",
+							url: data.urlGuardarOperacionCalculadora,
+							data: '{ope: ' + JSON.stringify(ope) + '}',
+							dataType: "json",
+							contentType: "application/json; charset=utf-8",
+							success: function (d) {
+						
+							},
+							error: function (ex) {
+								alert(ex.responseText);
+							}
+						});
+					}
+				}
+			);
+        }
 	}
 
 	function obtenerConfCaja() {
@@ -57,8 +110,6 @@
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: function (d) {
-				debugger;
-				//var lista = d.lstConfCaja;
 				document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar;
 				document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar;
 				document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro;
@@ -99,19 +150,6 @@
 
 	function btnEditarTipoCambio_Click() {
 		$('#modalEditarConfCaja').modal('show');
-		//$.ajax({
-		//	type: "POST",
-		//	url: data.urlEditarConfiguracionTipoCambio,
-		//	dataType: "json",
-		//	contentType: "application/json; charset=utf-8",
-		//	success: function (d) {
-
-		//	},
-		//	error: function (ex) {
-		//		alert(ex.responseText);
-		//		//ocultarLoader();
-		//	}
-		//});
     }
 
 	function click_CompraDolar() {
@@ -414,6 +452,7 @@
 					toastr.success('Se eliminó con éxito', 'Éxito');
 				ocultarLoader();
 				limpiarFormulario();
+				obtenerConfCaja();
 			},
 			error: function () {
 				toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
@@ -509,7 +548,6 @@
 				//ocultarLoader();
 			}
 		});
-
     }
 
 
