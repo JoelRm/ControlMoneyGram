@@ -27,10 +27,11 @@ namespace Datos.Modelos
         public Nullable<bool> FlagSumaCajaEuro { get; set; }
         public Nullable<bool> FlagRestaCajaEuro { get; set; }
         public Nullable<bool> Eliminado { get; set; }
-        public Nullable<System.DateTime> HoraMovimiento { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
-        public Nullable<System.DateTime> FechaMovimiento { get; set; }
         public Nullable<decimal> MontoSalida { get; set; }
         public Nullable<decimal> TipoCambio { get; set; }
+        public Nullable<decimal> CajaActualSol { get; set; }
+        public Nullable<decimal> CajaActualDolar { get; set; }
+        public Nullable<decimal> CajaActualEuro { get; set; }
     }
 }

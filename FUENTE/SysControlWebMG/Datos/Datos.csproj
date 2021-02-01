@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Clases\ConfiguracionCajaDA.cs" />
     <Compile Include="Clases\OperacionDA.cs" />
+    <Compile Include="Clases\ReporteDA.cs" />
     <Compile Include="Clases\RolDA.cs" />
     <Compile Include="Clases\TipoMovimientoDA.cs" />
     <Compile Include="Clases\UsuariosDA.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="Modelos\Operacion.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\OperacionCalculadora.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Rol.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
@@ -96,6 +100,9 @@
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Usp_obtenerConfCaja_Result.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Usp_ReporteOperacion_Result.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Usuario.cs">

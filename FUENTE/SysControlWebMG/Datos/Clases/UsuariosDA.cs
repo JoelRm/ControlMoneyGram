@@ -235,6 +235,7 @@ namespace Datos.Clases
                     objUsuariosCLS.ApMaternoUsuario = oUsuario.ApMaternoUsuario;
                     objUsuariosCLS.EmailUsuario = oUsuario.EmailUsuario;
                     objUsuariosCLS.TelefonoUsuario = oUsuario.TelefonoUsuario;
+                    objUsuariosCLS.Usser = oUsuario.Usser;
                     objUsuariosCLS.IdRol = oUsuario.IdRol;
                 }
             }

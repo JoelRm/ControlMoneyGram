@@ -2,6 +2,7 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Datos.Clases
@@ -56,8 +57,7 @@ namespace Datos.Clases
                 return lstConfCaja;
             }
         }
-
-
+        
         public int GuardarOperacion(OperacionCLS ope)
         {
             int CodResult = 0;
@@ -134,10 +134,10 @@ namespace Datos.Clases
                             objOperacion.FlagSumaCajaEuro = true;
                     }
 
-                    objOperacion.HoraMovimiento = DateTime.Now;
-                    objOperacion.FechaMovimiento = DateTime.Now;
+                    //objOperacion.HoraMovimiento = DateTime.Now;
+                    //objOperacion.FechaMovimiento = DateTime.Now;
                     objOperacion.Eliminado = false;
-                    objOperacion.UsuarioCreacion = "ecamarena";
+                    objOperacion.UsuarioCreacion = ope.UsuarioCreacion;
                     objOperacion.FechaCreacion = DateTime.Now;
                     db.Operacion.Add(objOperacion);
                     db.SaveChanges();
@@ -149,6 +149,20 @@ namespace Datos.Clases
                 CodResult = 0;
             }
             return CodResult;
+        }
+
+        public List<ReporteCLS> ListarOperaciones(string Usuario)
+        {
+            List<ReporteCLS> lstListaOperaciones = new List<ReporteCLS>();
+            using (var db = new BDControlMGEntities())
+            {
+                //var Reporte = db.Usp_ReporteOperacion(objFiltros.Finicio, objFiltros.Ffin, objFiltros.TipoOperacion, objFiltros.Estado, objFiltros.Usuario).ToList().SingleOrDefault();
+
+                lstListaOperaciones = db.Database.SqlQuery<ReporteCLS>(
+                "exec Usp_VerMovimientos @Usuario",
+                new SqlParameter("@Usuario", Usuario)).ToList();
+            }
+            return lstListaOperaciones;
         }
     }
 }

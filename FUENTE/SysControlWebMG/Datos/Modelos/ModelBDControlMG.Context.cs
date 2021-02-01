@@ -34,6 +34,7 @@ namespace Datos.Modelos
         public virtual DbSet<DatoGeneral> DatoGeneral { get; set; }
         public virtual DbSet<DatoGeneralDetalle> DatoGeneralDetalle { get; set; }
         public virtual DbSet<Operacion> Operacion { get; set; }
+        public virtual DbSet<OperacionCalculadora> OperacionCalculadora { get; set; }
     
         public virtual ObjectResult<Usp_ListaCatalogo_Result> Usp_ListaCatalogo()
         {
@@ -48,6 +49,21 @@ namespace Datos.Modelos
         public virtual ObjectResult<Usp_obtenerConfCaja_Result> Usp_obtenerConfCaja()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_obtenerConfCaja_Result>("Usp_obtenerConfCaja");
+        }
+    
+        public virtual ObjectResult<Usp_ReporteOperacion_Result> Usp_ReporteOperacion(System.DateTime fechaIni, System.DateTime fechaFin, int tipoOperacion, bool eliminado, string usuario)
+        {
+            var fechaIniParameter = new ObjectParameter("FechaIni", fechaIni);
+    
+            var fechaFinParameter = new ObjectParameter("FechaFin", fechaFin);
+    
+            var tipoOperacionParameter = new ObjectParameter("TipoOperacion", tipoOperacion);
+    
+            var eliminadoParameter = new ObjectParameter("Eliminado", eliminado);
+    
+            var usuarioParameter = new ObjectParameter("Usuario", usuario);
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ReporteOperacion_Result>("Usp_ReporteOperacion", fechaIniParameter, fechaFinParameter, tipoOperacionParameter, eliminadoParameter, usuarioParameter);
         }
     }
 }

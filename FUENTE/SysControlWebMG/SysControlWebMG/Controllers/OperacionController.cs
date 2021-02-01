@@ -12,16 +12,20 @@ namespace SysControlWebMG.Controllers
     public class OperacionController : Controller
     {
         OperacionNE objOperacion = new OperacionNE();
+        UsuariosCLS objUsuarioCLS = new UsuariosCLS();
         // GET: Operacion
         public ActionResult Index()
         {
-            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            
             objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
             ViewBag.Usuario = objUsuarioCLS;
             return View();
         }
         public ActionResult ListaOperaciones()
         {
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+
             return View();
         }
 
@@ -42,6 +46,8 @@ namespace SysControlWebMG.Controllers
         [HttpPost()]
         public async Task<JsonResult> GuardarOperacion(OperacionCLS ope)
         {
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ope.UsuarioCreacion = objUsuarioCLS.Usser;
             int codigoRpt = objOperacion.GuardarOperacion(ope);
             return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
         }
@@ -51,6 +57,14 @@ namespace SysControlWebMG.Controllers
         {
             var lstConfCaja = objOperacion.ObtenerConfiguracionCaja();
             return Json(new { lstConfCaja, JsonRequestBehavior.AllowGet });
+        }
+
+        [HttpPost]
+        public JsonResult ListarOperacionesDay()
+        {
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            var lstReporte = objOperacion.ListarOperaciones(objUsuarioCLS.Usser);
+            return Json(new { lstReporte, JsonRequestBehavior.AllowGet });
         }
     }
 }

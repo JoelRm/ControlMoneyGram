@@ -2307,7 +2307,7 @@ textarea.form-control {
 }
 
 .form-inline {
-    display: flex;
+    display: block;
     flex-flow: row wrap;
     align-items: center
 }

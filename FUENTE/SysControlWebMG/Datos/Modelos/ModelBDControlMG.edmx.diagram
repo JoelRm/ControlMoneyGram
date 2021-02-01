@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6392d2608f594d8ba32ad4e57054aa06" Name="Diagram1" ZoomLevel="101">
+      <Diagram DiagramId="6392d2608f594d8ba32ad4e57054aa06" Name="Diagram1" ZoomLevel="91">
         <EntityTypeShape EntityType="BDControlMGModel.Caja" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BDControlMGModel.Rol" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="BDControlMGModel.TipoMovimiento" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="BDControlMGModel.Usuario" Width="1.5" PointX="2.75" PointY="4.75" />
         <EntityTypeShape EntityType="BDControlMGModel.DatoGeneral" Width="1.5" PointX="4.75" PointY="4.75" />
         <EntityTypeShape EntityType="BDControlMGModel.DatoGeneralDetalle" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BDControlMGModel.Operacion" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="BDControlMGModel.Operacion" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="BDControlMGModel.OperacionCalculadora" Width="1.5" PointX="9.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

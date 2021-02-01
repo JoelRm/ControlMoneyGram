@@ -29,6 +29,11 @@ namespace Negocio
         {
             return obj.ObtenerConfiguracionCaja();
         }
-        
+        public List<ReporteCLS> ListarOperaciones(string Usuario)
+        {
+            return obj.ListarOperaciones(Usuario);
+        }
+
+
     }
 }

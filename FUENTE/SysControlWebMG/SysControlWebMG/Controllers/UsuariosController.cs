@@ -11,6 +11,10 @@ namespace SysControlWebMG.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+
             var listaRoles = objUsuario.CargaInicial();
             listaRoles.Insert(0, new CalatogoCLS { NombreItem = "SELECCIONE CARGO", ValorItem = "0" });
             ViewBag.listaRoles = listaRoles;

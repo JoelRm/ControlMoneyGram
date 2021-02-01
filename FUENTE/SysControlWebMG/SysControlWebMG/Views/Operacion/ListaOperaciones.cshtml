@@ -1,4 +1,6 @@
-﻿
+﻿<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
+
 @{
     ViewBag.Title = "Operaciones";
 }
@@ -14,31 +16,71 @@
                 <button class="btn btn-danger" id="btnRefrescar">Refrescar</button>
             </div>
         </div>
-        <table id="tblListaOperacion" class="table table-hover table-bordered">
+        <table id="tbListaOperaciones" class="table table-striped table-bordered" style="width:100%;margin-top: 25px;">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Tipo Operación</th>
-                    <th>Monto Operación</th>
-                    <th>Moneda</th>
-                    <th>Comentario</th>
-                    <th>Fecha Creación</th>
-                    <th>Usuario</th>
+                    <th>Tipo Operacion</th>
+                    <th>Monto Salida</th>
+                    <th>Tipo Cambio</th>
+                    <th>Caja Soles</th>
+                    <th>Caja Dolares</th>
+                    <th>Caja Euros</th>
+                    <th>Ususario Creacion</th>
+                    <th>Fecha Creacion</th>
                     <th>Estado</th>
-                    <th>Acción</th>
                 </tr>
             </thead>
-            <tbody id="bodytblListaOperacion">
+            <tbody id="bodyTbListaOpera">
                 <tr>
-                    <td colspan="9">No existen registros</td>
+                    <td colspan="9">Seleccione filtros para realizar una búsqueda</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-@*<script src="~/Scripts/Pages/TipoMovimiento.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
-        cargarTablaTipoMovimiento();
+        mostrarLoader();
+        var rows = "";
+        $.ajax({
+            type: "POST",
+            url: '/Operacion/ListarOperacionesDay',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.lstReporte.length > 0) {
+                    for (var i = 0; i < data.lstReporte.length; i++) {
+                        rows += '<tr>';
+                        rows += '<td>' + data.lstReporte[i].Desc_Operacion + '</td>';
+                        rows += '<td>' + data.lstReporte[i].Monto_Salida + '</td>';
+                        rows += '<td>' + data.lstReporte[i].Tipo_Cambio + '</td>';
+                        rows += '<td>' + data.lstReporte[i].Caja_Sol + '</td>';
+                        rows += '<td>' + data.lstReporte[i].Caja_Dolar + '</td>';
+                        rows += '<td>' + data.lstReporte[i].Caja_Euro + '</td>';
+                        rows += '<td>' + data.lstReporte[i].Usuario_Creacion + '</td>';
+                        rows += '<td>' + data.lstReporte[i].Fecha_Javascript + '</td>';
+                        if (data.lstReporte[i].Estado) {
+                            rows += '<td><span class="label label-sm label-danger"> Anulado</span></td>';
+                        }
+                        else {
+                            rows += '<td><span class="label label-sm label-success" > Activo</span></td>';
+                        }
+                        rows += '</tr>';
+                    }
+                    document.getElementById("bodyTbListaOpera").innerHTML = rows;
+                    $('#tbListaOperaciones').DataTable();
+                }
+                else {
+                    toastr.error('Aún no tien registros para mostrar');
+                }
+                ocultarLoader();
+            },
+            error: function (ex) {
+                alert(ex.responseText);
+                ocultarLoader();
+            }
+        });
+        ocultarLoader();
     });
-</script>*@
+</script>

@@ -7,10 +7,18 @@
     <EntitySet Name="Usuario" EntityType="BDControlMGModel.Usuario" />
     <EntitySet Name="DatoGeneral" EntityType="BDControlMGModel.DatoGeneral" />
     <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
-    <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
     <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
     <FunctionImport Name="Usp_getUltimaConfCaja" ReturnType="Collection(BDControlMGModel.Usp_getUltimaConfCaja_Result)" />
     <FunctionImport Name="Usp_obtenerConfCaja" ReturnType="Collection(BDControlMGModel.Usp_obtenerConfCaja_Result)" />
+    <FunctionImport Name="Usp_ReporteOperacion" ReturnType="Collection(BDControlMGModel.Usp_ReporteOperacion_Result)">
+      <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+      <Parameter Name="TipoOperacion" Mode="In" Type="Int32" />
+      <Parameter Name="Eliminado" Mode="In" Type="Boolean" />
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
+    <EntitySet Name="OperacionCalculadora" EntityType="BDControlMGModel.OperacionCalculadora" />
   </EntityContainer>
   <EntityType Name="Caja">
     <Key>
@@ -111,29 +119,6 @@
     <Property Name="UsuarioModifica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="FechaModifica" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="Operacion">
-    <Key>
-      <PropertyRef Name="IdOperacion" />
-    </Key>
-    <Property Name="IdOperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MontoIngreso" Type="Decimal" Precision="9" Scale="2" />
-    <Property Name="TipoOperacion" Type="Int32" />
-    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Moneda" Type="Int32" />
-    <Property Name="FlagSumaCajaSol" Type="Boolean" />
-    <Property Name="FlagRestaCajaSol" Type="Boolean" />
-    <Property Name="FlagSumaCajaDolar" Type="Boolean" />
-    <Property Name="FlagRestaCajaDolar" Type="Boolean" />
-    <Property Name="FlagSumaCajaEuro" Type="Boolean" />
-    <Property Name="FlagRestaCajaEuro" Type="Boolean" />
-    <Property Name="Eliminado" Type="Boolean" />
-    <Property Name="HoraMovimiento" Type="DateTime" Precision="3" />
-    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-    <Property Name="FechaMovimiento" Type="DateTime" Precision="0" />
-    <Property Name="MontoSalida" Type="Decimal" Precision="9" Scale="2" />
-    <Property Name="TipoCambio" Type="Decimal" Precision="9" Scale="2" />
-  </EntityType>
   <ComplexType Name="Usp_ListaCatalogo_Result">
     <Property Type="String" Name="IdItem" Nullable="false" MaxLength="10" />
     <Property Type="String" Name="NombreItem" Nullable="true" MaxLength="250" />
@@ -166,4 +151,53 @@
     <Property Type="Decimal" Name="CajaActualDolares" Nullable="true" Precision="9" Scale="2" />
     <Property Type="Decimal" Name="CajaActualEuros" Nullable="true" Precision="9" Scale="2" />
   </ComplexType>
+  <ComplexType Name="Usp_ReporteOperacion_Result">
+    <Property Type="Int32" Name="ID_OPERACION" Nullable="false" />
+    <Property Type="Int32" Name="ID_TIPO_OPERACION" Nullable="true" />
+    <Property Type="Decimal" Name="MONTO_SALIDA" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="TIPO_CAMBIO" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CAJA_SOL" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CAJA_DOLAR" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="CAJA_EURO" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="String" Name="DESC_OPERACION" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="USUARIO_CREACION" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="FECHA_CREACION" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="Operacion">
+    <Key>
+      <PropertyRef Name="IdOperacion" />
+    </Key>
+    <Property Name="IdOperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MontoIngreso" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="TipoOperacion" Type="Int32" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Moneda" Type="Int32" />
+    <Property Name="FlagSumaCajaSol" Type="Boolean" />
+    <Property Name="FlagRestaCajaSol" Type="Boolean" />
+    <Property Name="FlagSumaCajaDolar" Type="Boolean" />
+    <Property Name="FlagRestaCajaDolar" Type="Boolean" />
+    <Property Name="FlagSumaCajaEuro" Type="Boolean" />
+    <Property Name="FlagRestaCajaEuro" Type="Boolean" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="MontoSalida" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="TipoCambio" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="CajaActualSol" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="CajaActualDolar" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="CajaActualEuro" Type="Decimal" Precision="9" Scale="2" />
+  </EntityType>
+  <EntityType Name="OperacionCalculadora">
+    <Key>
+      <PropertyRef Name="IdOperacion" />
+    </Key>
+    <Property Name="IdOperacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Operacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Resultado" Type="Decimal" Precision="19" Scale="2" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

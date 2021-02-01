@@ -1,0 +1,133 @@
+﻿@using Entidades
+@{
+    List<CalatogoCLS> listaTipomov = (List<CalatogoCLS>)ViewBag.listaTipomov;
+    List<UsuariosCLS> listaUsuarios = (List<UsuariosCLS>)ViewBag.listaUsuarios;
+}
+
+<!--Inicio Modal Editar-->
+<div id="modalFiltrosReporte" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Filtros Reporte
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-body pal">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Fecha Inicio : </label>
+                            <input type="date" id="fInicio" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Fecha Fin : </label>
+                            <input type="date" id="fFin" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Tipo Operación : </label>
+                            <select id="idTipoOperacion" class="form-control">
+                                @foreach (var item in listaTipomov)
+                                {
+                                    <option value="@item.ValorItem">@item.NombreItem</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Usuario : </label>
+                            <select id="Usuario" class="form-control">
+                                @foreach (var item in listaUsuarios)
+                                {
+                                    <option value="@item.Usser">@item.Usser</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="radio-container radio-edit">
+                                <input type="radio" name="estado" id="todos" checked value="2" />
+                                <label id="ejm" for="todos">Todos</label>
+                                <input type="radio" name="estado" id="activos" value="0" />
+                                <label id="ejm" for="activos">Activos</label>
+                                <input type="radio" name="estado" id="inactivos" value="1" />
+                                <label id="ejm" for="inactivos">Anulados</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="CerrarPopUpFiltrosReporte" data-dismiss="modal" class="btn btn-primary">
+                    Cancelar
+                </button>
+                <button type="button" onclick="GenerarReporte()" class="btn btn-danger">
+                    Generar Reporte
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    /*Radio Buttons*/
+    .radio-container {
+        font-size: 20px;
+        padding: 8px;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    #ejm {
+        color: #808080;
+        background: rgba(0,0,0,.1);
+        padding: 5px 15px 5px 36px;
+        display: inline-block;
+        position: relative;
+        font-size: 12px;
+        border-radius: 3px;
+        cursor: pointer;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+
+        #ejm:hover {
+            background: rgba(0,116,217, 0.2);
+        }
+
+        #ejm:before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            background: none;
+            border: 3px solid #808080;
+            border-radius: 50%;
+            position: absolute;
+            left: 12px;
+            top: 8px;
+        }
+
+    input[type="radio"]:checked + #ejm {
+        padding: 5px 15px;
+        background: #808080;
+        border-radius: 2px;
+        color: #fff;
+    }
+
+        input[type="radio"]:checked + #ejm:before {
+            display: none;
+        }
+
+    /*Radio Buttons*/
+</style>
+<!--Fin Modal Editar-->

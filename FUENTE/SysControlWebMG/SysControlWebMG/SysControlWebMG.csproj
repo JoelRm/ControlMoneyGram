@@ -130,6 +130,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OperacionController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\TipoMovimientoController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -278,6 +279,7 @@
     <Content Include="Scripts\Pages\Operaciones\_EditarConfiguracionTipoCambio.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
+    <Content Include="Scripts\Pages\Reporte.js" />
     <Content Include="Scripts\Pages\Rol.js" />
     <Content Include="Scripts\Pages\TipoMovimiento.js" />
     <Content Include="Scripts\Pages\Usuarios.js" />
@@ -306,6 +308,8 @@
     <Content Include="Views\Rol\_ModalNuevoRol.cshtml" />
     <Content Include="Views\Rol\_ModalEditarRol.cshtml" />
     <Content Include="Views\Operacion\_ModalGuardarOperacion.cshtml" />
+    <Content Include="Views\Reporte\Index.cshtml" />
+    <Content Include="Views\Reporte\_Filtros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

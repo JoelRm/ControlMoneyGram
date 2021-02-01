@@ -74,11 +74,25 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="FlagSumaCajaEuro" Type="bit" />
     <Property Name="FlagRestaCajaEuro" Type="bit" />
     <Property Name="Eliminado" Type="bit" />
-    <Property Name="HoraMovimiento" Type="datetime" />
     <Property Name="FechaCreacion" Type="datetime" />
-    <Property Name="FechaMovimiento" Type="date" />
     <Property Name="MontoSalida" Type="decimal" Precision="9" Scale="2" />
     <Property Name="TipoCambio" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="CajaActualSol" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="CajaActualDolar" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="CajaActualEuro" Type="decimal" Precision="9" Scale="2" />
+  </EntityType>
+  <EntityType Name="OperacionCalculadora">
+    <Key>
+      <PropertyRef Name="IdOperacion" />
+    </Key>
+    <Property Name="IdOperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Operacion" Type="varchar(max)" />
+    <Property Name="Resultado" Type="decimal" Precision="19" Scale="2" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="30" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioModificacion" Type="varchar" MaxLength="30" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="Comentario" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -126,12 +140,19 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
     <Property Name="EstadoEliminacion" Type="bit" Nullable="false" />
     <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
   </EntityType>
-  <Function Name="Usp_getUltimaConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Usp_obtenerConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Usp_ReporteOperacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaIni" Type="date" Mode="In" />
+    <Parameter Name="FechaFin" Type="date" Mode="In" />
+    <Parameter Name="TipoOperacion" Type="int" Mode="In" />
+    <Parameter Name="Eliminado" Type="bit" Mode="In" />
+    <Parameter Name="Usuario" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="BDControlMGModelStoreContainer">
     <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Operacion" EntityType="Self.Operacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OperacionCalculadora" EntityType="Self.OperacionCalculadora" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
