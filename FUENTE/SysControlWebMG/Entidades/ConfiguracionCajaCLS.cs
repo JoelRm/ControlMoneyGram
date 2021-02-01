@@ -15,5 +15,6 @@ namespace Entidades
         public decimal TCVentaDolar { get; set; }
         public decimal TCCompraEuro { get; set; }
         public decimal TCVentaEuro { get; set; }
+        public string TipoOpeIU { get; set; }        
     }
 }

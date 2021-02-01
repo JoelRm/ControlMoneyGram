@@ -2,6 +2,7 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,30 +16,53 @@ namespace Datos.Clases
             int CodResult = 0;
             try
             {
+                ConfiguracionCajaCLS lstConfCaja = null;
+
                 using (var db = new BDControlMGEntities())
                 {
-                    Caja objConfCaja = new Caja();
-                    objConfCaja.CajaSoles = confCaja.CajaActualSoles;
-                    objConfCaja.CajaDolares = confCaja.CajaActualDolares;
-                    objConfCaja.CajaEuros = confCaja.CajaActualEuros;
-                    objConfCaja.CompraDolares = confCaja.TCCompraDolar;
-                    objConfCaja.VentaDolares = confCaja.TCVentaDolar;
-                    objConfCaja.CompraEuros = confCaja.TCCompraEuro;
-                    objConfCaja.VentaEuros = confCaja.TCVentaEuro;
-                    objConfCaja.FechaCreacion = DateTime.Now;
-                    objConfCaja.UsuarioCreacion = "Admin";
+                    if (confCaja.TipoOpeIU == "Insert")
+                    {
+                        lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>(
+                        "Usp_InsertUpdateConfCaja @CompraDolares,@VentaDolares,@CompraEuros,@VentaEuros,@CajaSoles,@CajaDolares,@CajaEuros,@UsuarioCreacion,@TipoOpeIU",
+                        new SqlParameter("@CompraDolares", confCaja.TCCompraDolar),
+                        new SqlParameter("@VentaDolares", confCaja.TCVentaDolar),
+                        new SqlParameter("@CompraEuros", confCaja.TCCompraEuro),
+                        new SqlParameter("@VentaEuros", confCaja.TCVentaEuro),
+                        new SqlParameter("@CajaSoles", confCaja.CajaActualSoles),
+                        new SqlParameter("@CajaDolares", confCaja.CajaActualDolares),
+                        new SqlParameter("@CajaEuros", confCaja.CajaActualEuros),
+                        new SqlParameter("@UsuarioCreacion", "ecamarena"),
+                        new SqlParameter("@TipoOpeIU", "Insert")
+                        ).SingleOrDefault();
+                    }
+                    else
+                    {
+                       lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>(
+                       "Usp_InsertUpdateConfCaja @CompraDolares,@VentaDolares,@CompraEuros,@VentaEuros,@CajaSoles,@CajaDolares,@CajaEuros,@UsuarioCreacion,@TipoOpeIU",
+                       new SqlParameter("@CompraDolares", confCaja.TCCompraDolar),
+                       new SqlParameter("@VentaDolares", confCaja.TCVentaDolar),
+                       new SqlParameter("@CompraEuros", confCaja.TCCompraEuro),
+                       new SqlParameter("@VentaEuros", confCaja.TCVentaEuro),
+                       new SqlParameter("@CajaSoles", confCaja.TCVentaEuro),
+                       new SqlParameter("@CajaDolares", confCaja.TCVentaEuro),
+                       new SqlParameter("@CajaEuros", confCaja.TCVentaEuro),
+                       new SqlParameter("@UsuarioCreacion", "ecamarena"),
+                       new SqlParameter("@TipoOpeIU", "Update")
+                       ).SingleOrDefault();
+                    }
 
-                    db.Caja.Add(objConfCaja);
-                    db.SaveChanges();
+                    //lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>("Usp_obtenerConfCaja").SingleOrDefault();
                     CodResult = 1;
                 }
             }
-            catch (Exception)
+            catch (Exception Ex)
             {
                 CodResult = 0;
             }
             return CodResult;
         }
+
+
 
     }
 }

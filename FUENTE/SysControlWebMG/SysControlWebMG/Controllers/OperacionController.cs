@@ -21,6 +21,7 @@ namespace SysControlWebMG.Controllers
             ViewBag.Usuario = objUsuarioCLS;
             return View();
         }
+
         public ActionResult ListaOperaciones()
         {
             objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
@@ -41,7 +42,7 @@ namespace SysControlWebMG.Controllers
         {
             var lstConfCaja = objOperacion.ObtenerConfCaja();
             return Json(new { lstConfCaja, JsonRequestBehavior.AllowGet });
-        }       
+        }
 
         [HttpPost()]
         public async Task<JsonResult> GuardarOperacion(OperacionCLS ope)
@@ -52,11 +53,11 @@ namespace SysControlWebMG.Controllers
             return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
         }
 
-        [HttpPost]
-        public JsonResult ObtenerConfiguracionCaja()
+        [HttpPost()]
+        public async Task<JsonResult> GuardarOperacionCalculadora(CalculadoraCLS ope)
         {
-            var lstConfCaja = objOperacion.ObtenerConfiguracionCaja();
-            return Json(new { lstConfCaja, JsonRequestBehavior.AllowGet });
+            int codigoRpt = objOperacion.GuardarOperacionCalculadora(ope);
+            return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
         }
 
         [HttpPost]
