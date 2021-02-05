@@ -22,7 +22,7 @@ namespace SysControlWebMG.Controllers
             return View();
         }
 
-        public ActionResult ListaOperaciones()
+        public ActionResult VerOperaciones()
         {
             objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
             ViewBag.Usuario = objUsuarioCLS;
@@ -61,11 +61,10 @@ namespace SysControlWebMG.Controllers
         }
 
         [HttpPost]
-        public JsonResult ListarOperacionesDay()
+        public JsonResult ObtenerListaOperaciones(OperacionCLS ope)
         {
-            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
-            var lstReporte = objOperacion.ListarOperaciones(objUsuarioCLS.Usser);
-            return Json(new { lstReporte, JsonRequestBehavior.AllowGet });
+            var lstOperaciones = objOperacion.ObtenerListaOperaciones(ope);
+            return Json(new { lstOperaciones, JsonRequestBehavior.AllowGet });
         }
     }
 }

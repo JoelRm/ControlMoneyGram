@@ -91,7 +91,7 @@
 							dataType: "json",
 							contentType: "application/json; charset=utf-8",
 							success: function (d) {
-						
+								swal({ title: "Operación Registrada!", text: "Se guardó la operación con éxito.", type: "success" });
 							},
 							error: function (ex) {
 								alert(ex.responseText);
@@ -129,7 +129,7 @@
 		if (validarGuardarOperacion()) {
 			swal({
 				title: "¿Desea registrar la operación?",
-				text: getTxtHtml(),
+				text: getTxtHtmlOtrasOpe(),
 				html: true,
 				type: "warning",
 				showCancelButton: true,
@@ -146,7 +146,93 @@
 				}
 			);
 		}
-    }
+	}
+
+	function getTxtHtmlOtrasOpe() {
+		var TipoOperacion = "";
+		var MontoIngreso = "";
+		var Moneda = "";
+		var TextoHtml = "";
+		if (parseInt(document.getElementById("cboTipoOperacion").value) == 7) {
+			TipoOperacion = "Ingreso"
+			if (document.getElementById("cboMoneda").value == "1") {
+				Moneda = "Sol"
+				MontoIngreso = 'S/.' + document.getElementById("txtMonto").value;
+			}
+			if (document.getElementById("cboMoneda").value == "2") {
+				Moneda = "Dólar"
+				MontoIngreso = '$ ' + document.getElementById("txtMonto").value;
+
+			}
+			if (document.getElementById("cboMoneda").value == "3") {
+				Moneda = "Euro"
+				MontoIngreso = '€ ' + document.getElementById("txtMonto").value;
+			}
+		}
+		if (parseInt(document.getElementById("cboTipoOperacion").value) == 8) {
+			TipoOperacion = "Envío"
+			if (document.getElementById("cboMoneda").value == "1") {
+				Moneda = "Sol"
+				MontoIngreso = 'S/.' + document.getElementById("txtMonto").value;
+			}
+			if (document.getElementById("cboMoneda").value == "2") {
+				Moneda = "Dólar"
+				MontoIngreso = '$ ' + document.getElementById("txtMonto").value;
+
+			}
+			if (document.getElementById("cboMoneda").value == "3") {
+				Moneda = "Euro"
+				MontoIngreso = '€ ' + document.getElementById("txtMonto").value;
+			}
+		}
+		if (parseInt(document.getElementById("cboTipoOperacion").value) == 9) {
+			TipoOperacion = "Pago"
+			if (document.getElementById("cboMoneda").value == "1") {
+				Moneda = "Sol"
+				MontoIngreso = 'S/.' + document.getElementById("txtMonto").value;
+			}
+			if (document.getElementById("cboMoneda").value == "2") {
+				Moneda = "Dólar"
+				MontoIngreso = '$ ' + document.getElementById("txtMonto").value;
+
+			}
+			if (document.getElementById("cboMoneda").value == "3") {
+				Moneda = "Euro"
+				MontoIngreso = '€ ' + document.getElementById("txtMonto").value;
+			}
+		}
+		if (parseInt(document.getElementById("cboTipoOperacion").value) == 10) {
+			TipoOperacion = "Gasto"
+			if (document.getElementById("cboMoneda").value == "1") {
+				Moneda = "Sol"
+				MontoIngreso = 'S/.' + document.getElementById("txtMonto").value;
+			}
+			if (document.getElementById("cboMoneda").value == "2") {
+				Moneda = "Dólar"
+				MontoIngreso = '$ ' + document.getElementById("txtMonto").value;
+
+			}
+			if (document.getElementById("cboMoneda").value == "3") {
+				Moneda = "Euro"
+				MontoIngreso = '€ ' + document.getElementById("txtMonto").value;
+			}
+
+		}
+			TextoHtml = `<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label>Tipo Operación: ${TipoOperacion}</label>
+							</div>
+							<div class="form-group col-md-12">
+								<label>Moneda Ingresa: ${Moneda}</label>
+							</div>
+							<div class="form-group col-md-12">
+								<label>Monto: ${MontoIngreso}</label>
+							</div>
+						</div>`;
+		
+		return TextoHtml;
+	}
+
 
 	function btnEditarTipoCambio_Click() {
 		$('#modalEditarConfCaja').modal('show');
@@ -327,72 +413,7 @@
 			MontoIngreso = `<div class="form-group col-md-12"><label>Monto Ingresa (€): ${document.getElementById("txtMonto").value}</label></div>`;
 			MontoEntrega = `<div class="form-group col-md-12"><label>Monto a Entregar ($): ${document.getElementById("txtMontoEntrega").value}</label></div>`;
 		}
-		if (data.flagValorTipoOperacion == 7) {
-			TipoOperacion = "Ingreso"
-			if (document.getElementById("cboMoneda").value == "1") {
-				Moneda = "Sol"
-				MontoIngreso = 'S/.' + document.getElementById("txtMonto").value;
-            }
-			if (document.getElementById("cboMoneda").value == "2") {
-				Moneda = "Dólar"
-				MontoIngreso = '$ ' + document.getElementById("txtMonto").value;
-
-            }
-			if (document.getElementById("cboMoneda").value == "3") {
-				Moneda = "Euro"
-				MontoIngreso = '€ ' + document.getElementById("txtMonto").value;
-            }
-		}
-		if (data.flagValorTipoOperacion == 8) {
-			TipoOperacion = "Envío"
-			if (document.getElementById("cboMoneda").value == "1") {
-				Moneda = "Sol"
-				MontoIngreso = 'S/.' + document.getElementById("txtMonto").value;
-			}
-			if (document.getElementById("cboMoneda").value == "2") {
-				Moneda = "Dólar"
-				MontoIngreso = '$ ' + document.getElementById("txtMonto").value;
-
-			}
-			if (document.getElementById("cboMoneda").value == "3") {
-				Moneda = "Euro"
-				MontoIngreso = '€ ' + document.getElementById("txtMonto").value;
-			}
-		}
-		if (data.flagValorTipoOperacion == 9) {
-			TipoOperacion = "Pago"
-			if (document.getElementById("cboMoneda").value == "1") {
-				Moneda = "Sol"
-				MontoIngreso = 'S/.' + document.getElementById("txtMonto").value;
-			}
-			if (document.getElementById("cboMoneda").value == "2") {
-				Moneda = "Dólar"
-				MontoIngreso = '$ ' + document.getElementById("txtMonto").value;
-
-			}
-			if (document.getElementById("cboMoneda").value == "3") {
-				Moneda = "Euro"
-				MontoIngreso = '€ ' + document.getElementById("txtMonto").value;
-			}
-		}
-		if (data.flagValorTipoOperacion == 10) {
-			TipoOperacion = "Gasto"
-			if (document.getElementById("cboMoneda").value == "1") {
-				Moneda = "Sol"
-				MontoIngreso = 'S/.' + document.getElementById("txtMonto").value;
-			}
-			if (document.getElementById("cboMoneda").value == "2") {
-				Moneda = "Dólar"
-				MontoIngreso = '$ ' + document.getElementById("txtMonto").value;
-
-			}
-			if (document.getElementById("cboMoneda").value == "3") {
-				Moneda = "Euro"
-				MontoIngreso = '€ ' + document.getElementById("txtMonto").value;
-			}
-
-		}
-
+	
 		if (parseInt(document.getElementById("cboTipoOperacion").value) == 0) {
 			TextoHtml = `<div class="form-group col-md-12">
 							<div class="form-group col-md-12">
@@ -404,19 +425,20 @@
 								${MontoIngreso}		
 								${MontoEntrega}
 						</div>`;
-		} else {
-			TextoHtml = `<div class="form-group col-md-12">
-							<div class="form-group col-md-12">
-								<label>Tipo Operación: ${TipoOperacion}</label>
-							</div>
-							<div class="form-group col-md-12">
-								<label>Moneda Ingresa: ${Moneda}</label>
-							</div>
-							<div class="form-group col-md-12">
-								<label>Monto: ${MontoIngreso}</label>
-							</div>
-						</div>`;
-		}
+		} 
+			//else {
+		//	TextoHtml = `<div class="form-group col-md-12">
+		//					<div class="form-group col-md-12">
+		//						<label>Tipo Operación: ${TipoOperacion}</label>
+		//					</div>
+		//					<div class="form-group col-md-12">
+		//						<label>Moneda Ingresa: ${Moneda}</label>
+		//					</div>
+		//					<div class="form-group col-md-12">
+		//						<label>Monto: ${MontoIngreso}</label>
+		//					</div>
+		//				</div>`;
+		//}
 		return TextoHtml;
     }
 
@@ -449,7 +471,8 @@
 			contentType: "application/json; charset=utf-8",
 			success: function (response) {
 				if (response.Code == 1)
-					toastr.success('Se eliminó con éxito', 'Éxito');
+					swal({ title: "Operación Registrada!", text: "Se guardó la operación con éxito.", type: "success" });
+
 				ocultarLoader();
 				limpiarFormulario();
 				obtenerConfCaja();

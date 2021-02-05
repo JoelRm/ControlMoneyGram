@@ -276,12 +276,12 @@
     <Content Include="Scripts\Pages\Operaciones\Operacion.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
+    <Content Include="Scripts\Pages\Operaciones\VerOperaciones.js" />
     <Content Include="Scripts\Pages\Operaciones\_EditarConfiguracionTipoCambio.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
     <Content Include="Scripts\Pages\Reporte.js" />
     <Content Include="Scripts\Pages\Rol.js" />
-    <Content Include="Scripts\Pages\TipoMovimiento.js" />
     <Content Include="Scripts\Pages\Usuarios.js" />
     <Content Include="Scripts\sb-admin-2.min.js" />
     <Content Include="Web.config" />
@@ -300,7 +300,7 @@
     <Content Include="Views\TipoMovimiento\Index.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Operacion\Index.cshtml" />
-    <Content Include="Views\Operacion\ListaOperaciones.cshtml" />
+    <Content Include="Views\Operacion\VerOperaciones.cshtml" />
     <Content Include="Views\Usuarios\_ModalNuevoUsuario.cshtml" />
     <Content Include="Views\Usuarios\_ModalEditarUsuario.cshtml" />
     <Content Include="Views\Operacion\_EditarConfiguracionTipoCambio.cshtml" />
@@ -314,6 +314,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\VerOperaciones\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

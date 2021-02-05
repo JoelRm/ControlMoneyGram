@@ -87,7 +87,7 @@ namespace Datos.Clases
             bool FlagRestaCajaEuro = false;
             bool Eliminado = false;
             decimal TipoCambio = ope.TipoCambio;
-            string UsuarioCreacion = "ecamarena";
+            string UsuarioCreacion = ope.UsuarioCreacion;
 
             if (ope.TipoOperacion == 1)
             {
@@ -134,12 +134,24 @@ namespace Datos.Clases
             else
             {
                 MontoIngreso = ope.MontoIngreso;
-                if (ope.Moneda == 1)
-                    FlagSumaCajaSol = true;
-                if (ope.Moneda == 2)
-                    FlagSumaCajaDolar = true;
-                if (ope.Moneda == 3)
-                    FlagSumaCajaEuro = true;
+                if (ope.TipoOperacion == 7 || ope.TipoOperacion == 8 )
+                {
+                    if (ope.Moneda == 1)
+                        FlagSumaCajaSol = true;
+                    if (ope.Moneda == 2)
+                        FlagSumaCajaDolar = true;
+                    if (ope.Moneda == 3)
+                        FlagSumaCajaEuro = true;
+                }
+                if (ope.TipoOperacion == 9 || ope.TipoOperacion == 10)
+                {
+                    if (ope.Moneda == 1)
+                        FlagRestaCajaSol = true;
+                    if (ope.Moneda == 2)
+                        FlagRestaCajaDolar = true;
+                    if (ope.Moneda == 3)
+                        FlagRestaCajaEuro = true;
+                }
             }
 
             try
@@ -177,110 +189,17 @@ namespace Datos.Clases
             return CodResult;
         }
 
-        //public int GuardarOperacion(OperacionCLS ope)
-        //{
-        //    int CodResult = 0;
-
-        //    try
-        //    {
-        //        using (var db = new BDControlMGEntities())
-        //        {
-        //            Operacion objOperacion = new Operacion();
-        //            objOperacion.TipoOperacion = ope.TipoOperacion;
-
-        //            objOperacion.MontoIngreso = ope.MontoIngreso;
-        //            objOperacion.MontoSalida = ope.MontoSalida;
-
-        //            objOperacion.Comentario = ope.Comentario;
-        //            objOperacion.Moneda = ope.Moneda;
-        //            objOperacion.TipoCambio = ope.TipoCambio;
-
-        //            objOperacion.FlagSumaCajaSol = false;
-        //            objOperacion.FlagRestaCajaSol = false;
-        //            objOperacion.FlagSumaCajaDolar = false;
-        //            objOperacion.FlagRestaCajaDolar = false;
-        //            objOperacion.FlagSumaCajaEuro = false;
-        //            objOperacion.FlagRestaCajaEuro = false;
-        //            if (ope.TipoOperacion == 1)
-        //            {
-        //                objOperacion.FlagSumaCajaDolar = true;
-        //                objOperacion.FlagRestaCajaSol = true;
-        //                objOperacion.MontoIngreso = ope.MontoIngreso;
-        //                objOperacion.MontoSalida = ope.MontoSalida;
-        //            }
-        //            else if (ope.TipoOperacion == 2)
-        //            {
-        //                objOperacion.FlagSumaCajaSol = true;
-        //                objOperacion.FlagRestaCajaDolar = true;
-        //                objOperacion.MontoIngreso = ope.MontoSalida;
-        //                objOperacion.MontoSalida = ope.MontoIngreso;
-        //            }
-        //            else if (ope.TipoOperacion == 3)
-        //            {
-        //                objOperacion.FlagSumaCajaEuro = true;
-        //                objOperacion.FlagRestaCajaSol = true;
-        //                objOperacion.MontoIngreso = ope.MontoIngreso;
-        //                objOperacion.MontoSalida = ope.MontoSalida;
-        //            }
-        //            else if (ope.TipoOperacion == 4)
-        //            {
-        //                objOperacion.FlagSumaCajaSol = true;
-        //                objOperacion.FlagRestaCajaEuro = true;
-        //                objOperacion.MontoIngreso = ope.MontoSalida;
-        //                objOperacion.MontoSalida = ope.MontoIngreso;
-        //            }
-        //            else if (ope.TipoOperacion == 5)
-        //            {
-        //                objOperacion.FlagSumaCajaDolar = true;
-        //                objOperacion.FlagRestaCajaEuro = true;
-        //                objOperacion.MontoIngreso = ope.MontoIngreso;
-        //                objOperacion.MontoSalida = ope.MontoSalida;
-        //            }
-        //            else if (ope.TipoOperacion == 6)
-        //            {
-        //                objOperacion.FlagRestaCajaDolar = true;
-        //                objOperacion.FlagSumaCajaEuro = true;
-        //                objOperacion.MontoIngreso = ope.MontoIngreso;
-        //                objOperacion.MontoSalida = ope.MontoSalida;
-        //            }
-        //            else
-        //            {
-        //                objOperacion.MontoIngreso = ope.MontoIngreso;
-        //                if(objOperacion.Moneda == 1)
-        //                    objOperacion.FlagSumaCajaSol = true;
-        //                if (objOperacion.Moneda == 2)
-        //                    objOperacion.FlagSumaCajaDolar = true;
-        //                if (objOperacion.Moneda == 3)
-        //                    objOperacion.FlagSumaCajaEuro = true;
-        //            }
-
-        //            objOperacion.HoraMovimiento = DateTime.Now;
-        //            objOperacion.FechaMovimiento = DateTime.Now;
-        //            objOperacion.Eliminado = false;
-        //            objOperacion.UsuarioCreacion = "ecamarena";
-        //            objOperacion.FechaCreacion = DateTime.Now;
-        //            db.Operacion.Add(objOperacion);
-        //            db.SaveChanges();
-        //            CodResult = 1;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        CodResult = 0;
-        //    }
-        //    return CodResult;
-        //}
-
-        public List<ReporteCLS> ListarOperaciones(string Usuario)
+        public List<OperacionCLS> ObtenerListaOperaciones(OperacionCLS ope)
         {
-            List<ReporteCLS> lstListaOperaciones = new List<ReporteCLS>();
+            List<OperacionCLS> lstListaOperaciones = new List<OperacionCLS>();
+            if (ope.UsuarioCreacion == null)
+                ope.UsuarioCreacion = "";
             using (var db = new BDControlMGEntities())
             {
-                //var Reporte = db.Usp_ReporteOperacion(objFiltros.Finicio, objFiltros.Ffin, objFiltros.TipoOperacion, objFiltros.Estado, objFiltros.Usuario).ToList().SingleOrDefault();
-
-                lstListaOperaciones = db.Database.SqlQuery<ReporteCLS>(
-                "exec Usp_VerMovimientos @Usuario",
-                new SqlParameter("@Usuario", Usuario)).ToList();
+                lstListaOperaciones = db.Database.SqlQuery<OperacionCLS>("exec Usp_obtenerListaOperaciones @Usuario,@TipoOperacion",
+                    new SqlParameter("@Usuario", ope.UsuarioCreacion),
+                    new SqlParameter("@TipoOperacion", ope.TipoOperacion)
+                    ).ToList();
             }
             return lstListaOperaciones;
         }
