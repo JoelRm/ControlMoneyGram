@@ -91,7 +91,7 @@
 							dataType: "json",
 							contentType: "application/json; charset=utf-8",
 							success: function (d) {
-								swal({ title: "Operación Registrada!", text: "Se guardó la operación con éxito.", type: "success" });
+                                swal({ title: "Operación Registrada!", text: "Se guardó la operación con éxito.", type: "success" });
 							},
 							error: function (ex) {
 								alert(ex.responseText);

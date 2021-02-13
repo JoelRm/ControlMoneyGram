@@ -54,7 +54,6 @@
     <Compile Include="Clases\ConfiguracionCajaDA.cs" />
     <Compile Include="Clases\OperacionDA.cs" />
     <Compile Include="Clases\ReporteDA.cs" />
-    <Compile Include="Clases\RolDA.cs" />
     <Compile Include="Clases\TipoMovimientoDA.cs" />
     <Compile Include="Clases\UsuariosDA.cs" />
     <Compile Include="Modelos\Caja.cs">

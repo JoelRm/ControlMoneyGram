@@ -7,7 +7,7 @@ namespace SysControlWebMG.Controllers
     public class UsuariosController : Controller
     {
         UsuariosNE objUsuario = new UsuariosNE();
-        RolNE objRol = new RolNE();
+        
         // GET: Usuarios
         public ActionResult Index()
         {

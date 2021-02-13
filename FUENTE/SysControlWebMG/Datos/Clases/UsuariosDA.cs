@@ -14,8 +14,8 @@ namespace Datos.Clases
             using (var db = new BDControlMGEntities())
             {
                 lstUsuario = (from usu in db.Usuario
-                              join rol in db.Rol on usu.IdRol equals rol.IdRol
-                              where usu.EstadoEliminacion == false
+                              join det in db.DatoGeneralDetalle on usu.IdRol equals det.ValorTabla
+                              where usu.EstadoEliminacion == false && det.DatoGeneralId.Equals(3)
                               select new UsuariosCLS
                               {
                                   IdUsuario = usu.IdUsuario,
@@ -32,7 +32,7 @@ namespace Datos.Clases
                                   UsuarioModificacion = usu.UsuarioModificacion,
                                   EstadoUsuario = usu.EstadoUsuario,
                                   FechaCreacionJS = usu.FechaCreacion.ToString(),
-                                  NombreCargo = rol.NombreRol
+                                  NombreCargo = det.Descripcion
                               }).ToList();
 
                 return lstUsuario;
