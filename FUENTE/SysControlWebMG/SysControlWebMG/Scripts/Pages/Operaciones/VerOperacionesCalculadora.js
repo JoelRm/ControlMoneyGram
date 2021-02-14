@@ -6,7 +6,6 @@
 
 	function init() {
 		listarOperacionesCalculadora();
-		formatDatatable();
 		document.getElementById("btnRefrescar").addEventListener("click", listarOperacionesCalculadora);
 	}
 
@@ -30,6 +29,9 @@
 						rows += '</tr>';
 					}
 					document.getElementById("bodyTbListaOperaCalc").innerHTML = rows;
+					$('#tbListaOperacionesCalculadora').DataTable({
+						"order": [[3, "asc"]]
+					});
 				}
 				else {
 					toastr.error('Aún no tien registros para mostrar');
@@ -43,12 +45,6 @@
 		});
 		ocultarLoader();
 	}
-
-	function formatDatatable() {
-		$('#tbListaOperacionesCalculadora').DataTable({
-			"order": [[3, "asc"]]
-		});
-    }
 
 	//funcion de inicio
 	init();

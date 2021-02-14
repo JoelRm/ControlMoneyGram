@@ -10,7 +10,6 @@
 
 	function init() {
 		listarOperaciones();
-		formatDatatable();
 		document.getElementById("btnRefrescarO").addEventListener("click", listarOperaciones);
 	}
 
@@ -40,6 +39,9 @@
 						rows += '</tr>';
 					}
 					document.getElementById("bodyTbListaOpera").innerHTML = rows;
+					$('#tbListaOperaciones').DataTable({
+						"order": [[9, "asc"]]
+					});
 				}
 				else {
 					toastr.error('Aún no tien registros para mostrar');
@@ -52,12 +54,6 @@
 			}
 		});
 		ocultarLoader();
-	}
-
-	function formatDatatable() {
-		$('#tbListaOperaciones').DataTable({
-			"order": [[9, "asc"]]
-		});
 	}
 
 

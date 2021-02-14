@@ -28,6 +28,18 @@ namespace SysControlWebMG.Controllers
 
             return View();
         }
+        public ActionResult ReporteOperacionesCalculadora()
+        {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+
+            var listaUsuarios = objUsuarios.ListarUsuarios();
+            listaUsuarios.Insert(0, new UsuariosCLS { Usser = "TODOS", NombreUsuario = "TODOS" });
+            ViewBag.listaUsuarios = listaUsuarios;
+            return View();
+        }
+        
 
         [HttpPost]
         public JsonResult GenerarReporte(FiltrosReporte objFiltro)
@@ -35,6 +47,15 @@ namespace SysControlWebMG.Controllers
             var lstReporte = objReporte.GenerarReporte(objFiltro);
             return Json(new { lstReporte, JsonRequestBehavior.AllowGet });
         }
+
+
+        [HttpPost]
+        public JsonResult GenerarReporteCalculadora(FiltrosReporte objFiltro)
+        {
+            var lstReporte = objReporte.GenerarReporteCalculadora(objFiltro);
+            return Json(new { lstReporte, JsonRequestBehavior.AllowGet });
+        }
+
 
         [HttpPost]
         public FileStreamResult Export(FiltrosReporte objFiltro)

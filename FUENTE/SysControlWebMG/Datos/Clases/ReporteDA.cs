@@ -28,6 +28,20 @@ namespace Datos.Clases
             }
             return lstReporte;
         }
+        public List<CalculadoraCLS> GenerarReporteCalculadora(FiltrosReporte objFiltros)
+        {
+            List<CalculadoraCLS> lstReporte = new List<CalculadoraCLS>();
+            using (var db = new BDControlMGEntities())
+            {
+                lstReporte = db.Database.SqlQuery<CalculadoraCLS>(
+                "exec Usp_ReporteOperacionCalculadora @FechaInicio, @FechaFin, @Eliminado, @Usuario",
+                new SqlParameter("@FechaInicio", objFiltros.Finicio),
+                new SqlParameter("@FechaFin", objFiltros.Ffin),
+                new SqlParameter("@Eliminado", objFiltros.Estado),
+                new SqlParameter("@Usuario", objFiltros.Usuario)).ToList();
+            }
+            return lstReporte;
+        }
 
         public List<CalatogoCLS> CargaInicial()
         {
