@@ -28,14 +28,11 @@
 						rows += '<td>' + data.lstOperaciones[i].UsuarioCreacion + '</td>';
 						rows += '</tr>';
 					}
-<<<<<<< HEAD
 					document.getElementById("bodyTbListaOperaCalc").innerHTML = rows;
 					$('#tbListaOperacionesCalculadora').DataTable({
 						"order": [[3, "asc"]]
 					});
-=======
                     document.getElementById("bodyTbListaOperaCalc").innerHTML = rows;
->>>>>>> f75e46177613731bd6500a3a2f369c968c017302
 				}
 				else {
 					toastr.error('Aún no tien registros para mostrar');

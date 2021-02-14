@@ -1,6 +1,18 @@
 ﻿//var app_VerOperaciones = (function (win, doc) {
 //const data = null;
 
+	const data = {
+		urlObtenerListaOperaciones: '/Operacion/ObtenerListaOperaciones',
+		urlCargaInicial: '/Operacion/CargaInicial',
+		valores: {
+			TblTipoOperacion: 1
+		},
+	}
+
+	function init() {
+		listarOperaciones();
+		document.getElementById("btnRefrescarO").addEventListener("click", listarOperaciones);
+	}
 $(document).ready(function () {
     //data = {
     //    urlObtenerListaOperaciones: '/Operacion/ObtenerListaOperaciones',
@@ -13,18 +25,11 @@ $(document).ready(function () {
     document.getElementById("btnRefrescarO").addEventListener("click", listarOperaciones);
 });
 
-<<<<<<< HEAD
-	function init() {
-		listarOperaciones();
-		document.getElementById("btnRefrescarO").addEventListener("click", listarOperaciones);
-	}
-=======
 	//function init() {
 	//	listarOperaciones();
 	//	//formatDatatable();
 	//	//document.getElementById("btnRefrescarO").addEventListener("click", listarOperaciones);
 	//}
->>>>>>> f75e46177613731bd6500a3a2f369c968c017302
 
 	function listarOperaciones() {
 		mostrarLoader();
@@ -57,17 +62,7 @@ $(document).ready(function () {
                         rows += '<td align="center"><span onclick="anularMovimiento(' + data.lstOperaciones[i].IdOperacion + ')" class="fas fa-window-close" style="font-size:20px; cursor: pointer;color: red;" title="Anular"></span></td>';
 						rows += '</tr>';
 					}
-<<<<<<< HEAD
 					document.getElementById("bodyTbListaOpera").innerHTML = rows;
-					$('#tbListaOperaciones').DataTable({
-						"order": [[9, "asc"]]
-					});
-=======
-                    document.getElementById("bodyTbListaOpera").innerHTML = rows;
-                    $('#tbListaOperaciones').dataTable({
-                        "order": [[9, "asc"]]
-                    });
->>>>>>> f75e46177613731bd6500a3a2f369c968c017302
 				}
 				else {
 					toastr.error('Aún no tien registros para mostrar');
@@ -82,17 +77,13 @@ $(document).ready(function () {
 		ocultarLoader();
 	}
 
-<<<<<<< HEAD
+	function formatDatatable() {
+		$('#tbListaOperaciones').DataTable({
+			"order": [[9, "asc"]]
+		});
+	}
 
-=======
-	//function formatDatatable() {
- //       $('#tbListaOperaciones').dataTable({
- //           "order": [[9, "asc"]]
- //       });
- //       $('#tbListaOperaciones').DataTable();
- //   }
-    
->>>>>>> f75e46177613731bd6500a3a2f369c968c017302
+
 	//funcion de inicio
 	//init();
 

@@ -158,6 +158,8 @@ C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlW
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\bin\Datos.dll
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\bin\Entidades.pdb
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\bin\Negocio.pdb
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\bin\EntityFramework.xml
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\bin\EntityFramework.SqlServer.xml
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\bin\System.Web.Helpers.xml
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\bin\System.Web.Mvc.xml
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\SysControlWebMG\bin\System.Web.Optimization.xml
