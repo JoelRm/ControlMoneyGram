@@ -275,6 +275,7 @@
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
     <Content Include="Scripts\Pages\Operaciones\VerOperaciones.js" />
+    <Content Include="Scripts\Pages\Operaciones\VerOperacionesCalculadora.js" />
     <Content Include="Scripts\Pages\Operaciones\_EditarConfiguracionTipoCambio.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
@@ -303,6 +304,7 @@
     <Content Include="Views\Operacion\_ModalGuardarOperacion.cshtml" />
     <Content Include="Views\Reporte\Index.cshtml" />
     <Content Include="Views\Reporte\_Filtros.cshtml" />
+    <Content Include="Views\Operacion\VerOperacionesCalculadora.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

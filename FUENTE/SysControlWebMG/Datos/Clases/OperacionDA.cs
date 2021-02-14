@@ -189,19 +189,41 @@ namespace Datos.Clases
             return CodResult;
         }
 
-        public List<OperacionCLS> ObtenerListaOperaciones(OperacionCLS ope)
+        public List<OperacionCLS> ObtenerListaOperaciones()
         {
             List<OperacionCLS> lstListaOperaciones = new List<OperacionCLS>();
-            if (ope.UsuarioCreacion == null)
-                ope.UsuarioCreacion = "";
             using (var db = new BDControlMGEntities())
             {
-                lstListaOperaciones = db.Database.SqlQuery<OperacionCLS>("exec Usp_obtenerListaOperaciones @Usuario,@TipoOperacion",
-                    new SqlParameter("@Usuario", ope.UsuarioCreacion),
-                    new SqlParameter("@TipoOperacion", ope.TipoOperacion)
-                    ).ToList();
+                lstListaOperaciones = db.Database.SqlQuery<OperacionCLS>("Usp_obtenerListaOperaciones").ToList();
             }
             return lstListaOperaciones;
         }
+
+        public List<CalculadoraCLS> ObtenerListaOperacionesCalculadora()
+        {
+            List<CalculadoraCLS> lstListaOperaciones = new List<CalculadoraCLS>();
+            using (var db = new BDControlMGEntities())
+            {
+                lstListaOperaciones = db.Database.SqlQuery<CalculadoraCLS>("Usp_obtenerListaOperacionesCalculadora").ToList();
+            }
+            return lstListaOperaciones;
+        }
+
+        public int AnularOperacion(int idMovimiento, string Usuario)
+        {
+            int rpta = 0;
+            OperacionCLS lstOpe = null;
+
+            using (var db = new BDControlMGEntities())
+            {
+                lstOpe = db.Database.SqlQuery<OperacionCLS>(
+                "Usp_AnularOperacion @IdOperacion,@Usuario",
+                new SqlParameter("IdOperacion", idMovimiento),
+                new SqlParameter("@Usuario", Usuario)).SingleOrDefault();
+                rpta = 1;
+            }
+            return rpta;
+        }
+
     }
 }

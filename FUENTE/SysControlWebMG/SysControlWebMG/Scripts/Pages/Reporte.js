@@ -36,7 +36,6 @@
                 }
                 document.getElementById("bodytbReporte").innerHTML = rows;
                 $('#tbReporte').DataTable();
-                //$("#modalFiltrosReporte .CerrarPopUpFiltrosReporte").click()
                 $('#modalFiltrosReporte').modal('hide');
                 document.getElementById("Botones_Exportar").style.display = "block";
             }
