@@ -208,5 +208,22 @@ namespace Datos.Clases
             }
             return lstListaOperaciones;
         }
+
+        public int AnularOperacion(int idMovimiento, string Usuario)
+        {
+            int rpta = 0;
+            OperacionCLS lstOpe = null;
+
+            using (var db = new BDControlMGEntities())
+            {
+                lstOpe = db.Database.SqlQuery<OperacionCLS>(
+                "Usp_AnularOperacion @IdOperacion,@Usuario",
+                new SqlParameter("IdOperacion", idMovimiento),
+                new SqlParameter("@Usuario", Usuario)).SingleOrDefault();
+                rpta = 1;
+            }
+            return rpta;
+        }
+
     }
 }

@@ -82,5 +82,13 @@ namespace SysControlWebMG.Controllers
             var lstOperaciones = objOperacion.ObtenerListaOperacionesCalculadora();
             return Json(new { lstOperaciones, JsonRequestBehavior.AllowGet });
         }
+
+        [HttpPost]
+        public JsonResult AnularOperacion(int idMovimiento)
+        {
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            var Code = objOperacion.AnularOperacion(idMovimiento, objUsuarioCLS.Usser);
+            return Json(new { Code, JsonRequestBehavior.AllowGet });
+        }
     }
 }

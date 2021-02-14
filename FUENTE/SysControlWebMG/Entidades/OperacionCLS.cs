@@ -8,6 +8,7 @@ namespace Entidades
 {
     public class OperacionCLS
     {
+        public int IdOperacion { get; set; }
         public int TipoOperacion { get; set; }
         public decimal MontoIngreso { get; set; }
 		public decimal MontoSalida { get; set; }
