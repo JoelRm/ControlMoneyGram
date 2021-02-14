@@ -30,6 +30,15 @@ namespace SysControlWebMG.Controllers
             return View();
         }
 
+        public ActionResult VerOperacionesCalculadora()
+        {
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+            return View();
+        }
+
+        
+
         [HttpPost]
         public JsonResult CargaInicial()
         {
@@ -61,9 +70,16 @@ namespace SysControlWebMG.Controllers
         }
 
         [HttpPost]
-        public JsonResult ObtenerListaOperaciones(OperacionCLS ope)
+        public JsonResult ObtenerListaOperaciones()
         {
-            var lstOperaciones = objOperacion.ObtenerListaOperaciones(ope);
+            var lstOperaciones = objOperacion.ObtenerListaOperaciones();
+            return Json(new { lstOperaciones, JsonRequestBehavior.AllowGet });
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerListaOperacionesCalculadora()
+        {
+            var lstOperaciones = objOperacion.ObtenerListaOperacionesCalculadora();
             return Json(new { lstOperaciones, JsonRequestBehavior.AllowGet });
         }
     }

@@ -1,0 +1,38 @@
+﻿
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Operaciones Calculadora";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Lista de Operaciones Calculadora</h1>
+    </div>
+    <div class="panel-body">
+        <div class="form-row">
+            <div class="form-group col-md-10"></div>
+            <div class="form-group col-md-2">
+                <button class="btn btn-danger" id="btnRefrescar">Refrescar</button>
+            </div>
+        </div>
+        <table id="tbListaOperacionesCalculadora" class="table table-striped table-bordered" style="width:100%;margin-top: 25px;">
+            <thead>
+                <tr>
+                    <th style="width: 10px;">Operación</th>
+                    <th style="width: 10px;">Resultado</th>
+                    <th style="width: 10px;">Comentario</th>
+                    <th style="width: 10px;">Hora</th>
+                    <th style="width: 10px;">Usuario</th>
+                </tr>
+            </thead>
+            <tbody id="bodyTbListaOperaCalc">
+                @*<tr>
+                    <td colspan="9">Seleccione filtros para realizar una búsqueda</td>
+                </tr>*@
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/Pages/Operaciones/VerOperacionesCalculadora.js"></script>

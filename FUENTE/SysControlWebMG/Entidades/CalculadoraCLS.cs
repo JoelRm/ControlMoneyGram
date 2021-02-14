@@ -16,5 +16,7 @@ namespace Entidades
         public DateTime FechaCreacion { get; set; }
         public string UsuarioModificacion { get; set; }
         public DateTime FechaModificacion { get; set; }
+        public string HoraCreacion { get; set; }
+
     }
 }

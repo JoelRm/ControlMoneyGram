@@ -10,17 +10,16 @@
 
 	function init() {
 		listarOperaciones();
+		formatDatatable();
+		document.getElementById("btnRefrescarO").addEventListener("click", listarOperaciones);
 	}
 
 	function listarOperaciones() {
 		mostrarLoader();
 		var rows = "";
-		var ope = new Object();
-
 		$.ajax({
 			type: "POST",
 			url: data.urlObtenerListaOperaciones,
-			data: '{ope: ' + JSON.stringify(ope) + '}',
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: function (data) {
@@ -41,9 +40,6 @@
 						rows += '</tr>';
 					}
 					document.getElementById("bodyTbListaOpera").innerHTML = rows;
-					$('#tbListaOperaciones').DataTable({
-						"order": [[9, "asc"]]
-					});
 				}
 				else {
 					toastr.error('Aún no tien registros para mostrar');
@@ -58,6 +54,11 @@
 		ocultarLoader();
 	}
 
+	function formatDatatable() {
+		$('#tbListaOperaciones').DataTable({
+			"order": [[9, "asc"]]
+		});
+	}
 
 
 	//funcion de inicio

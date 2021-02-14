@@ -29,11 +29,14 @@ namespace Negocio
         {
             return obj.GuardarOperacionCalculadora(ope);
         }
-        public List<OperacionCLS> ObtenerListaOperaciones(OperacionCLS ope)
+        public List<OperacionCLS> ObtenerListaOperaciones()
         {
-            return obj.ObtenerListaOperaciones(ope);
+            return obj.ObtenerListaOperaciones();
         }
-
+        public List<CalculadoraCLS> ObtenerListaOperacionesCalculadora()
+        {
+            return obj.ObtenerListaOperacionesCalculadora();
+        }
 
     }
 }
