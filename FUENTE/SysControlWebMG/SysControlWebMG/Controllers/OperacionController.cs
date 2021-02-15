@@ -84,10 +84,10 @@ namespace SysControlWebMG.Controllers
         }
 
         [HttpPost]
-        public JsonResult AnularOperacion(int idMovimiento)
+        public JsonResult AnularOperacion(int idOperacion)
         {
             objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
-            var Code = objOperacion.AnularOperacion(idMovimiento, objUsuarioCLS.Usser);
+            var Code = objOperacion.AnularOperacion(idOperacion, objUsuarioCLS.Usser);
             return Json(new { Code, JsonRequestBehavior.AllowGet });
         }
     }

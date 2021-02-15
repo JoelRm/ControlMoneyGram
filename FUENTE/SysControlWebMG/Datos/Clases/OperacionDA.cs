@@ -209,7 +209,7 @@ namespace Datos.Clases
             return lstListaOperaciones;
         }
 
-        public int AnularOperacion(int idMovimiento, string Usuario)
+        public int AnularOperacion(int idOperacion, string Usuario)
         {
             int rpta = 0;
             OperacionCLS lstOpe = null;
@@ -218,7 +218,7 @@ namespace Datos.Clases
             {
                 lstOpe = db.Database.SqlQuery<OperacionCLS>(
                 "Usp_AnularOperacion @IdOperacion,@Usuario",
-                new SqlParameter("IdOperacion", idMovimiento),
+                new SqlParameter("IdOperacion", idOperacion),
                 new SqlParameter("@Usuario", Usuario)).SingleOrDefault();
                 rpta = 1;
             }

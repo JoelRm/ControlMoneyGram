@@ -37,9 +37,9 @@ namespace Negocio
         {
             return obj.ObtenerListaOperacionesCalculadora();
         }
-        public int AnularOperacion(int idMovimiento, string Usuario)
+        public int AnularOperacion(int idOperacion, string Usuario)
         {
-            return obj.AnularOperacion(idMovimiento,Usuario);
+            return obj.AnularOperacion(idOperacion, Usuario);
         }
 
     }
