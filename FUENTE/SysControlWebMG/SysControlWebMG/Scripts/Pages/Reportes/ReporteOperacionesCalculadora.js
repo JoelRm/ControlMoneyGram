@@ -59,7 +59,7 @@
 
         $.ajax({
             type: "POST",
-            url: '/Reporte/GenerarReporteCalculadora',
+            url: data.urlGenerarReporteCalculadora,
             data: '{objFiltro: ' + JSON.stringify(objFiltro) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
@@ -150,24 +150,24 @@
         let tbody = '';
         const thead = `<thead>
                                     <th data-width="100px">Operación</th>
-                                    <th data-width="100px">Resultado</th>
+                                    <th data-width="10px">Resultado</th>
                                     <th data-width="100px">Comentario</th>
-                                    <th data-width="100px">Hora</th>
-                                    <th data-width="100px">Usuario</th>
+                                    <th data-width="10px">Hora</th>
+                                    <th data-width="40px">Usuario</th>
                                 </tr>
                             </thead>`;
         if (data !== null) {
             tbody = data.map(x => {
                 return `<tr>
-                                <td>${x.Operacion}</td>
-                                <td>${x.Resultado}</td>
-                                <td>${x.Comentario}</td>
-                                <td>${x.HoraCreacion}</td>
-                                <td>${x.UsuarioCreacion}</td>
+                                <td data-width="100px">${x.Operacion}</td>
+                                <td data-width="10px">${x.Resultado}</td>
+                                <td data-width="100px">${x.Comentario}</td>
+                                <td data-width="10px">${x.HoraCreacion}</td>
+                                <td data-width="40px">${x.UsuarioCreacion}</td>
                             </tr>`;
             }).join('');
         }
-		const table = `<table id="tbListaOperacionesCalculadora" class ="table table-bordered table-hover" style="width:1750px">${thead}<tbody id="bodyTbListaOperaCalc">${tbody}</tbody></table>`;
+		const table = `<table id="tbListaOperacionesCalculadora" class ="table table-bordered table-hover" style="width:1350px">${thead}<tbody id="bodyTbListaOperaCalc">${tbody}</tbody></table>`;
 		document.getElementById("div_tbListaOperacionesCalculadora").innerHTML = table;
 		fotmatTable();
     }

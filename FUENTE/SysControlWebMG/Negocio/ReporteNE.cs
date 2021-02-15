@@ -7,7 +7,7 @@ namespace Negocio
     public class ReporteNE
     {
         ReporteDA obj = new ReporteDA();
-        public List<ReporteCLS> GenerarReporte(FiltrosReporte objFiltros)
+        public List<OperacionCLS> GenerarReporte(FiltrosReporte objFiltros)
         {
             return obj.GenerarReporte(objFiltros);
         }

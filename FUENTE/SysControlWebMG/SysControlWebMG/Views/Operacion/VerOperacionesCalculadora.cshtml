@@ -14,25 +14,32 @@
         <div class="form-row">
             <div class="form-group col-md-10"></div>
             <div class="form-group col-md-2">
-                <button class="btn btn-danger" id="btnRefrescar">Refrescar</button>
+                <button class="btn btn-danger" id="btnActualizar">Actualizar</button>
             </div>
         </div>
-        <table id="tbListaOperacionesCalculadora" class="table table-striped table-bordered" style="width:100%;margin-top: 25px;">
-            <thead>
-                <tr>
-                    <th style="width: 10px;">Operación</th>
-                    <th style="width: 10px;">Resultado</th>
-                    <th style="width: 10px;">Comentario</th>
-                    <th style="width: 10px;">Hora</th>
-                    <th style="width: 10px;">Usuario</th>
-                </tr>
-            </thead>
-            <tbody id="bodyTbListaOperaCalc">
-                @*<tr>
-                    <td colspan="9">Seleccione filtros para realizar una búsqueda</td>
-                </tr>*@
-            </tbody>
-        </table>
+        <div class="form-horizontal row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div id="div_tbListaOperacionesCalculadora" style="height: 100%;">
+                            <table id="tbListaOperacionesCalculadora" class="table table-bordered table-hover" style="width:1350px">
+                                <thead>
+                                    <tr>
+                                        <th>Operación</th>
+                                        <th>Resultado</th>
+                                        <th>Comentario</th>
+                                        <th>Hora</th>
+                                        <th>Usuario</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyTbListaOperaCalc"></tbody>
+                            </table>
+                        </div>
+                        <div id="div_tbListaOperacionesCalculadora_pagination" style="padding-top: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="~/Scripts/Pages/Operaciones/VerOperacionesCalculadora.js"></script>

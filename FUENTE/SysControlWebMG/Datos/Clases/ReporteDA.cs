@@ -11,14 +11,12 @@ namespace Datos.Clases
 {
     public class ReporteDA
     {
-        public List<ReporteCLS> GenerarReporte(FiltrosReporte objFiltros)
+        public List<OperacionCLS> GenerarReporte(FiltrosReporte objFiltros)
         {
-            List<ReporteCLS> lstReporte = new List<ReporteCLS>();
+            List<OperacionCLS> lstReporte = new List<OperacionCLS>();
             using (var db = new BDControlMGEntities())
             {
-                //var Reporte = db.Usp_ReporteOperacion(objFiltros.Finicio, objFiltros.Ffin, objFiltros.TipoOperacion, objFiltros.Estado, objFiltros.Usuario).ToList().SingleOrDefault();
-
-                lstReporte = db.Database.SqlQuery<ReporteCLS>(
+                lstReporte = db.Database.SqlQuery<OperacionCLS>(
                 "exec Usp_ReporteOperacion @FechaIni, @FechaFin, @TipoOperacion, @Eliminado, @Usuario",
                 new SqlParameter("@FechaIni", objFiltros.Finicio),
                 new SqlParameter("@FechaFin", objFiltros.Ffin),

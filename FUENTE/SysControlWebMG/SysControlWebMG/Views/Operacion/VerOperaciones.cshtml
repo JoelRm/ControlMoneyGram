@@ -1,6 +1,5 @@
 ﻿<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
-@*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />*@
 
 @{
     ViewBag.Title = "Operaciones";
@@ -17,29 +16,36 @@
                 <button class="btn btn-danger" id="btnRefrescarO">Refrescar</button>
             </div>
         </div>
-        <table id="tbListaOperaciones" class="table table-striped table-bordered" style="width:100%;margin-top: 25px;">
-            <thead>
-                <tr>
-                    <th style="width: 10px;">Operación</th>
-                    <th style="width: 10px;">Movimiento</th>
-                    <th>Salida</th>
-                    <th>Ingreso</th>
-                    <th style="width: 30px;">Tipo Cambio</th>
-                    <th>Caja (S/.)</th>
-                    <th>Caja ($)</th>
-                    <th>Caja (€)</th>
-                    <th>Usuario</th>
-                    <th>Hora</th>
-                    <th>Estado</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody id="bodyTbListaOpera">
-                @*<tr>
-                    <td colspan="9">Seleccione filtros para realizar una búsqueda</td>
-                </tr>*@
-            </tbody>
-        </table>
+        <div class="form-horizontal row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div id="div_tbListaOperaciones" style="height: 100%;">
+                            <table id="tbListaOperaciones" class="table table-bordered table-hover" style="width:1350px">
+                                <thead>
+                                    <tr>
+                                        <th>Operación</th>
+                                        <th>Movimiento</th>
+                                        <th>Salida</th>
+                                        <th>Ingreso</th>
+                                        <th>Tipo Cambio</th>
+                                        <th>Caja (S/.)</th>
+                                        <th>Caja ($)</th>
+                                        <th>Caja (€)</th>
+                                        <th>Usuario</th>
+                                        <th>Hora</th>
+                                        <th>Estado</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodytbListaOperaciones"></tbody>
+                            </table>
+                        </div>
+                        <div id="div_tbListaOperaciones_pagination" style="padding-top: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="~/Scripts/Pages/Operaciones/VerOperaciones.js"></script>

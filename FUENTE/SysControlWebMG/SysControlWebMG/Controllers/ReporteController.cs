@@ -28,6 +28,24 @@ namespace SysControlWebMG.Controllers
 
             return View();
         }
+
+        public ActionResult ReporteOperaciones()
+        {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+
+            var listaTipomov = objReporte.CargaInicial();
+            listaTipomov.Insert(0, new CalatogoCLS { NombreItem = "TODOS", ValorItem = "0" });
+            ViewBag.listaTipomov = listaTipomov;
+
+            var listaUsuarios = objUsuarios.ListarUsuarios();
+            listaUsuarios.Insert(0, new UsuariosCLS { Usser = "TODOS", NombreUsuario = "TODOS" });
+            ViewBag.listaUsuarios = listaUsuarios;
+
+            return View();
+        }
+
         public ActionResult ReporteOperacionesCalculadora()
         {
             UsuariosCLS objUsuarioCLS = new UsuariosCLS();

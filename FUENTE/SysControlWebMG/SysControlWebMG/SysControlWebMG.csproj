@@ -279,7 +279,7 @@
     <Content Include="Scripts\Pages\Operaciones\_EditarConfiguracionTipoCambio.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
-    <Content Include="Scripts\Pages\Reporte.js" />
+    <Content Include="Scripts\Pages\Reportes\ReporteOperaciones.js" />
     <Content Include="Scripts\Pages\Reportes\ReporteOperacionesCalculadora.js" />
     <Content Include="Scripts\Pages\Usuarios.js" />
     <Content Include="Scripts\sb-admin-2.min.js" />
@@ -303,10 +303,9 @@
     <Content Include="Views\Usuarios\_ModalEditarUsuario.cshtml" />
     <Content Include="Views\Operacion\_EditarConfiguracionTipoCambio.cshtml" />
     <Content Include="Views\Operacion\_ModalGuardarOperacion.cshtml" />
-    <Content Include="Views\Reporte\Index.cshtml" />
-    <Content Include="Views\Reporte\_Filtros.cshtml" />
     <Content Include="Views\Operacion\VerOperacionesCalculadora.cshtml" />
     <Content Include="Views\Reporte\ReporteOperacionesCalculadora.cshtml" />
+    <Content Include="Views\Reporte\ReporteOperaciones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
