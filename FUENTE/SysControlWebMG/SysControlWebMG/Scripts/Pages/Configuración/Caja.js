@@ -15,6 +15,7 @@
 	}
 
 	function init() {
+		obtenerConfCaja();
 		document.getElementById("txtCajaActualSoles").addEventListener("blur", FormatCajaActualSoles);
 		document.getElementById("txtCajaActualDolares").addEventListener("blur", FormatCajaActualDolares);
 		document.getElementById("txtCajaActualEuros").addEventListener("blur", FormatCajaActualEuros);
@@ -23,7 +24,7 @@
 		document.getElementById("txtTCCompraEuro").addEventListener("blur", FormatTCCompraEuro);
 		document.getElementById("txtTCVentaEuro").addEventListener("blur", FormatTCVentaEuro);
 		document.getElementById("btnGuardarConf").addEventListener("click", guardarConfiguracion);
-		document.getElementById("btnActualizarConf").addEventListener("click", obtenerConfCaja);
+		document.getElementById("btnActualizarConf").addEventListener("click", btnActualizarConf_Click);
 		document.getElementById("btnLimpiarConf").addEventListener("click", limpiarFormulario);
 	}
 
@@ -77,6 +78,11 @@
 		return true;
 	};
 
+	function btnActualizarConf_Click() {
+		obtenerConfCaja();
+		swal({ title: "Valores Obtenidos!", text: "Se obtuvo los ultimos valores registrados en caja y tipo de cambio.", type: "success", confirmButtonText: 'Aceptar' });
+    }
+
 	function obtenerConfCaja() {
 		$.ajax({
 			type: "POST",
@@ -98,48 +104,51 @@
 		});
 	}
 
+
+
+
+
+
+
 	function guardarConfiguracion() {
 		if (validarDatosConfiguracion()) {
-			var confCaja = {};
-			confCaja.CajaActualSoles = parseFloat($("#txtCajaActualSoles").val()).toFixed(2);
-			confCaja.CajaActualDolares = parseFloat($("#txtCajaActualDolares").val()).toFixed(2);
-			confCaja.CajaActualEuros = parseFloat($("#txtCajaActualEuros").val()).toFixed(2);
-			confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar").val()).toFixed(2);
-			confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar").val()).toFixed(2);
-			confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro").val()).toFixed(2);
-			confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro").val()).toFixed(2);
-			confCaja.TipoOpeIU = "Insert";
-			$.ajax({
-				type: "POST",
-				url: data.urlGuardarConf,
-				data: '{confCaja: ' + JSON.stringify(confCaja) + '}',
-				dataType: "json",
-				contentType: "application/json; charset=utf-8",
-				success: function (response) {
-					debugger;
-					//if (response.Code == 2) {
-					//	toastr.error('Ya existen registros con un nombre similar, intente otro', 'Error');
-					//	ocultarLoader();
-					//}
-					//else {
-					//	if (response.Code == 1) {
-					//		$('#modalNuevoUsuario').modal('hide');
-					//		limpiarValoresUsuarios();
-					//		cargarTablaUsuarios();
-					//		toastr.success('Se agregaron los datos correctamente', 'Éxito');
-					//		ocultarLoader();
-					//	}
-					//	else {
-					//		toastr.error('Error al agregar los datos', 'Error');
-					//		ocultarLoader();
-					//	}
-					//}
-				},
-				error: function () {
-					toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
-					ocultarLoader;
+			swal({
+				title: "¿Desea registrar la configuración de caja?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonClass: "btn-danger",
+				confirmButtonText: "Registrar",
+				cancelButtonText: "Cancelar"
+			},
+				function (isConfirm) {
+					if (isConfirm) {
+						var confCaja = {};
+						confCaja.CajaActualSoles = parseFloat($("#txtCajaActualSoles").val()).toFixed(2);
+						confCaja.CajaActualDolares = parseFloat($("#txtCajaActualDolares").val()).toFixed(2);
+						confCaja.CajaActualEuros = parseFloat($("#txtCajaActualEuros").val()).toFixed(2);
+						confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar").val()).toFixed(2);
+						confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar").val()).toFixed(2);
+						confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro").val()).toFixed(2);
+						confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro").val()).toFixed(2);
+						confCaja.TipoOpeIU = "Insert";
+						$.ajax({
+							type: "POST",
+							url: data.urlGuardarConf,
+							data: '{confCaja: ' + JSON.stringify(confCaja) + '}',
+							dataType: "json",
+							contentType: "application/json; charset=utf-8",
+							success: function (response) {
+								obtenerConfCaja();
+								toastr.success('Datos registrados correctamente!', 'Éxito');
+							},
+							error: function () {
+								toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
+								ocultarLoader;
+							}
+						});
+					}
 				}
-			});
+			);
         }
     }
 

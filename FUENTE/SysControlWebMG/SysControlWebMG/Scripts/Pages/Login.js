@@ -13,7 +13,7 @@ $(document).ready(function () {
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
-                    //if (response.oUsuario.IdUsuario > 0) {
+                    if (response.oUsuario.IdUsuario > 0) {
                         swal({
                             title: "Bienvenido al sistema!",
                             text: "No olvides configurar tu caja y tipo de cambio!",
@@ -22,9 +22,13 @@ $(document).ready(function () {
                             var url = "/Home/Index/";
                             location.href = url;
                         });
-                    //} else {
-                    //    alert('Error');
-                    //}
+                    } else {
+                        swal({
+                            title: "Usuario Incorrecto!",
+                            text: "Porfavor, ingrese un usuario y contraseña correctos!",
+                            type: "error"
+                        });
+                    }
                 },
                 error: function () {
                     toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
