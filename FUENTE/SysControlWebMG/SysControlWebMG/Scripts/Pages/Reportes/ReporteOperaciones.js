@@ -172,10 +172,10 @@
         htmls += "";
         htmls += "<table border='2px'>"
         htmls += "<thead>";
-        htmls += "<tr bgcolor='#87AFC6'><th>Tipo Operacion</th><th>Monto Salida</th><th>Tipo Cambio</th><th>Caja Soles</th><th>Caja Dolares</th><th>Caja Euros</th><th>Ususario Creacion</th>";
-        htmls += "<th>Fecha Creacion</th><th>Estado</th></tr ></thead >";
+        //htmls += "<tr bgcolor='#87AFC6'><th>Tipo Operacion</th><th>Monto Salida</th><th>Tipo Cambio</th><th>Caja Soles</th><th>Caja Dolares</th><th>Caja Euros</th><th>Ususario Creacion</th>";//JRM
+        //htmls += "<th>Fecha Creacion</th><th>Estado</th></tr ></thead >";
+        htmls += "<thead><th width='1%'>Operación</th><th width='1%'>Movimiento</th><th width='1%'>Salida</th><th width='1%'>Ingreso</th><th width='1%'>Tipo Cambio</th><th width='2%'>Caja (S/.)</th><th width='2%'>Caja ($)</th><th width='2%'>Caja (€)</th><th width='2%'>Usuario</th><th width='1%'>Hora</th><th width='1%'>Estado</th></tr></thead>";
         htmls += "<tbody>";
-
         $.ajax({
             type: "POST",
             url: '/Reporte/GenerarReporte',
@@ -186,20 +186,32 @@
                 if (data.lstReporte.length > 0) {
                     for (var i = 0; i < data.lstReporte.length; i++) {
                         htmls += '<tr>';
-                        htmls += '<td>' + data.lstReporte[i].Desc_Operacion + '</td>';
-                        htmls += '<td>' + data.lstReporte[i].Monto_Salida + '</td>';
-                        htmls += '<td>' + data.lstReporte[i].Tipo_Cambio + '</td>';
-                        htmls += '<td>' + data.lstReporte[i].Caja_Sol + '</td>';
-                        htmls += '<td>' + data.lstReporte[i].Caja_Dolar + '</td>';
-                        htmls += '<td>' + data.lstReporte[i].Caja_Euro + '</td>';
-                        htmls += '<td>' + data.lstReporte[i].Usuario_Creacion + '</td>';
-                        htmls += '<td>' + data.lstReporte[i].Fecha_Javascript + '</td>';
-                        if (data.lstReporte[i].Estado) {
-                            htmls += '<td><span class="label label-sm label-danger"> Anulado</span></td>';
-                        }
-                        else {
-                            htmls += '<td><span class="label label-sm label-success" > Activo</span></td>';
-                        }
+                        htmls += '<td width="1%">' + data.lstReporte[i].NombreOperacion + '</td>';
+                        htmls += '<td width="1%">' + data.lstReporte[i].DescripcionOperacion + '</td>';
+                        htmls += '<td width="1%">' + data.lstReporte[i].MontoSalida.toFixed(2) + '</td>';
+                        htmls += '<td width="1%">' + data.lstReporte[i].MontoIngreso.toFixed(2) + '</td>';
+                        htmls += '<td width="1%">' + data.lstReporte[i].TipoCambio.toFixed(2) + '</td>';
+                        htmls += '<td width="2%">' + data.lstReporte[i].CajaSol.toFixed(2) + '</td>';
+                        htmls += '<td width="2%">' + data.lstReporte[i].CajaDolar.toFixed(2) + '</td>';
+                        htmls += '<td width="2%">' + data.lstReporte[i].CajaEuro.toFixed(2) + '</td>';
+                        htmls += '<td width="2%">' + data.lstReporte[i].UsuarioCreacion + '</td>';
+                        htmls += '<td width="1%">' + data.lstReporte[i].HoraCreacion + '</td>';
+                        htmls += '<td width="1%">' + data.lstReporte[i].DescripcionEstado + '</td>';
+								
+                        //htmls += '<td>' + data.lstReporte[i].Desc_Operacion + '</td>';
+                        //htmls += '<td>' + data.lstReporte[i].Monto_Salida + '</td>';
+                        //htmls += '<td>' + data.lstReporte[i].Tipo_Cambio + '</td>';
+                        //htmls += '<td>' + data.lstReporte[i].Caja_Sol + '</td>';
+                        //htmls += '<td>' + data.lstReporte[i].Caja_Dolar + '</td>';
+                        //htmls += '<td>' + data.lstReporte[i].Caja_Euro + '</td>';
+                        //htmls += '<td>' + data.lstReporte[i].Usuario_Creacion + '</td>';
+                        //htmls += '<td>' + data.lstReporte[i].Fecha_Javascript + '</td>';
+                        //if (data.lstReporte[i].Estado) {
+                        //    htmls += '<td><span class="label label-sm label-danger"> Anulado</span></td>';
+                        //}
+                        //else {
+                        //    htmls += '<td><span class="label label-sm label-success" > Activo</span></td>';
+                        //}
                         htmls += '</tr>';
                     }
                     htmls += "</tbody>";
