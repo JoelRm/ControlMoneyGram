@@ -28,5 +28,9 @@ namespace Datos.Modelos
         public Nullable<decimal> VentaEuros { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public Nullable<decimal> IniCajaSol { get; set; }
+        public Nullable<decimal> IniCajaDolar { get; set; }
+        public Nullable<decimal> IniCajaEuro { get; set; }
+        public Nullable<bool> Eliminado { get; set; }
     }
 }

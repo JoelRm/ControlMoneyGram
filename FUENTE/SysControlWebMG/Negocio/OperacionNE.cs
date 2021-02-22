@@ -16,9 +16,9 @@ namespace Negocio
         {
             return obj.CargaInicial();
         }
-        public ConfiguracionCajaCLS ObtenerConfCaja()
+        public ConfiguracionCajaCLS ObtenerConfCaja(string Usuario)
         {
-            return obj.ObtenerConfCaja();
+            return obj.ObtenerConfCaja(Usuario);
         }
         
         public int GuardarOperacion(OperacionCLS ope)

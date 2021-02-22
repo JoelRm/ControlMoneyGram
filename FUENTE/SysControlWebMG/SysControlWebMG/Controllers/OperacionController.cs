@@ -49,7 +49,8 @@ namespace SysControlWebMG.Controllers
         [HttpPost]
         public JsonResult ObtenerConfCaja()
         {
-            var lstConfCaja = objOperacion.ObtenerConfCaja();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            var lstConfCaja = objOperacion.ObtenerConfCaja(objUsuarioCLS.Usser);
             return Json(new { lstConfCaja, JsonRequestBehavior.AllowGet });
         }
 

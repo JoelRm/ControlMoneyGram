@@ -22,5 +22,6 @@ namespace Datos.Modelos
         public string UsuarioModificacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
         public string Comentario { get; set; }
+        public Nullable<bool> Eliminado { get; set; }
     }
 }

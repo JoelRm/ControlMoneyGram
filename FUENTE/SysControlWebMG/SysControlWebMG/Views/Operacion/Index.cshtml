@@ -84,33 +84,52 @@
                         <select id="cboTipoOperacion" class="form-control"></select>
                     </div>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-2" id="divMonto">
                     <div class="form-group col-md-12">
                         <label>Monto</label>
-                        <input type="text" class="form-control" id="txtMonto">
+                        <input type="text" class="form-control" id="txtMonto" >
                     </div>
                 </div>
-                <div class="form-group col-md-2" id="divPagaCon">
+                <div class="form-group col-md-2" id="divMontoEntrega">
                     <div class="form-group col-md-12">
-                        <label>Paga con (S/.):</label>
-                        <input type="text" class="form-control" id="txtPagaCon">
+                        <label id="lblMontoIngreso">Monto a entregar:</label>
+                        <input type="text" class="form-control" id="txtMontoEntrega" disabled>
                     </div>
                 </div>
-                <div class="form-group col-md-2" id="divOtrasOpe">
+                <div class="form-group col-md-2" id="divMoneda">
                     <div class="form-group col-md-12">
                         <label>Moneda</label>
                         <select id="cboMoneda" class="form-control"></select>
                     </div>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-2" id="divRegistrarOperacion">
                     <div class="form-group col-md-12">
                         <br>
                         <button class="form-control btn btn-danger" id="btnRegistrarOperacion">Registrar Operación</button>
                     </div>
                 </div>
                 <div class="form-group col-md-6"></div>
-                @*<div class="form-group col-md-3">*@
 
+                <div class="form-group col-md-2" id="divPagaCon">
+                    <div class="form-group col-md-12">
+                        <label>Paga con (S/.):</label>
+                        <input type="text" class="form-control" id="txtPagaCon">
+                    </div>
+                </div>
+                <div class="form-group col-md-2" id="divMontoVuelto">
+                    <div class="form-group col-md-12">
+                        <label>Vuelto:</label>
+                        <input type="text" class="form-control" id="txtVuelto" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-8"></div>
+                <div class="form-group col-md-6" id="divComentario">
+                    <div class="form-group col-md-12">
+                        <label>Comentario</label>
+                        <textarea class="form-control" id="txtComentario" rows="2"></textarea>
+                    </div>
+                </div>
 
                 <div class="panel panel-primary col-md-3" id="mydiv">
                     <div class="panel-heading">
@@ -197,24 +216,6 @@
                     </div>
                 </div>
 
-                <div class="form-group col-md-4" id="divMostrarDatos">
-                    <div class="form-group col-md-6">
-                        <label id="lblMontoIngreso">Monto a entregar:</label>
-                        <input type="text" class="form-control" id="txtMontoEntrega" disabled>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label>Vuelto:</label>
-                        <input type="text" class="form-control" id="txtVuelto" disabled>
-                    </div>
-                </div>
-                <div class="form-group col-md-8"></div>
-                <div class="form-group col-md-6">
-                    <div class="form-group col-md-12">
-                        <label>Comentario</label>
-                        <textarea class="form-control" id="txtComentario" rows="2"></textarea>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

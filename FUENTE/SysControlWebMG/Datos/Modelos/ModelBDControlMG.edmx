@@ -14,15 +14,19 @@
           <Property Name="FechaHoraCierre" Type="datetime" />
           <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
           <Property Name="UsuarioModificacion" Type="varchar" MaxLength="50" />
-          <Property Name="CajaSoles" Type="decimal" Precision="9" Scale="2" />
-          <Property Name="CajaDolares" Type="decimal" Precision="9" Scale="2" />
-          <Property Name="CajaEuros" Type="decimal" Precision="9" Scale="2" />
-          <Property Name="CompraDolares" Type="decimal" Precision="9" Scale="2" />
-          <Property Name="VentaDolares" Type="decimal" Precision="9" Scale="2" />
-          <Property Name="CompraEuros" Type="decimal" Precision="9" Scale="2" />
-          <Property Name="VentaEuros" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="CajaSoles" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CajaDolares" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CajaEuros" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CompraDolares" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="VentaDolares" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="CompraEuros" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="VentaEuros" Type="decimal" Precision="18" Scale="3" />
           <Property Name="FechaCreacion" Type="datetime" />
           <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="IniCajaSol" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IniCajaDolar" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IniCajaEuro" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Eliminado" Type="bit" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneral' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -98,6 +102,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="UsuarioModificacion" Type="varchar" MaxLength="30" />
           <Property Name="FechaModificacion" Type="datetime" />
           <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="Eliminado" Type="bit" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -146,12 +151,14 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
         </EntityType>
         <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="Usp_obtenerConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_obtenerConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="Usp_ReporteOperacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaIni" Type="date" Mode="In" />
           <Parameter Name="FechaFin" Type="date" Mode="In" />
           <Parameter Name="TipoOperacion" Type="int" Mode="In" />
-          <Parameter Name="Eliminado" Type="bit" Mode="In" />
+          <Parameter Name="Eliminado" Type="int" Mode="In" />
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="BDControlMGModelStoreContainer">
@@ -207,12 +214,14 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <EntitySet Name="DatoGeneralDetalle" EntityType="BDControlMGModel.DatoGeneralDetalle" />
           <FunctionImport Name="Usp_ListaCatalogo" ReturnType="Collection(BDControlMGModel.Usp_ListaCatalogo_Result)" />
           <FunctionImport Name="Usp_getUltimaConfCaja" ReturnType="Collection(BDControlMGModel.Usp_getUltimaConfCaja_Result)" />
-          <FunctionImport Name="Usp_obtenerConfCaja" ReturnType="Collection(BDControlMGModel.Usp_obtenerConfCaja_Result)" />
+          <FunctionImport Name="Usp_obtenerConfCaja" ReturnType="Collection(BDControlMGModel.Usp_obtenerConfCaja_Result)" >
+          <Parameter Name="Usuario" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="Usp_ReporteOperacion" ReturnType="Collection(BDControlMGModel.Usp_ReporteOperacion_Result)">
             <Parameter Name="FechaIni" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
             <Parameter Name="TipoOperacion" Mode="In" Type="Int32" />
-            <Parameter Name="Eliminado" Mode="In" Type="Boolean" />
+            <Parameter Name="Eliminado" Mode="In" Type="Int32" />
             <Parameter Name="Usuario" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
@@ -227,15 +236,19 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="FechaHoraCierre" Type="DateTime" Precision="3" />
           <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CajaSoles" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="CajaDolares" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="CajaEuros" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="CompraDolares" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="VentaDolares" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="CompraEuros" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="VentaEuros" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="CajaSoles" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CajaDolares" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CajaEuros" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CompraDolares" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="VentaDolares" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="CompraEuros" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="VentaEuros" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="IniCajaSol" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IniCajaDolar" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IniCajaEuro" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Eliminado" Type="Boolean" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -397,6 +410,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="UsuarioModificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
           <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Eliminado" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -407,6 +421,10 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <EntitySetMapping Name="Caja">
             <EntityTypeMapping TypeName="BDControlMGModel.Caja">
               <MappingFragment StoreEntitySet="Caja">
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="IniCajaEuro" ColumnName="IniCajaEuro" />
+                <ScalarProperty Name="IniCajaDolar" ColumnName="IniCajaDolar" />
+                <ScalarProperty Name="IniCajaSol" ColumnName="IniCajaSol" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="VentaEuros" ColumnName="VentaEuros" />
@@ -577,6 +595,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <EntitySetMapping Name="OperacionCalculadora">
             <EntityTypeMapping TypeName="BDControlMGModel.OperacionCalculadora">
               <MappingFragment StoreEntitySet="OperacionCalculadora">
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
                 <ScalarProperty Name="Comentario" ColumnName="Comentario" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />

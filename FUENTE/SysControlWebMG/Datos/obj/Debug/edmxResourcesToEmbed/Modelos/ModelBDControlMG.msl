@@ -4,6 +4,10 @@
     <EntitySetMapping Name="Caja">
       <EntityTypeMapping TypeName="BDControlMGModel.Caja">
         <MappingFragment StoreEntitySet="Caja">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+          <ScalarProperty Name="IniCajaEuro" ColumnName="IniCajaEuro" />
+          <ScalarProperty Name="IniCajaDolar" ColumnName="IniCajaDolar" />
+          <ScalarProperty Name="IniCajaSol" ColumnName="IniCajaSol" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="VentaEuros" ColumnName="VentaEuros" />
@@ -174,6 +178,7 @@
     <EntitySetMapping Name="OperacionCalculadora">
       <EntityTypeMapping TypeName="BDControlMGModel.OperacionCalculadora">
         <MappingFragment StoreEntitySet="OperacionCalculadora">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="Comentario" ColumnName="Comentario" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />

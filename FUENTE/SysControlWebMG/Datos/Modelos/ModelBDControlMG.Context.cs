@@ -46,22 +46,36 @@ namespace Datos.Modelos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_getUltimaConfCaja_Result>("Usp_getUltimaConfCaja");
         }
     
-        public virtual ObjectResult<Usp_obtenerConfCaja_Result> Usp_obtenerConfCaja()
+        public virtual ObjectResult<Usp_obtenerConfCaja_Result> Usp_obtenerConfCaja(string usuario)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_obtenerConfCaja_Result>("Usp_obtenerConfCaja");
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("Usuario", usuario) :
+                new ObjectParameter("Usuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_obtenerConfCaja_Result>("Usp_obtenerConfCaja", usuarioParameter);
         }
     
-        public virtual ObjectResult<Usp_ReporteOperacion_Result> Usp_ReporteOperacion(System.DateTime fechaIni, System.DateTime fechaFin, int tipoOperacion, bool eliminado, string usuario)
+        public virtual ObjectResult<Usp_ReporteOperacion_Result> Usp_ReporteOperacion(Nullable<System.DateTime> fechaIni, Nullable<System.DateTime> fechaFin, Nullable<int> tipoOperacion, Nullable<int> eliminado, string usuario)
         {
-            var fechaIniParameter = new ObjectParameter("FechaIni", fechaIni);
+            var fechaIniParameter = fechaIni.HasValue ?
+                new ObjectParameter("FechaIni", fechaIni) :
+                new ObjectParameter("FechaIni", typeof(System.DateTime));
     
-            var fechaFinParameter = new ObjectParameter("FechaFin", fechaFin);
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(System.DateTime));
     
-            var tipoOperacionParameter = new ObjectParameter("TipoOperacion", tipoOperacion);
+            var tipoOperacionParameter = tipoOperacion.HasValue ?
+                new ObjectParameter("TipoOperacion", tipoOperacion) :
+                new ObjectParameter("TipoOperacion", typeof(int));
     
-            var eliminadoParameter = new ObjectParameter("Eliminado", eliminado);
+            var eliminadoParameter = eliminado.HasValue ?
+                new ObjectParameter("Eliminado", eliminado) :
+                new ObjectParameter("Eliminado", typeof(int));
     
-            var usuarioParameter = new ObjectParameter("Usuario", usuario);
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("Usuario", usuario) :
+                new ObjectParameter("Usuario", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ReporteOperacion_Result>("Usp_ReporteOperacion", fechaIniParameter, fechaFinParameter, tipoOperacionParameter, eliminadoParameter, usuarioParameter);
         }

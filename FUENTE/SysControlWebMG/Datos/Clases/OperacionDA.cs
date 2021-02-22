@@ -21,18 +21,21 @@ namespace Datos.Clases
                                   IdItem = catalogo.DatoGeneralDetalleId,
                                   ValorItem = catalogo.ValorTabla.ToString(),
                                   NombreItem = catalogo.Descripcion,
-                                  IdTabla = catalogo.DatoGeneralId
+                                  IdTabla = (int)catalogo.DatoGeneralId
                               }).ToList();
                 return lstCatalogo;
             }
         }
 
-        public ConfiguracionCajaCLS ObtenerConfCaja()
+        public ConfiguracionCajaCLS ObtenerConfCaja(string Usuario)
         {
             ConfiguracionCajaCLS lstConfCaja = null;
              using (var db = new BDControlMGEntities())
             {
-                lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>("Usp_obtenerConfCaja").SingleOrDefault();
+                //lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>("Usp_obtenerConfCaja").SingleOrDefault();
+                lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>(
+                "Usp_obtenerConfCaja @Usuario",
+                new SqlParameter("@Usuario", Usuario)).SingleOrDefault();
             }
             return lstConfCaja;
         }       

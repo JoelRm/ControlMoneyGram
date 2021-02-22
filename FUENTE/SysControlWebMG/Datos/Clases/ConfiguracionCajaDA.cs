@@ -31,7 +31,7 @@ namespace Datos.Clases
                         new SqlParameter("@CajaSoles", confCaja.CajaActualSoles),
                         new SqlParameter("@CajaDolares", confCaja.CajaActualDolares),
                         new SqlParameter("@CajaEuros", confCaja.CajaActualEuros),
-                        new SqlParameter("@UsuarioCreacion", "ecamarena"),
+                        new SqlParameter("@UsuarioCreacion", confCaja.UsuarioCreacion),
                         new SqlParameter("@TipoOpeIU", "Insert")
                         ).SingleOrDefault();
                     }
@@ -46,7 +46,7 @@ namespace Datos.Clases
                        new SqlParameter("@CajaSoles", confCaja.TCVentaEuro),
                        new SqlParameter("@CajaDolares", confCaja.TCVentaEuro),
                        new SqlParameter("@CajaEuros", confCaja.TCVentaEuro),
-                       new SqlParameter("@UsuarioCreacion", "ecamarena"),
+                       new SqlParameter("@UsuarioCreacion", confCaja.UsuarioCreacion),
                        new SqlParameter("@TipoOpeIU", "Update")
                        ).SingleOrDefault();
                     }

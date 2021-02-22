@@ -45,21 +45,21 @@
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: function (d) {
-				document.getElementById("txtTCCompraDolar_ME").value = d.lstConfCaja.TCCompraDolar;
-				document.getElementById("txtTCVentaDolar_ME").value = d.lstConfCaja.TCVentaDolar;
-				document.getElementById("txtTCCompraEuro_ME").value = d.lstConfCaja.TCCompraEuro;
-				document.getElementById("txtTCVentaEuro_ME").value = d.lstConfCaja.TCVentaEuro;
-				document.getElementById("txtCajaActualSoles_ME").value = d.lstConfCaja.CajaActualSoles;
-				document.getElementById("txtCajaActualDolares_ME").value = d.lstConfCaja.CajaActualDolares;
-				document.getElementById("txtCajaActualEuros_ME").value = d.lstConfCaja.CajaActualEuros;
+				if (d.lstConfCaja != null) {
+					document.getElementById("txtTCCompraDolar_ME").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
+					document.getElementById("txtTCVentaDolar_ME").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
+					document.getElementById("txtTCCompraEuro_ME").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
+					document.getElementById("txtTCVentaEuro_ME").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
+					document.getElementById("txtCajaActualSoles_ME").value = d.lstConfCaja.CajaActualSoles.toFixed(1);
+					document.getElementById("txtCajaActualDolares_ME").value = d.lstConfCaja.CajaActualDolares.toFixed(1);
+					document.getElementById("txtCajaActualEuros_ME").value = d.lstConfCaja.CajaActualEuros.toFixed(1);
+				}
 			},
 			error: function (ex) {
 				alert(ex.responseText);
 			}
 		});
 	}
-
-
 
 	function validarDatosConfiguracion() {
 		var TCCompraDolar = $("#txtTCCompraDolar").val();
@@ -86,64 +86,24 @@
 	};
 
 	function FormatTCCompraDolar() {
-		var $control = $("#txtTCCompraDolar_ME");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtTCCompraDolar_ME"), 3);
 	}
 	function FormatTCVentaDolar() {
-		var $control = $("#txtTCVentaDolar_ME");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtTCVentaDolar_ME"), 3);
 	}
 	function FormatTCCompraEuro() {
-		var $control = $("#txtTCCompraEuro_ME");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtTCCompraEuro_ME"), 3);
 	}
 	function FormatTCVentaEuro() {
-		var $control = $("#txtTCVentaEuro_ME");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtTCVentaEuro_ME"), 3);
 	}
 	function guardarConfCaja() {
 		if (validarDatosConfiguracion()) {
 			var confCaja = {};
-			confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar_ME").val()).toFixed(2);
-			confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar_ME").val()).toFixed(2);
-			confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro_ME").val()).toFixed(2);
-			confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro_ME").val()).toFixed(2);
+			confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar_ME").val()).toFixed(3);
+			confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar_ME").val()).toFixed(3);
+			confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro_ME").val()).toFixed(3);
+			confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro_ME").val()).toFixed(3);
 			confCaja.TipoOpeIU = "Editar";
 			$.ajax({
 				type: "POST",
@@ -168,18 +128,31 @@
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: function (d) {
-				document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar;
-				document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar;
-				document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro;
-				document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro;
-				document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles;
-				document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares;
-				document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros;
+				document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
+				document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
+				document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
+				document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
+				document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles.toFixed(1);
+				document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares.toFixed(1);
+				document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros.toFixed(1);
 			},
 			error: function (ex) {
 				alert(ex.responseText);
 			}
 		});
+	}
+
+	function ForceDecimalOnly($control,num) {
+		$control.on("input", function (evt) {
+			var self = $(this);
+			self.val(self.val().replace(/[^0-9\.]/g, ''));
+			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+				evt.preventDefault();
+			}
+		});
+		var valor = parseFloat($control.val()).toFixed(num);
+		if ($.isNumeric(valor)) { $control.val(valor) }
+		if (isNaN(valor)) { $control.val("") }
 	}
 
 	//funcion de inicio

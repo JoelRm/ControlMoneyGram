@@ -13,6 +13,7 @@ namespace SysControlWebMG.Controllers
     {
         ConfiguracionCajaNE objConfCaja = new ConfiguracionCajaNE();
         // GET: Caja
+
         public ActionResult Index()
         {
             UsuariosCLS objUsuarioCLS = new UsuariosCLS();
@@ -24,6 +25,9 @@ namespace SysControlWebMG.Controllers
         [HttpPost()]
         public async Task<JsonResult> GuardarConfiguracion(ConfiguracionCajaCLS confCaja)
         {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            confCaja.UsuarioCreacion = objUsuarioCLS.Usser;
             int codigoRpt = objConfCaja.GuardarConfiguracion(confCaja);
             return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
         }

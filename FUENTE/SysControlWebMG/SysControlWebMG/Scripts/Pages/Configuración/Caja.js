@@ -80,7 +80,7 @@
 
 	function btnActualizarConf_Click() {
 		obtenerConfCaja();
-		swal({ title: "Valores Obtenidos!", text: "Se obtuvo los ultimos valores registrados en caja y tipo de cambio.", type: "success", confirmButtonText: 'Aceptar' });
+		//swal({ title: "Valores Obtenidos!", text: "Se obtuvo los ultimos valores registrados en caja y tipo de cambio.", type: "success", confirmButtonText: 'Aceptar' });
     }
 
 	function obtenerConfCaja() {
@@ -90,25 +90,46 @@
 			dataType: "json",
 			contentType: "application/json; charset=utf-8",
 			success: function (d) {
-				document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar;
-				document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar;
-				document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro;
-				document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro;
-				document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles;
-				document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares;
-				document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros;
+				if (d.lstConfCaja != null) {
+					document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
+					document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
+					document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
+					document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
+					if (d.lstConfCaja.CajaActualSoles > 0 && d.lstConfCaja.CajaActualDolares > 0 && d.lstConfCaja.CajaActualEuros > 0 && d.lstConfCaja.TCCompraDolar > 0 && d.lstConfCaja.TCVentaDolar > 0 && d.lstConfCaja.TCCompraEuro > 0 && d.lstConfCaja.TCVentaEuro > 0) {
+						document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles.toFixed(1);
+						document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares.toFixed(1);
+						document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros.toFixed(1);
+						swal({ title: "Valores Obtenidos!", text: "Se obtuvo los ultimos valores registrados en caja y tipo de cambio.", type: "success", confirmButtonText: 'Aceptar' });
+					} else {
+						if (d.lstConfCaja.CajaActualSoles > 1)
+							document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles.toFixed(3);
+						else
+							toastr.error('La caja en soles no tiene monto ingresado.r', 'Error');
+
+						if (d.lstConfCaja.CajaActualDolares > 1)
+							document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares.toFixed(3);
+						else
+							toastr.error('La caja en dólares no tiene monto ingresado.', 'Error');
+
+						if (d.lstConfCaja.CajaActualEuros > 1)
+							document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros.toFixed(3);
+						else
+							toastr.error('La caja en euros no tiene monto ingresado.', 'Error');
+                    }
+
+
+					//document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares;
+					//document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros;
+				}
+				else {
+					toastr.error('Porfavor, configurar caja!', 'Error')
+                }
 			},
 			error: function (ex) {
 				alert(ex.responseText);
 			}
 		});
 	}
-
-
-
-
-
-
 
 	function guardarConfiguracion() {
 		if (validarDatosConfiguracion()) {
@@ -126,10 +147,10 @@
 						confCaja.CajaActualSoles = parseFloat($("#txtCajaActualSoles").val()).toFixed(2);
 						confCaja.CajaActualDolares = parseFloat($("#txtCajaActualDolares").val()).toFixed(2);
 						confCaja.CajaActualEuros = parseFloat($("#txtCajaActualEuros").val()).toFixed(2);
-						confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar").val()).toFixed(2);
-						confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar").val()).toFixed(2);
-						confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro").val()).toFixed(2);
-						confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro").val()).toFixed(2);
+						confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar").val()).toFixed(3);
+						confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar").val()).toFixed(3);
+						confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro").val()).toFixed(3);
+						confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro").val()).toFixed(3);
 						confCaja.TipoOpeIU = "Insert";
 						$.ajax({
 							type: "POST",
@@ -152,86 +173,30 @@
         }
     }
 
+
 	function FormatCajaActualSoles() {
-		var $control = $("#txtCajaActualSoles");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("")}
+		ForceDecimalOnly($("#txtCajaActualSoles"),1);
 	}
 	function FormatCajaActualDolares() {
-		var $control = $("#txtCajaActualDolares");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtCajaActualDolares"),1);
 	}
 	function FormatCajaActualEuros() {
-		var $control = $("#txtCajaActualEuros");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtCajaActualEuros"),1);
 	}
 	function FormatTCCompraDolar() {
-		var $control = $("#txtTCCompraDolar");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtTCCompraDolar"),3);
 	}
 	function FormatTCVentaDolar() {
-		var $control = $("#txtTCVentaDolar");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtTCVentaDolar"),3);
 	}
 	function FormatTCCompraEuro() {
-		var $control = $("#txtTCCompraEuro");
-		$control.on("input", function (evt) {
-			var self = $(this);
-			self.val(self.val().replace(/[^0-9\.]/g, ''));
-			if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
-				evt.preventDefault();
-			}
-		});
-		var valor = parseFloat($control.val()).toFixed(2);
-		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		ForceDecimalOnly($("#txtTCCompraEuro"),3);
 	}
 	function FormatTCVentaEuro() {
-		var $control = $("#txtTCVentaEuro");
+		ForceDecimalOnly($("#txtTCVentaEuro"),3);
+	}
+
+	function ForceDecimalOnly($control,num) {
 		$control.on("input", function (evt) {
 			var self = $(this);
 			self.val(self.val().replace(/[^0-9\.]/g, ''));
@@ -239,9 +204,9 @@
 				evt.preventDefault();
 			}
 		});
-		var valor = parseFloat($control.val()).toFixed(2);
+		var valor = parseFloat($control.val()).toFixed(num);
 		if ($.isNumeric(valor)) { $control.val(valor) }
-		if (isNaN(valor)) { $control.val("") }
+		return $control.val();
 	}
 
 	//funcion de inicio

@@ -214,7 +214,7 @@ namespace Datos.Clases
                                    IdItem = catalogo.DatoGeneralDetalleId,
                                    ValorItem = catalogo.ValorTabla.ToString(),
                                    NombreItem = catalogo.Descripcion,
-                                   IdTabla = catalogo.DatoGeneralId
+                                   IdTabla = (int)catalogo.DatoGeneralId
                                }).ToList();
                 return lstCatalogo;
             }
