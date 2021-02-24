@@ -21,6 +21,7 @@
     </FunctionImport>
     <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
     <EntitySet Name="OperacionCalculadora" EntityType="BDControlMGModel.OperacionCalculadora" />
+    <FunctionImport Name="Usp_ListarUsuarios" ReturnType="Collection(BDControlMGModel.Usp_ListarUsuarios_Result)" />
   </EntityContainer>
   <EntityType Name="Caja">
     <Key>
@@ -207,4 +208,21 @@
     <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Eliminado" Type="Boolean" />
   </EntityType>
+  <ComplexType Name="Usp_ListarUsuarios_Result">
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+    <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApPaternoUsuario" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ApMaternoUsuario" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Usser" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="EmailUsuario" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="IdRol" Nullable="false" />
+    <Property Type="String" Name="UsuarioCreacion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+    <Property Type="String" Name="UsuarioModificacion" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="FechaModificacion" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="EstadoUsuario" Nullable="false" />
+    <Property Type="Boolean" Name="EstadoEliminacion" Nullable="false" />
+    <Property Type="String" Name="TelefonoUsuario" Nullable="true" MaxLength="9" />
+  </ComplexType>
 </Schema>

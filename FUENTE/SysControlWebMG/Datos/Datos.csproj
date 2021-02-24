@@ -98,6 +98,9 @@
     <Compile Include="Modelos\Usp_ListaCatalogo_Result.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Usp_ListarUsuarios_Result.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Usp_obtenerConfCaja_Result.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>

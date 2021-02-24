@@ -151,6 +151,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="TelefonoUsuario" Type="varchar" MaxLength="9" />
         </EntityType>
         <Function Name="Usp_ListaCatalogo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Usp_ListarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Usp_obtenerConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
         </Function>
@@ -226,6 +227,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           </FunctionImport>
           <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
           <EntitySet Name="OperacionCalculadora" EntityType="BDControlMGModel.OperacionCalculadora" />
+          <FunctionImport Name="Usp_ListarUsuarios" ReturnType="Collection(BDControlMGModel.Usp_ListarUsuarios_Result)" />
         </EntityContainer>
         <EntityType Name="Caja">
           <Key>
@@ -412,6 +414,23 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Eliminado" Type="Boolean" />
         </EntityType>
+        <ComplexType Name="Usp_ListarUsuarios_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApPaternoUsuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApMaternoUsuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Usser" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EmailUsuario" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IdRol" Nullable="false" />
+          <Property Type="String" Name="UsuarioCreacion" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UsuarioModificacion" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaModificacion" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="EstadoUsuario" Nullable="false" />
+          <Property Type="Boolean" Name="EstadoEliminacion" Nullable="false" />
+          <Property Type="String" Name="TelefonoUsuario" Nullable="true" MaxLength="9" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -607,6 +626,27 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Usp_ListarUsuarios" FunctionName="BDControlMGModel.Store.Usp_ListarUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDControlMGModel.Usp_ListarUsuarios_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="ApPaternoUsuario" ColumnName="ApPaternoUsuario" />
+                <ScalarProperty Name="ApMaternoUsuario" ColumnName="ApMaternoUsuario" />
+                <ScalarProperty Name="Usser" ColumnName="Usser" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailUsuario" ColumnName="EmailUsuario" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
+                <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
+                <ScalarProperty Name="TelefonoUsuario" ColumnName="TelefonoUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
