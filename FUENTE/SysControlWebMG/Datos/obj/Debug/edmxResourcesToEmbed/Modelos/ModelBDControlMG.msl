@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Caja">
       <EntityTypeMapping TypeName="BDControlMGModel.Caja">
         <MappingFragment StoreEntitySet="Caja">
+          <ScalarProperty Name="CompraDolaresReferencial" ColumnName="CompraDolaresReferencial" />
           <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="IniCajaEuro" ColumnName="IniCajaEuro" />
           <ScalarProperty Name="IniCajaDolar" ColumnName="IniCajaDolar" />
@@ -208,6 +209,20 @@
           <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
           <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
           <ScalarProperty Name="TelefonoUsuario" ColumnName="TelefonoUsuario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Usp_obtenerUltimaConfCaja" FunctionName="BDControlMGModel.Store.Usp_obtenerUltimaConfCaja">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDControlMGModel.Usp_obtenerUltimaConfCaja_Result">
+          <ScalarProperty Name="TCCompraDolar" ColumnName="TCCompraDolar" />
+          <ScalarProperty Name="TCCompraDolarReferencial" ColumnName="TCCompraDolarReferencial" />
+          <ScalarProperty Name="TCVentaDolar" ColumnName="TCVentaDolar" />
+          <ScalarProperty Name="TCCompraEuro" ColumnName="TCCompraEuro" />
+          <ScalarProperty Name="TCVentaEuro" ColumnName="TCVentaEuro" />
+          <ScalarProperty Name="CajaActualSoles" ColumnName="CajaActualSoles" />
+          <ScalarProperty Name="CajaActualDolares" ColumnName="CajaActualDolares" />
+          <ScalarProperty Name="CajaActualEuros" ColumnName="CajaActualEuros" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

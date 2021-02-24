@@ -32,5 +32,12 @@ namespace SysControlWebMG.Controllers
             return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
         }
 
+        [HttpPost]
+        public JsonResult ObtenerUltimaConfCaja()
+        {
+            var lstConfCaja = objConfCaja.ObtenerUltimaConfCaja();
+            return Json(new { lstConfCaja, JsonRequestBehavior.AllowGet });
+        }
+
     }
 }

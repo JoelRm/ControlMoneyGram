@@ -22,5 +22,12 @@ namespace Negocio
             return obj.GuardarConfiguracion(confCaja);
         }
 
+        public ConfiguracionCajaCLS ObtenerUltimaConfCaja()
+        {
+            return obj.ObtenerUltimaConfCaja();
+        }
+
+        
+
     }
 }

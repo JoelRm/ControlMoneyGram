@@ -22,6 +22,7 @@
     <Property Name="IniCajaDolar" Type="decimal" Precision="18" Scale="2" />
     <Property Name="IniCajaEuro" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Eliminado" Type="bit" />
+    <Property Name="CompraDolaresReferencial" Type="decimal" Precision="18" Scale="3" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneral' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -150,6 +151,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
   <Function Name="Usp_obtenerConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Usuario" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="Usp_obtenerUltimaConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="Usp_ReporteOperacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FechaIni" Type="date" Mode="In" />
     <Parameter Name="FechaFin" Type="date" Mode="In" />

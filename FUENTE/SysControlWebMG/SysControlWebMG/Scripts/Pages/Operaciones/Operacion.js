@@ -136,6 +136,7 @@
 			success: function (d) {
 				if (d.lstConfCaja != null) {
 					document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
+					document.getElementById("txtTCCompraDolarReferencial").value = d.lstConfCaja.TCCompraDolarReferencial.toFixed(3);
 					document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
 					document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
 					document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
@@ -143,6 +144,8 @@
 						document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles.toFixed(1);
 						document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares.toFixed(1);
 						document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros.toFixed(1);
+						var montoCajaSolesEnDolares = parseFloat(d.lstConfCaja.CajaActualSoles.toFixed(1) / d.lstConfCaja.TCCompraDolarReferencial.toFixed(3)).toFixed(1);
+						document.getElementById("txtCajaActualSolesEnDolares").value = montoCajaSolesEnDolares;
 						toastr.success(null, 'Se obtuvo los ultimos valores registrados en caja y tipo de cambio.');
 
 						//swal({ title: "Valores Obtenidos!", text: "Se obtuvo los ultimos valores registrados en caja y tipo de cambio.", type: "success", confirmButtonText: 'Aceptar' });
@@ -176,6 +179,7 @@
 
 	function btnEditarTipoCambio_Click() {
 		$('#modalEditarConfCaja').modal('show');
+		app_EditarConfiguracionTipoCambio.init();
 	}
 
 	function configMostrarOcultarElementos(idTipoOperacion) {

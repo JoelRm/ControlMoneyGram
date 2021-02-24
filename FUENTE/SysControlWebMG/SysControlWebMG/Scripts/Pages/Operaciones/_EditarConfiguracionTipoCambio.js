@@ -1,4 +1,4 @@
-﻿var app_Operacion = (function (win, doc) {
+﻿var app_EditarConfiguracionTipoCambio = (function (win, doc) {
 
 	const data = {
 		urlObtenerConfCaja: '/Operacion/ObtenerConfCaja',
@@ -33,6 +33,7 @@
 		obtenerConfCaja();
 		document.getElementById("btnEditarConfCaja").addEventListener("click", guardarConfCaja);
 		document.getElementById("txtTCCompraDolar_ME").addEventListener("blur", FormatTCCompraDolar);
+		document.getElementById("txtTCCompraDolarReferencial_ME").addEventListener("blur", FormatTCCompraDolarReferencial);
 		document.getElementById("txtTCVentaDolar_ME").addEventListener("blur", FormatTCVentaDolar);
 		document.getElementById("txtTCCompraEuro_ME").addEventListener("blur", FormatTCCompraEuro);
 		document.getElementById("txtTCVentaEuro_ME").addEventListener("blur", FormatTCVentaEuro);
@@ -47,6 +48,7 @@
 			success: function (d) {
 				if (d.lstConfCaja != null) {
 					document.getElementById("txtTCCompraDolar_ME").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
+					document.getElementById("txtTCCompraDolarReferencial_ME").value = d.lstConfCaja.TCCompraDolarReferencial.toFixed(3);
 					document.getElementById("txtTCVentaDolar_ME").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
 					document.getElementById("txtTCCompraEuro_ME").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
 					document.getElementById("txtTCVentaEuro_ME").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
@@ -88,6 +90,9 @@
 	function FormatTCCompraDolar() {
 		ForceDecimalOnly($("#txtTCCompraDolar_ME"), 3);
 	}
+	function FormatTCCompraDolarReferencial() {
+		ForceDecimalOnly($("#txtTCCompraDolarReferencial_ME"), 3);
+	}
 	function FormatTCVentaDolar() {
 		ForceDecimalOnly($("#txtTCVentaDolar_ME"), 3);
 	}
@@ -101,6 +106,7 @@
 		if (validarDatosConfiguracion()) {
 			var confCaja = {};
 			confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar_ME").val()).toFixed(3);
+			confCaja.TCCompraDolarReferencial = parseFloat($("#txtTCCompraDolarReferencial_ME").val()).toFixed(3);
 			confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar_ME").val()).toFixed(3);
 			confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro_ME").val()).toFixed(3);
 			confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro_ME").val()).toFixed(3);
@@ -129,12 +135,15 @@
 			contentType: "application/json; charset=utf-8",
 			success: function (d) {
 				document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
+				document.getElementById("txtTCCompraDolarReferencial").value = d.lstConfCaja.TCCompraDolarReferencial.toFixed(3);
 				document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
 				document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
 				document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
 				document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles.toFixed(1);
 				document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares.toFixed(1);
 				document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros.toFixed(1);
+				var montoCajaSolesEnDolares = parseFloat(d.lstConfCaja.CajaActualSoles.toFixed(1) / d.lstConfCaja.TCCompraDolarReferencial.toFixed(3)).toFixed(1);
+				document.getElementById("txtCajaActualSolesEnDolares").value = montoCajaSolesEnDolares;
 			},
 			error: function (ex) {
 				alert(ex.responseText);
@@ -157,7 +166,10 @@
 
 	//funcion de inicio
 	init();
-
+	return {
+		obtenerConfCaja: obtenerConfCaja,
+		init: init
+    }
 
 
 })(window, document);

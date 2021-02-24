@@ -27,6 +27,7 @@
           <Property Name="IniCajaDolar" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IniCajaEuro" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Eliminado" Type="bit" />
+          <Property Name="CompraDolaresReferencial" Type="decimal" Precision="18" Scale="3" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneral' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -155,6 +156,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
         <Function Name="Usp_obtenerConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="Usp_obtenerUltimaConfCaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Usp_ReporteOperacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaIni" Type="date" Mode="In" />
           <Parameter Name="FechaFin" Type="date" Mode="In" />
@@ -228,6 +230,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <EntitySet Name="Operacion" EntityType="BDControlMGModel.Operacion" />
           <EntitySet Name="OperacionCalculadora" EntityType="BDControlMGModel.OperacionCalculadora" />
           <FunctionImport Name="Usp_ListarUsuarios" ReturnType="Collection(BDControlMGModel.Usp_ListarUsuarios_Result)" />
+          <FunctionImport Name="Usp_obtenerUltimaConfCaja" ReturnType="Collection(BDControlMGModel.Usp_obtenerUltimaConfCaja_Result)" />
         </EntityContainer>
         <EntityType Name="Caja">
           <Key>
@@ -251,6 +254,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Name="IniCajaDolar" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="IniCajaEuro" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Eliminado" Type="Boolean" />
+          <Property Name="CompraDolaresReferencial" Type="Decimal" Precision="18" Scale="3" />
         </EntityType>
         <EntityType Name="Rol">
           <Key>
@@ -431,6 +435,16 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <Property Type="Boolean" Name="EstadoEliminacion" Nullable="false" />
           <Property Type="String" Name="TelefonoUsuario" Nullable="true" MaxLength="9" />
         </ComplexType>
+        <ComplexType Name="Usp_obtenerUltimaConfCaja_Result">
+          <Property Type="Decimal" Name="TCCompraDolar" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="TCCompraDolarReferencial" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="TCVentaDolar" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="TCCompraEuro" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="TCVentaEuro" Nullable="true" Precision="18" Scale="3" />
+          <Property Type="Decimal" Name="CajaActualSoles" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CajaActualDolares" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CajaActualEuros" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -440,6 +454,7 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
           <EntitySetMapping Name="Caja">
             <EntityTypeMapping TypeName="BDControlMGModel.Caja">
               <MappingFragment StoreEntitySet="Caja">
+                <ScalarProperty Name="CompraDolaresReferencial" ColumnName="CompraDolaresReferencial" />
                 <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
                 <ScalarProperty Name="IniCajaEuro" ColumnName="IniCajaEuro" />
                 <ScalarProperty Name="IniCajaDolar" ColumnName="IniCajaDolar" />
@@ -644,6 +659,20 @@ advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneralDetalle' no tiene
                 <ScalarProperty Name="EstadoUsuario" ColumnName="EstadoUsuario" />
                 <ScalarProperty Name="EstadoEliminacion" ColumnName="EstadoEliminacion" />
                 <ScalarProperty Name="TelefonoUsuario" ColumnName="TelefonoUsuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Usp_obtenerUltimaConfCaja" FunctionName="BDControlMGModel.Store.Usp_obtenerUltimaConfCaja">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDControlMGModel.Usp_obtenerUltimaConfCaja_Result">
+                <ScalarProperty Name="TCCompraDolar" ColumnName="TCCompraDolar" />
+                <ScalarProperty Name="TCCompraDolarReferencial" ColumnName="TCCompraDolarReferencial" />
+                <ScalarProperty Name="TCVentaDolar" ColumnName="TCVentaDolar" />
+                <ScalarProperty Name="TCCompraEuro" ColumnName="TCCompraEuro" />
+                <ScalarProperty Name="TCVentaEuro" ColumnName="TCVentaEuro" />
+                <ScalarProperty Name="CajaActualSoles" ColumnName="CajaActualSoles" />
+                <ScalarProperty Name="CajaActualDolares" ColumnName="CajaActualDolares" />
+                <ScalarProperty Name="CajaActualEuros" ColumnName="CajaActualEuros" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

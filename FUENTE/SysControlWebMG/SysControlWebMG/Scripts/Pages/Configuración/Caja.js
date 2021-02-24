@@ -2,6 +2,7 @@
 
 	const data = {
 		urlObtenerConfCaja: '/Operacion/ObtenerConfCaja',
+		urlObtenerUltimaConfCaja: '/Caja/ObtenerUltimaConfCaja',
 		urlGuardarConf: '/Caja/GuardarConfiguracion',
 		valores: {
 			IdSoles: "1",
@@ -20,6 +21,7 @@
 		document.getElementById("txtCajaActualDolares").addEventListener("blur", FormatCajaActualDolares);
 		document.getElementById("txtCajaActualEuros").addEventListener("blur", FormatCajaActualEuros);
 		document.getElementById("txtTCCompraDolar").addEventListener("blur", FormatTCCompraDolar);
+		document.getElementById("txtTCCompraDolarReferencial").addEventListener("blur", FormatTCCompraDolarReferencial);
 		document.getElementById("txtTCVentaDolar").addEventListener("blur", FormatTCVentaDolar);
 		document.getElementById("txtTCCompraEuro").addEventListener("blur", FormatTCCompraEuro);
 		document.getElementById("txtTCVentaEuro").addEventListener("blur", FormatTCVentaEuro);
@@ -43,6 +45,7 @@
 		var CajaActualDolares = $("#txtCajaActualDolares").val();
 		var CajaActualEuros = $("#txtCajaActualEuros").val();
 		var TCCompraDolar = $("#txtTCCompraDolar").val();
+		var TCCompraDolarReferencial = $("#txtTCCompraDolarReferencial").val();
 		var TCVentaDolar = $("#txtTCVentaDolar").val();
 		var TCCompraEuro = $("#txtTCCompraEuro").val();
 		var TCVentaEuro = $("#txtTCVentaEuro").val();
@@ -63,6 +66,10 @@
 			toastr.error('Debe ingresar el tipo de cambio de compra en dólares', 'Error');
 			return false;
 		}
+		if (TCCompraDolarReferencial == '') {
+			toastr.error('Debe ingresar el tipo de cambio de compra referencial en dólares', 'Error');
+			return false;
+		}
 		if (TCVentaDolar == '') {
 			toastr.error('Debe ingresar el tipo de cambio de venta en dólares', 'Error');
 			return false;
@@ -79,9 +86,39 @@
 	};
 
 	function btnActualizarConf_Click() {
-		obtenerConfCaja();
-		//swal({ title: "Valores Obtenidos!", text: "Se obtuvo los ultimos valores registrados en caja y tipo de cambio.", type: "success", confirmButtonText: 'Aceptar' });
-    }
+		obtenerUltimaConfCaja();
+	}
+
+	function obtenerUltimaConfCaja() {
+		debugger;
+		$.ajax({
+			type: "POST",
+			url: data.urlObtenerUltimaConfCaja,
+			dataType: "json",
+			contentType: "application/json; charset=utf-8",
+			success: function (d) {
+				if (d.lstConfCaja != null) {
+					document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
+					document.getElementById("txtTCCompraDolarReferencial").value = d.lstConfCaja.TCCompraDolarReferencial.toFixed(3);
+					document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
+					document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
+					document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
+					document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles.toFixed(1);
+					document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares.toFixed(1);
+					document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros.toFixed(1);
+					swal({ title: "Valores Obtenidos!", text: "Se obtuvo los ultimos valores registrados en caja y tipo de cambio.", type: "success", confirmButtonText: 'Aceptar' });
+				}
+				else {
+					toastr.error('Porfavor, configurar caja!', 'Error')
+				}
+			},
+			error: function (ex) {
+				alert(ex.responseText);
+			}
+		});
+	}
+
+
 
 	function obtenerConfCaja() {
 		$.ajax({
@@ -91,7 +128,9 @@
 			contentType: "application/json; charset=utf-8",
 			success: function (d) {
 				if (d.lstConfCaja != null) {
+					debugger;
 					document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
+					document.getElementById("txtTCCompraDolarReferencial").value = d.lstConfCaja.TCCompraDolarReferencial.toFixed(3);
 					document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
 					document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
 					document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
@@ -148,6 +187,7 @@
 						confCaja.CajaActualDolares = parseFloat($("#txtCajaActualDolares").val()).toFixed(2);
 						confCaja.CajaActualEuros = parseFloat($("#txtCajaActualEuros").val()).toFixed(2);
 						confCaja.TCCompraDolar = parseFloat($("#txtTCCompraDolar").val()).toFixed(3);
+						confCaja.TCCompraDolarReferencial = parseFloat($("#txtTCCompraDolarReferencial").val()).toFixed(3);
 						confCaja.TCVentaDolar = parseFloat($("#txtTCVentaDolar").val()).toFixed(3);
 						confCaja.TCCompraEuro = parseFloat($("#txtTCCompraEuro").val()).toFixed(3);
 						confCaja.TCVentaEuro = parseFloat($("#txtTCVentaEuro").val()).toFixed(3);
@@ -185,6 +225,9 @@
 	}
 	function FormatTCCompraDolar() {
 		ForceDecimalOnly($("#txtTCCompraDolar"),3);
+	}
+	function FormatTCCompraDolarReferencial() {
+		ForceDecimalOnly($("#txtTCCompraDolarReferencial"), 3);
 	}
 	function FormatTCVentaDolar() {
 		ForceDecimalOnly($("#txtTCVentaDolar"),3);

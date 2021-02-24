@@ -84,5 +84,10 @@ namespace Datos.Modelos
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListarUsuarios_Result>("Usp_ListarUsuarios");
         }
+    
+        public virtual ObjectResult<Usp_obtenerUltimaConfCaja_Result> Usp_obtenerUltimaConfCaja()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_obtenerUltimaConfCaja_Result>("Usp_obtenerUltimaConfCaja");
+        }
     }
 }

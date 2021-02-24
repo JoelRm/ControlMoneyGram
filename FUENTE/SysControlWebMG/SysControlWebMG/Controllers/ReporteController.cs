@@ -57,7 +57,19 @@ namespace SysControlWebMG.Controllers
             ViewBag.listaUsuarios = listaUsuarios;
             return View();
         }
-        
+
+        public ActionResult ReporteGanancia()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult GenerarReporteGanancia(FiltrosReporte objFiltro)
+        {
+            var lstReporte = objReporte.GenerarReporteGanancia(objFiltro);
+            return Json(new { lstReporte, JsonRequestBehavior.AllowGet });
+        }
+
 
         [HttpPost]
         public JsonResult GenerarReporte(FiltrosReporte objFiltro)

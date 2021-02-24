@@ -26,6 +26,17 @@ namespace Datos.Clases
             }
             return lstReporte;
         }
+
+        public ConfiguracionCajaCLS GenerarReporteGanancia(FiltrosReporte objFiltros)
+        {
+            ConfiguracionCajaCLS lstReporte = new ConfiguracionCajaCLS ();
+            using (var db = new BDControlMGEntities())
+            {
+                lstReporte = db.Database.SqlQuery<ConfiguracionCajaCLS>("exec Usp_ReporteGanancia @Fecha",new SqlParameter("@Fecha", objFiltros.Finicio)).SingleOrDefault();
+            }
+            return lstReporte;
+        }
+        
         public List<CalculadoraCLS> GenerarReporteCalculadora(FiltrosReporte objFiltros)
         {
             List<CalculadoraCLS> lstReporte = new List<CalculadoraCLS>();

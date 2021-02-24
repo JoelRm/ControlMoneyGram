@@ -32,5 +32,6 @@ namespace Datos.Modelos
         public Nullable<decimal> IniCajaDolar { get; set; }
         public Nullable<decimal> IniCajaEuro { get; set; }
         public Nullable<bool> Eliminado { get; set; }
+        public Nullable<decimal> CompraDolaresReferencial { get; set; }
     }
 }

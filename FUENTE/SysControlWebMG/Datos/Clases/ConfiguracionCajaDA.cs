@@ -23,8 +23,9 @@ namespace Datos.Clases
                     if (confCaja.TipoOpeIU == "Insert")
                     {
                         lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>(
-                        "Usp_InsertUpdateConfCaja @CompraDolares,@VentaDolares,@CompraEuros,@VentaEuros,@CajaSoles,@CajaDolares,@CajaEuros,@UsuarioCreacion,@TipoOpeIU",
+                        "Usp_InsertUpdateConfCaja @CompraDolares,@CompraDolaresReferencial,@VentaDolares,@CompraEuros,@VentaEuros,@CajaSoles,@CajaDolares,@CajaEuros,@UsuarioCreacion,@TipoOpeIU",
                         new SqlParameter("@CompraDolares", confCaja.TCCompraDolar),
+                        new SqlParameter("@CompraDolaresReferencial", confCaja.TCCompraDolarReferencial),
                         new SqlParameter("@VentaDolares", confCaja.TCVentaDolar),
                         new SqlParameter("@CompraEuros", confCaja.TCCompraEuro),
                         new SqlParameter("@VentaEuros", confCaja.TCVentaEuro),
@@ -38,8 +39,9 @@ namespace Datos.Clases
                     else
                     {
                        lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>(
-                       "Usp_InsertUpdateConfCaja @CompraDolares,@VentaDolares,@CompraEuros,@VentaEuros,@CajaSoles,@CajaDolares,@CajaEuros,@UsuarioCreacion,@TipoOpeIU",
+                       "Usp_InsertUpdateConfCaja @CompraDolares,@CompraDolaresReferencial,@VentaDolares,@CompraEuros,@VentaEuros,@CajaSoles,@CajaDolares,@CajaEuros,@UsuarioCreacion,@TipoOpeIU",
                        new SqlParameter("@CompraDolares", confCaja.TCCompraDolar),
+                       new SqlParameter("@CompraDolaresReferencial", confCaja.TCCompraDolarReferencial),
                        new SqlParameter("@VentaDolares", confCaja.TCVentaDolar),
                        new SqlParameter("@CompraEuros", confCaja.TCCompraEuro),
                        new SqlParameter("@VentaEuros", confCaja.TCVentaEuro),
@@ -61,7 +63,15 @@ namespace Datos.Clases
             }
             return CodResult;
         }
-
+        public ConfiguracionCajaCLS ObtenerUltimaConfCaja()
+        {
+            ConfiguracionCajaCLS lstConfCaja = null;
+            using (var db = new BDControlMGEntities())
+            {
+                lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>("Usp_obtenerUltimaConfCaja").SingleOrDefault();
+            }
+            return lstConfCaja;
+        }
 
 
     }

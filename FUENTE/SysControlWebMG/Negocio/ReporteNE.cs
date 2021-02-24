@@ -11,6 +11,12 @@ namespace Negocio
         {
             return obj.GenerarReporte(objFiltros);
         }
+
+        public ConfiguracionCajaCLS GenerarReporteGanancia(FiltrosReporte objFiltros)
+        {
+            return obj.GenerarReporteGanancia(objFiltros);
+        }
+        
         public List<CalculadoraCLS> GenerarReporteCalculadora(FiltrosReporte objFiltros)
         {
             return obj.GenerarReporteCalculadora(objFiltros);

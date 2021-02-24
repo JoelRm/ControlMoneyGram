@@ -104,6 +104,9 @@
     <Compile Include="Modelos\Usp_obtenerConfCaja_Result.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Usp_obtenerUltimaConfCaja_Result.cs">
+      <DependentUpon>ModelBDControlMG.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Usp_ReporteOperacion_Result.cs">
       <DependentUpon>ModelBDControlMG.tt</DependentUpon>
     </Compile>

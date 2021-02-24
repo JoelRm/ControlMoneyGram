@@ -12,6 +12,7 @@ namespace Entidades
         public decimal CajaActualDolares { get; set; }
         public decimal CajaActualEuros { get; set; }
         public decimal TCCompraDolar { get; set; }
+        public decimal TCCompraDolarReferencial { get; set; }
         public decimal TCVentaDolar { get; set; }
         public decimal TCCompraEuro { get; set; }
         public decimal TCVentaEuro { get; set; }
