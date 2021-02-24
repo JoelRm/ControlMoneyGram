@@ -8,46 +8,13 @@ namespace Datos.Clases
 {
     public class UsuariosDA
     {
-        //public List<UsuariosCLS> ListarUsuarios()
-        //{
-        //    List<UsuariosCLS> lstUsuario = null;
-        //    using (var db = new BDControlMGEntities())
-        //    {
-        //        lstUsuario = (from usu in db.Usuario
-        //                      join det in db.DatoGeneralDetalle on usu.IdRol equals det.ValorTabla
-        //                      where usu.EstadoEliminacion == false && det.DatoGeneralId.Equals(3)
-        //                      select new UsuariosCLS
-        //                      {
-        //                          IdUsuario = usu.IdUsuario,
-        //                          NombreUsuario = usu.NombreUsuario,
-        //                          ApMaternoUsuario = usu.ApMaternoUsuario,
-        //                          ApPaternoUsuario = usu.ApPaternoUsuario,
-        //                          IdRol = usu.IdRol,
-        //                          Usser = usu.Usser,
-        //                          Password = usu.Password,
-        //                          EmailUsuario = usu.EmailUsuario,
-        //                          FechaCreacion = usu.FechaCreacion,
-        //                          UsuarioCreacion = usu.UsuarioCreacion,
-        //                          FechaModificacion = usu.FechaModificacion,
-        //                          UsuarioModificacion = usu.UsuarioModificacion,
-        //                          EstadoUsuario = usu.EstadoUsuario,
-        //                          FechaCreacionJS = usu.FechaCreacion.ToString(),
-        //                          NombreCargo = det.Descripcion
-        //                      }).ToList();
-
-        //        return lstUsuario;
-        //    }
-        //}
 
         public List<UsuariosCLS> ListarUsuarios()
         {
             List<UsuariosCLS> lstUsuarios = null;
             using (var db = new BDControlMGEntities())
             {
-                //lstConfCaja = db.Database.SqlQuery<ConfiguracionCajaCLS>("Usp_obtenerConfCaja").SingleOrDefault();
-                //lstUsuarios = db.Database.SqlQuery<UsuariosCLS>("Usp_obtenerConfCaja").SingleOrDefault();
                 lstUsuarios = db.Database.SqlQuery<UsuariosCLS>("Usp_ListarUsuarios").ToList();
-
             }
             return lstUsuarios;
         }

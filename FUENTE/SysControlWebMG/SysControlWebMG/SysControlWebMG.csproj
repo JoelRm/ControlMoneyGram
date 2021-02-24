@@ -148,6 +148,12 @@
     <Content Include="Content\img\signup.jpg" />
     <Content Include="Content\img\undraw_profile.svg" />
     <Content Include="Content\LoaderVR.css" />
+    <Content Include="Content\MoneyGram\Css\sweetalert.min.css" />
+    <Content Include="Content\MoneyGram\Css\Toastr.min.css" />
+    <Content Include="Content\MoneyGram\JavaScript\dataTables.bootstrap.min.js" />
+    <Content Include="Content\MoneyGram\JavaScript\jquery.dataTables.min.js" />
+    <Content Include="Content\MoneyGram\JavaScript\sweetalert.min.js" />
+    <Content Include="Content\MoneyGram\JavaScript\Toastr.min.js" />
     <Content Include="Content\sb-admin-2.min.css" />
     <Content Include="Content\styles-lay.min.css" />
     <Content Include="Content\style.css" />
@@ -310,7 +316,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\VerOperaciones\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

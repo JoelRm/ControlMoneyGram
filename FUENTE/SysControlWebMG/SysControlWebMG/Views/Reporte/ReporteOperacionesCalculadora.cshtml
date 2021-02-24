@@ -1,6 +1,8 @@
-﻿
-<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>
+﻿@*<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>*@
+@*<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>*@
+
+<script src="~/Content/MoneyGram/JavaScript/jquery.dataTables.min.js"></script>
+<script src="~/Content/MoneyGram/JavaScript/dataTables.bootstrap.min.js"></script>
 
 @{
     ViewBag.Title = "Index";
@@ -13,51 +15,51 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Reporte Operaciones Calculadora</h1>
     </div>
-<div class="form-row">
-    <div class="col-md-2">
-        <div class="form-group">
-            <label>Fecha Inicio : </label>
-            <input type="date" id="fInicio" class="form-control" />
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="form-group">
-            <label>Fecha Fin : </label>
-            <input type="date" id="fFin" class="form-control" />
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="form-group">
-            <label>Usuario : </label>
-            <select id="Usuario" class="form-control">
-                @foreach (var item in listaUsuarios)
-                {
-                    <option value="@item.Usser">@item.Usser</option>
-                }
-            </select>
-        </div>
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-3">
-        <div class="form-group">
-            <label>Estado : </label>
-            <div class="radio-container radio-edit">
-                <input type="radio" name="estado" id="todos" checked value="2" />
-                <label id="ejm" for="todos">Todos</label>
-                <input type="radio" name="estado" id="activos" value="0" />
-                <label id="ejm" for="activos">Activos</label>
-                <input type="radio" name="estado" id="inactivos" value="1" />
-                <label id="ejm" for="inactivos">Anulados</label>
+    <div class="form-row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Fecha Inicio : </label>
+                <input type="date" id="fInicio" class="form-control" />
             </div>
         </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Fecha Fin : </label>
+                <input type="date" id="fFin" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Usuario : </label>
+                <select id="Usuario" class="form-control">
+                    @foreach (var item in listaUsuarios)
+                    {
+                        <option value="@item.Usser">@item.Usser</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Estado : </label>
+                <div class="radio-container radio-edit">
+                    <input type="radio" name="estado" id="todos" checked value="2" />
+                    <label id="ejm" for="todos">Todos</label>
+                    <input type="radio" name="estado" id="activos" value="0" />
+                    <label id="ejm" for="activos">Activos</label>
+                    <input type="radio" name="estado" id="inactivos" value="1" />
+                    <label id="ejm" for="inactivos">Anulados</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" id="btnBuscarOperacionesCalc" class="btn btn-danger btn-lg px-3"><i class="fa fa-search" aria-hidden="true"></i> Buscar </button>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" id="btnExportarOperacionesCalc" class="btn btn-success btn-lg px-3"><i class="fa fa-file-excel" aria-hidden="true"></i> Exportar a Excel</button>
+        </div>
     </div>
-    <div class="col-lg-2">
-        <button type="button" id="btnBuscarOperacionesCalc" class="btn btn-danger btn-lg px-3"><i class="fa fa-search" aria-hidden="true"></i> Buscar </button>
-    </div>
-    <div class="col-lg-2">
-        <button type="button" id="btnExportarOperacionesCalc" class="btn btn-success btn-lg px-3"><i class="fa fa-file-excel" aria-hidden="true"></i> Exportar a Excel</button>
-    </div>
-</div>
     <br>
     <div class="panel-body">
         <div class="form-horizontal row">
