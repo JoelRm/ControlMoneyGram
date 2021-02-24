@@ -79,5 +79,10 @@ namespace Datos.Modelos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ReporteOperacion_Result>("Usp_ReporteOperacion", fechaIniParameter, fechaFinParameter, tipoOperacionParameter, eliminadoParameter, usuarioParameter);
         }
+    
+        public virtual ObjectResult<Usp_ListarUsuarios_Result> Usp_ListarUsuarios()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Usp_ListarUsuarios_Result>("Usp_ListarUsuarios");
+        }
     }
 }

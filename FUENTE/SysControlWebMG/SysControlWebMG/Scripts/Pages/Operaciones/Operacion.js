@@ -193,7 +193,7 @@
 		}
 		if (idTipoOperacion == data.valores.TipoOperacionCV.TipoOperacionCompraDolar) {
 			data.flagValorTipoOperacion = data.valores.TipoOperacionCV.TipoOperacionCompraDolar;
-			data.nombreTipoOperacion = 'COMPRA DÓLAR';
+			data.nombreTipoOperacion = 'CAMBIO DÓLAR';
 			$("#divComentario").show();
 			$("#divMonto").show();
 			$("#divMontoEntrega").show();
