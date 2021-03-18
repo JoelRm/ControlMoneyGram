@@ -19,5 +19,16 @@ namespace Entidades
         public string TipoOpeIU { get; set; }
         public string UsuarioCreacion { get; set; }
 
+
+        // Campos para reporte ganancia
+        public decimal TipoCambioReferencial { get; set; }
+        public decimal InicioCajaTotalDolares { get; set; }
+        public decimal FinCajaTotalDolares { get; set; }
+        public decimal TotalIngresosDolar { get; set; }
+        public decimal TotalEnviosDolar { get; set; }
+        public decimal TotalPagosDolar { get; set; }
+        public decimal TotalGastosDolar { get; set; }
+        public decimal Ganancia { get; set; }
+
     }
 }

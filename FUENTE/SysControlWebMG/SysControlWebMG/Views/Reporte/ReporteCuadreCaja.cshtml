@@ -1,0 +1,54 @@
+﻿
+<script src="~/Content/MoneyGram/JavaScript/jquery.dataTables.min.js"></script>
+<script src="~/Content/MoneyGram/JavaScript/dataTables.bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Cuadre Caja";
+}
+@using Entidades
+@{
+    List<UsuariosCLS> listaUsuarios = (List<UsuariosCLS>)ViewBag.listaUsuarios;
+}
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Reporte Cuadre Caja</h1>
+    </div>
+    <div class="form-row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Fecha: </label>
+                <input type="date" id="fInicio" class="form-control" />
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" id="btnBuscarCuadreCaja" class="btn btn-danger btn-lg px-3"><i class="fa fa-search" aria-hidden="true"></i> Buscar </button>
+        </div>
+    </div>
+    <br>
+    <div class="panel-body">
+        <div class="form-horizontal row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div id="div_tbListaGanancia" style="height: 100%;">
+                            <table id="tbListaGanancia" class="table table-bordered table-hover" style="width:1200px">
+                                <thead>
+                                    <tr>
+                                        <th data-width="10px">Usuario</th>
+                                        <th data-width="10px">Caja Sistema($)</th>
+                                        <th data-width="10px">Caja Manual($)</th>
+                                        <th data-width="10px">Caja Sistema(S/.)</th>
+                                        <th data-width="10px">Caja Manual(S/.)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyTbListaGanancia"></tbody>
+                            </table>
+                        </div>
+                        <div id="div_tbListaGanancia_pagination" style="padding-top: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Pages/Reportes/ReporteGanancia.js"></script>

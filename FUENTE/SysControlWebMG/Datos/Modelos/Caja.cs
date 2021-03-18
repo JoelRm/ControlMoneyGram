@@ -33,5 +33,10 @@ namespace Datos.Modelos
         public Nullable<decimal> IniCajaEuro { get; set; }
         public Nullable<bool> Eliminado { get; set; }
         public Nullable<decimal> CompraDolaresReferencial { get; set; }
+        public Nullable<decimal> CajaSolesManual { get; set; }
+        public Nullable<decimal> CajaDolaresManual { get; set; }
+        public Nullable<decimal> CajaEurosManual { get; set; }
+        public string UsuarioCuadreCaja { get; set; }
+        public Nullable<System.DateTime> FechaCuadreCaja { get; set; }
     }
 }

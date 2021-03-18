@@ -118,7 +118,7 @@
 				dataType: "json",
 				contentType: "application/json; charset=utf-8",
 				success: function (response) {
-					obtenerConfCajaOperaciones();
+					app_Operacion.obtenerConfCaja();
 				},
 				error: function () {
 					toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
@@ -127,29 +127,7 @@
 			});
 		}
 	}
-	function obtenerConfCajaOperaciones() {
-		$.ajax({
-			type: "POST",
-			url: data.urlObtenerConfCaja,
-			dataType: "json",
-			contentType: "application/json; charset=utf-8",
-			success: function (d) {
-				document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
-				document.getElementById("txtTCCompraDolarReferencial").value = d.lstConfCaja.TCCompraDolarReferencial.toFixed(3);
-				document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
-				document.getElementById("txtTCCompraEuro").value = d.lstConfCaja.TCCompraEuro.toFixed(3);
-				document.getElementById("txtTCVentaEuro").value = d.lstConfCaja.TCVentaEuro.toFixed(3);
-				document.getElementById("txtCajaActualSoles").value = d.lstConfCaja.CajaActualSoles.toFixed(1);
-				document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares.toFixed(1);
-				document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros.toFixed(1);
-				var montoCajaSolesEnDolares = parseFloat(d.lstConfCaja.CajaActualSoles.toFixed(1) / d.lstConfCaja.TCCompraDolarReferencial.toFixed(3)).toFixed(1);
-				document.getElementById("txtCajaActualSolesEnDolares").value = montoCajaSolesEnDolares;
-			},
-			error: function (ex) {
-				alert(ex.responseText);
-			}
-		});
-	}
+
 
 	function ForceDecimalOnly($control,num) {
 		$control.on("input", function (evt) {

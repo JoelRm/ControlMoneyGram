@@ -47,6 +47,11 @@
     <Property Name="IniCajaEuro" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="Eliminado" Type="Boolean" />
     <Property Name="CompraDolaresReferencial" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="CajaSolesManual" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CajaDolaresManual" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CajaEurosManual" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="UsuarioCuadreCaja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCuadreCaja" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>

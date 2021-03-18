@@ -23,6 +23,11 @@
     <Property Name="IniCajaEuro" Type="decimal" Precision="18" Scale="2" />
     <Property Name="Eliminado" Type="bit" />
     <Property Name="CompraDolaresReferencial" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="CajaSolesManual" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CajaDolaresManual" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CajaEurosManual" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UsuarioCuadreCaja" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCuadreCaja" Type="datetime" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'BDControlMG.dbo.DatoGeneral' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->

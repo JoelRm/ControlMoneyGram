@@ -277,6 +277,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LoaderVR.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Pages\Operaciones\CuadreCaja.js" />
     <Content Include="Scripts\Pages\Operaciones\Operacion.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
@@ -285,6 +286,7 @@
     <Content Include="Scripts\Pages\Operaciones\_EditarConfiguracionTipoCambio.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
     <Content Include="Scripts\Pages\Login.js" />
+    <Content Include="Scripts\Pages\Reportes\ReporteGanancia.js" />
     <Content Include="Scripts\Pages\Reportes\ReporteOperaciones.js" />
     <Content Include="Scripts\Pages\Reportes\ReporteOperacionesCalculadora.js" />
     <Content Include="Scripts\Pages\Usuarios.js" />
@@ -312,6 +314,9 @@
     <Content Include="Views\Operacion\VerOperacionesCalculadora.cshtml" />
     <Content Include="Views\Reporte\ReporteOperacionesCalculadora.cshtml" />
     <Content Include="Views\Reporte\ReporteOperaciones.cshtml" />
+    <Content Include="Views\Reporte\ReporteGanancia.cshtml" />
+    <Content Include="Views\Reporte\ReporteCuadreCaja.cshtml" />
+    <Content Include="Views\Operacion\CuadreCaja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

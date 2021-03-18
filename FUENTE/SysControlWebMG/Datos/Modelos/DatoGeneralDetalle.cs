@@ -15,8 +15,8 @@ namespace Datos.Modelos
     public partial class DatoGeneralDetalle
     {
         public string DatoGeneralDetalleId { get; set; }
-        public int DatoGeneralId { get; set; }
-        public int ValorTabla { get; set; }
+        public Nullable<int> DatoGeneralId { get; set; }
+        public Nullable<int> ValorTabla { get; set; }
         public string Descripcion { get; set; }
         public string ValorTexto1 { get; set; }
         public string ValorTexto2 { get; set; }

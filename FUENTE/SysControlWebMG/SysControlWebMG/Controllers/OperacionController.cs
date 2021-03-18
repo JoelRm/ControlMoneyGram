@@ -30,6 +30,14 @@ namespace SysControlWebMG.Controllers
             return View();
         }
 
+        public ActionResult CuadreCaja()
+        {
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+
+            return View();
+        }
+
         public ActionResult VerOperacionesCalculadora()
         {
             objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];

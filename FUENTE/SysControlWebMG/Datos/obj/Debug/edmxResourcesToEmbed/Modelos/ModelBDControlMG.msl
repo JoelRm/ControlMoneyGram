@@ -4,6 +4,11 @@
     <EntitySetMapping Name="Caja">
       <EntityTypeMapping TypeName="BDControlMGModel.Caja">
         <MappingFragment StoreEntitySet="Caja">
+          <ScalarProperty Name="FechaCuadreCaja" ColumnName="FechaCuadreCaja" />
+          <ScalarProperty Name="UsuarioCuadreCaja" ColumnName="UsuarioCuadreCaja" />
+          <ScalarProperty Name="CajaEurosManual" ColumnName="CajaEurosManual" />
+          <ScalarProperty Name="CajaDolaresManual" ColumnName="CajaDolaresManual" />
+          <ScalarProperty Name="CajaSolesManual" ColumnName="CajaSolesManual" />
           <ScalarProperty Name="CompraDolaresReferencial" ColumnName="CompraDolaresReferencial" />
           <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="IniCajaEuro" ColumnName="IniCajaEuro" />

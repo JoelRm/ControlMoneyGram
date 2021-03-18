@@ -6,6 +6,7 @@
 		urlGuardarOperacionCalculadora: '/Operacion/GuardarOperacionCalculadora',
 		urlEditarConfiguracionTipoCambio: '/Operacion/_EditarConfiguracionTipoCambio',
 		urlObtenerConfCaja: '/Operacion/ObtenerConfCaja',
+		urlObtenerGanancia: '/Reporte/GenerarReporteGanancia',
 		valores: {
 			Monedas: {
 				IdSoles: "1",
@@ -145,7 +146,10 @@
 						document.getElementById("txtCajaActualDolares").value = d.lstConfCaja.CajaActualDolares.toFixed(1);
 						document.getElementById("txtCajaActualEuros").value = d.lstConfCaja.CajaActualEuros.toFixed(1);
 						var montoCajaSolesEnDolares = parseFloat(d.lstConfCaja.CajaActualSoles.toFixed(1) / d.lstConfCaja.TCCompraDolarReferencial.toFixed(3)).toFixed(1);
-						document.getElementById("txtCajaActualSolesEnDolares").value = montoCajaSolesEnDolares;
+						document.getElementById("txtCajaActualSolesEnDolares").value = montoCajaSolesEnDolares;			
+						var sumaTotalEnDolares = parseFloat(parseFloat(document.getElementById("txtCajaActualSolesEnDolares").value) + parseFloat(document.getElementById("txtCajaActualDolares").value) ).toFixed(1);
+						document.getElementById("txtSumaTotalEnDolares").value = sumaTotalEnDolares;
+						ObtenerGananaciaActual();
 						toastr.success(null, 'Se obtuvo los ultimos valores registrados en caja y tipo de cambio.');
 
 						//swal({ title: "Valores Obtenidos!", text: "Se obtuvo los ultimos valores registrados en caja y tipo de cambio.", type: "success", confirmButtonText: 'Aceptar' });
@@ -175,7 +179,31 @@
 				//ocultarLoader();
 			}
 		});
-    }
+	}
+
+	function ObtenerGananaciaActual() {
+		var objFiltro = {};
+		objFiltro.Finicio = new Date(); //Fecha actual
+		$.ajax({
+			type: "POST",
+			url: data.urlObtenerGanancia,
+			data: '{objFiltro: ' + JSON.stringify(objFiltro) + '}',
+			dataType: "json",
+			contentType: "application/json; charset=utf-8",
+			success: function (data) {
+				const rpta = data.lstReporte;
+				if (rpta != null) {
+					document.getElementById("txtGananciaActual").value = rpta.Ganancia;
+				} else {
+					toastr.error('No se pudo obtener la ganancia actual');
+				}
+			},
+			error: function (ex) {
+				ocultarLoader();
+			}
+		});
+		ocultarLoader();
+	}
 
 	function btnEditarTipoCambio_Click() {
 		$('#modalEditarConfCaja').modal('show');
@@ -206,6 +234,7 @@
 			$("#divRegistrarOperacion").show();
 			$("#divMoneda").hide();
 			toastr.success(null, 'CAMBIO DÓLAR');
+			document.getElementById("cboTipoOperacion").value = "0";
 		}
 		if (idTipoOperacion == data.valores.TipoOperacionCV.TipoOperacionVentaDolar) {
 			data.flagValorTipoOperacion = data.valores.TipoOperacionCV.TipoOperacionVentaDolar;
@@ -218,6 +247,7 @@
 			$("#divRegistrarOperacion").show();			
 			$("#divMoneda").hide();		
 			toastr.success(null, 'VENTA DÓLAR');
+			document.getElementById("cboTipoOperacion").value = "0";
 		}
 		if (idTipoOperacion == data.valores.TipoOperacionCV.TipoOperacionCompraEuro) {
 			data.flagValorTipoOperacion = data.valores.TipoOperacionCV.TipoOperacionCompraEuro;
@@ -230,6 +260,7 @@
 			$("#divMontoVuelto").hide();
 			$("#divMoneda").hide();
 			toastr.success(null, 'CAMBIO EURO');
+			document.getElementById("cboTipoOperacion").value = "0";
 		}
 		if (idTipoOperacion == data.valores.TipoOperacionCV.TipoOperacionVentaEuro) {
 			data.flagValorTipoOperacion = data.valores.TipoOperacionCV.TipoOperacionVentaEuro;
@@ -242,6 +273,7 @@
 			$("#divRegistrarOperacion").show();			
 			$("#divMoneda").hide();		
 			toastr.success(null, 'VENTA EURO');
+			document.getElementById("cboTipoOperacion").value = "0";
 		}
 		if (idTipoOperacion == data.valores.TipoOperacionCV.TipoOperacionDolAEuro) {
 			data.flagValorTipoOperacion = data.valores.TipoOperacionCV.TipoOperacionDolAEuro;
@@ -254,6 +286,7 @@
 			$("#divMontoVuelto").hide();
 			$("#divMoneda").hide();		
 			toastr.success(null, 'CAMBIO DÓLAR A EURO');
+			document.getElementById("cboTipoOperacion").value = "0";
 		}
 		if (idTipoOperacion == data.valores.TipoOperacionCV.TipoOperacionEuroADol) {
 			data.flagValorTipoOperacion = data.valores.TipoOperacionCV.TipoOperacionEuroADol;
@@ -266,6 +299,7 @@
 			$("#divMontoVuelto").hide();
 			$("#divMoneda").hide();		
 			toastr.success(null, 'CAMBIO EURO A DÓLAR');
+			document.getElementById("cboTipoOperacion").value = "0";
 		}
 
 		if (idTipoOperacion == data.valores.TipoOperacionOtras.TipoOperacionIngreso) {
@@ -461,6 +495,7 @@
 					configMostrarOcultarElementos(0);
 					limpiarFormulario();
 					obtenerConfCaja();
+					document.getElementById("cboTipoOperacion").value = "0";
 				},
 				error: function () {
 					toastr.error('Ocurrió un error, vuelve a intentar', 'Error');
@@ -542,7 +577,8 @@
 
 	return {
 		calcularOperacion: calcularOperacion,
-		obtenerConfCaja: obtenerConfCaja
+		obtenerConfCaja: obtenerConfCaja,
+		ObtenerGananaciaActual: ObtenerGananaciaActual
     }
 
 })(window, document);

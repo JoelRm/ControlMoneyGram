@@ -60,6 +60,19 @@ namespace SysControlWebMG.Controllers
 
         public ActionResult ReporteGanancia()
         {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+
+            return View();
+        }
+
+        public ActionResult ReporteCuadreCaja()
+        {
+            UsuariosCLS objUsuarioCLS = new UsuariosCLS();
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+
             return View();
         }
 
