@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfiguracionCajaChicaNE.cs" />
     <Compile Include="ConfiguracionCajaNE.cs" />
+    <Compile Include="OperacionCajaChicaNE.cs" />
     <Compile Include="OperacionNE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteCajaChicaNE.cs" />
     <Compile Include="ReporteNE.cs" />
     <Compile Include="UsuariosNE.cs" />
   </ItemGroup>

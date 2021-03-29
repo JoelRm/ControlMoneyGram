@@ -9,13 +9,13 @@
 	}
 
 	function init() {
-		debugger;
+		//debugger;
 		listarOperaciones();
 		document.getElementById("btnRefrescarO").addEventListener("click", listarOperaciones);
 	}
 
 	function listarOperaciones() {
-		debugger;
+		//debugger;
 		mostrarLoader();
 		$.ajax({
 			type: "POST",

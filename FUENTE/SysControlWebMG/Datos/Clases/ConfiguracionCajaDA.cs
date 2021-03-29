@@ -63,6 +63,7 @@ namespace Datos.Clases
             }
             return CodResult;
         }
+
         public ConfiguracionCajaCLS ObtenerUltimaConfCaja()
         {
             ConfiguracionCajaCLS lstConfCaja = null;
@@ -72,7 +73,6 @@ namespace Datos.Clases
             }
             return lstConfCaja;
         }
-
-
+        
     }
 }

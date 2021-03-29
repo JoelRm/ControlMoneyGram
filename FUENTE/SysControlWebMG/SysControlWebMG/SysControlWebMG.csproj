@@ -126,10 +126,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CajaChicaController.cs" />
     <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OperacionCajaChicaController.cs" />
     <Compile Include="Controllers\OperacionController.cs" />
+    <Compile Include="Controllers\ReporteCajaChicaController.cs" />
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -277,15 +280,22 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LoaderVR.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\Pages\Operaciones\CuadreCaja.js" />
-    <Content Include="Scripts\Pages\Operaciones\Operacion.js" />
     <Content Include="Scripts\Pages\Configuración\Caja.js" />
+    <Content Include="Scripts\Pages\Configuración\CajaChica.js" />
     <Content Include="Scripts\Pages\Login.js" />
+    <Content Include="Scripts\Pages\OperacionesCajaChica\OperacionCajaChica.js" />
+    <Content Include="Scripts\Pages\OperacionesCajaChica\VerOperacionesCajaChica.js" />
+    <Content Include="Scripts\Pages\OperacionesCajaChica\VerOperacionesCajaChicaCalculadora.js" />
+    <Content Include="Scripts\Pages\OperacionesCajaChica\_EditarConfiguracionCajaChicaTipoCambio.js" />
+    <Content Include="Scripts\Pages\Operaciones\CuadreCaja.js" />
+    <Content Include="Scripts\Pages\OperacionesCajaChica\CuadreCajaChica.js" />
+    <Content Include="Scripts\Pages\Operaciones\Operacion.js" />
     <Content Include="Scripts\Pages\Operaciones\VerOperaciones.js" />
     <Content Include="Scripts\Pages\Operaciones\VerOperacionesCalculadora.js" />
     <Content Include="Scripts\Pages\Operaciones\_EditarConfiguracionTipoCambio.js" />
-    <Content Include="Scripts\Pages\Configuración\Caja.js" />
-    <Content Include="Scripts\Pages\Login.js" />
+    <Content Include="Scripts\Pages\ReportesCajaChica\ReporteGananciaCajaChica.js" />
+    <Content Include="Scripts\Pages\ReportesCajaChica\ReporteOperacionesCajaChica.js" />
+    <Content Include="Scripts\Pages\ReportesCajaChica\ReporteOperacionesCajaChicaCalculadora.js" />
     <Content Include="Scripts\Pages\Reportes\ReporteGanancia.js" />
     <Content Include="Scripts\Pages\Reportes\ReporteOperaciones.js" />
     <Content Include="Scripts\Pages\Reportes\ReporteOperacionesCalculadora.js" />
@@ -317,6 +327,16 @@
     <Content Include="Views\Reporte\ReporteGanancia.cshtml" />
     <Content Include="Views\Reporte\ReporteCuadreCaja.cshtml" />
     <Content Include="Views\Operacion\CuadreCaja.cshtml" />
+    <Content Include="Views\CajaChica\Index.cshtml" />
+    <Content Include="Views\OperacionCajaChica\CuadreCajaChica.cshtml" />
+    <Content Include="Views\OperacionCajaChica\Index.cshtml" />
+    <Content Include="Views\OperacionCajaChica\_EditarConfiguracionCajaChicaTipoCambio.cshtml" />
+    <Content Include="Views\OperacionCajaChica\VerOperacionesCajaChica.cshtml" />
+    <Content Include="Views\OperacionCajaChica\VerOperacionesCajaChicaCalculadora.cshtml" />
+    <Content Include="Views\ReporteCajaChica\ReporteOperacionesCajaChicaCalculadora.cshtml" />
+    <Content Include="Views\ReporteCajaChica\ReporteOperacionesCajaChica.cshtml" />
+    <Content Include="Views\ReporteCajaChica\ReporteGananciaCajaChica.cshtml" />
+    <Content Include="Views\ReporteCajaChica\ReporteCuadreCajaChica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

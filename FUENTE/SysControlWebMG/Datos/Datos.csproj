@@ -51,8 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\ConfiguracionCajaChicaDA.cs" />
     <Compile Include="Clases\ConfiguracionCajaDA.cs" />
+    <Compile Include="Clases\OperacionCajaChicaDA.cs" />
     <Compile Include="Clases\OperacionDA.cs" />
+    <Compile Include="Clases\ReporteCajaChicaDA.cs" />
     <Compile Include="Clases\ReporteDA.cs" />
     <Compile Include="Clases\UsuariosDA.cs" />
     <Compile Include="Modelos\Caja.cs">

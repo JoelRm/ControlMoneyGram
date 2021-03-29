@@ -1,0 +1,91 @@
+﻿@*<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>*@
+@*<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>*@
+
+<script src="~/Content/MoneyGram/JavaScript/jquery.dataTables.min.js"></script>
+<script src="~/Content/MoneyGram/JavaScript/dataTables.bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Index";
+}
+@using Entidades
+@{
+    List<UsuariosCLS> listaUsuarios = (List<UsuariosCLS>)ViewBag.listaUsuarios;
+}
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Reporte Operaciones Caja Chica Calculadora</h1>
+    </div>
+    <div class="form-row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Fecha Inicio : </label>
+                <input type="date" id="fInicio" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Fecha Fin : </label>
+                <input type="date" id="fFin" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Usuario : </label>
+                <select id="Usuario" class="form-control">
+                    @foreach (var item in listaUsuarios)
+                    {
+                        <option value="@item.Usser">@item.Usser</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Estado : </label>
+                <div class="radio-container radio-edit">
+                    <input type="radio" name="estado" id="todos" checked value="2" />
+                    <label id="ejm" for="todos">Todos</label>
+                    <input type="radio" name="estado" id="activos" value="0" />
+                    <label id="ejm" for="activos">Activos</label>
+                    <input type="radio" name="estado" id="inactivos" value="1" />
+                    <label id="ejm" for="inactivos">Anulados</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" id="btnBuscarOperacionesCajaChicaCalc" class="btn btn-danger btn-lg px-3"><i class="fa fa-search" aria-hidden="true"></i> Buscar </button>
+        </div>
+        <div class="col-lg-2">
+            <button type="button" id="btnExportarOperacionesCajaChicaCalc" class="btn btn-success btn-lg px-3"><i class="fa fa-file-excel" aria-hidden="true"></i> Exportar a Excel</button>
+        </div>
+    </div>
+    <br>
+    <div class="panel-body">
+        <div class="form-horizontal row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div id="div_tbListaOperacionesCajaChicaCalculadora" style="height: 100%;">
+                            <table id="tbListaOperacionesCajaChicaCalculadora" class="table table-bordered table-hover" style="width:1350px">
+                                <thead>
+                                    <tr>
+                                        <th data-width="100px">Operación</th>
+                                        <th data-width="10px">Resultado</th>
+                                        <th data-width="100px">Comentario</th>
+                                        <th data-width="10px">Hora</th>
+                                        <th data-width="40px">Usuario</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyTbListaOperaCalc"></tbody>
+                            </table>
+                        </div>
+                        <div id="div_tbListaOperacionesCajaChicaCalculadora_pagination" style="padding-top: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Pages/ReportesCajaChica/ReporteOperacionesCajaChicaCalculadora.js"></script>
+

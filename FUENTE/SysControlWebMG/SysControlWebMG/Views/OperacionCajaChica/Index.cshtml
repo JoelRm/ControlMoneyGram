@@ -1,0 +1,421 @@
+﻿
+@{
+    ViewBag.Title = "Operación Caja Chica";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Registro de Operación Caja Chica</h1>
+    </div>
+    <div class="panel-body">
+        <div class="form-row">
+            <div class="form-group col-md-1">
+                <label>Cambio ($)</label>
+                <input type="text" class="form-control" id="txtTCCompraDolar" disabled>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Venta ($)</label>
+                <input type="text" class="form-control" id="txtTCVentaDolar" disabled>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Cambio (€)</label>
+                <input type="text" class="form-control" id="txtTCCompraEuro" disabled>
+            </div>
+            <div class="form-group col-md-1">
+                <label>Venta (€)</label>
+                <input type="text" class="form-control" id="txtTCVentaEuro" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Caja Chica Soles (S/)</label>
+                <input type="text" class="form-control" id="txtCajaActualSoles" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Caja Chica Dólares ($)</label>
+                <input type="text" class="form-control" id="txtCajaActualDolares" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Caja Chica Euros (€)</label>
+                <input type="text" class="form-control" id="txtCajaActualEuros" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <br>
+                <button class="form-control btn btn-danger" id="btnEditarTipoCambio">Editar Tipo de Cambio</button>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Cambio Referencial ($)</label>
+                <input type="text" class="form-control" id="txtTCCompraDolarReferencial" disabled>
+            </div>
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-2">
+                <label>Caja Chica Soles en Dólares ($)</label>
+                <input type="text" class="form-control" id="txtCajaActualSolesEnDolares" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Suma Total Dólares ($)</label>
+                <input type="text" class="form-control" id="txtSumaTotalEnDolares" disabled>
+            </div>
+            <div class="form-group col-md-2">
+                <label>Ganancia ($)</label>
+                <input type="text" class="form-control" id="txtGananciaActual" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Operación</div>
+        <div class="panel-body">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-3" id="divODolar">
+                        <div id="divODolar" class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <radio type="button" id="btnCompraDolar"> Cambio Dólar ($)</radio>
+                            </label>
+                            <label class="btn btn-success">
+                                <radio type="button" id="btnVentaDolar"> Venta Dólar ($)</radio>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3" id="divOEuro">
+                        <div id="divOEuro" class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <radio type="button" id="btnCompraEuro"> Cambio Euro (€)</radio>
+                            </label>
+                            <label class="btn btn-success">
+                                <radio type="button" id="btnVentaEuro"> Venta Euro (€)</radio>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3" id="divODolarEuro">
+                        <div id="divODolarEuro" class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-primary">
+                                <radio type="button" id="btnDolAEuro">Dólar a Euro</radio>
+                            </label>
+                            <label class="btn btn-success">
+                                <radio type="button" id="btnEuroADol">Euro a Dólar</radio>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Otras OperacionCajaChicaes</label>
+                        <select id="cboTipoOperacionCajaChica" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group col-md-2" id="divMonto">
+                    <div class="form-group col-md-12">
+                        <label>Monto</label>
+                        <input type="text" class="form-control" id="txtMonto">
+                    </div>
+                </div>
+                <div class="form-group col-md-2" id="divMontoEntrega">
+                    <div class="form-group col-md-12">
+                        <label id="lblMontoIngreso">Monto a entregar:</label>
+                        <input type="text" class="form-control" id="txtMontoEntrega" disabled>
+                    </div>
+                </div>
+                <div class="form-group col-md-2" id="divMoneda">
+                    <div class="form-group col-md-12">
+                        <label>Moneda</label>
+                        <select id="cboMoneda" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="form-group col-md-2" id="divRegistrarOperacionCajaChica">
+                    <div class="form-group col-md-12">
+                        <br>
+                        <button class="form-control btn btn-danger" id="btnRegistrarOperacionCajaChica">Registrar Operación</button>
+                    </div>
+                </div>
+                <div class="form-group col-md-6"></div>
+
+                <div class="form-group col-md-2" id="divPagaCon">
+                    <div class="form-group col-md-12">
+                        <label>Paga con (S/.):</label>
+                        <input type="text" class="form-control" id="txtPagaCon">
+                    </div>
+                </div>
+                <div class="form-group col-md-2" id="divMontoVuelto">
+                    <div class="form-group col-md-12">
+                        <label>Vuelto:</label>
+                        <input type="text" class="form-control" id="txtVuelto" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-8"></div>
+                <div class="form-group col-md-6" id="divComentario">
+                    <div class="form-group col-md-12">
+                        <label>Comentario</label>
+                        <textarea class="form-control" id="txtComentario" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary col-md-3" id="mydiv">
+                    <div class="panel-heading">
+                        Calculadora
+                    </div>
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="opr"></span>
+                            <input type="text" class="form-control" id="tResult" aria-describedby="basic-addon3">
+                        </div>
+                        <br>
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_7">7</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_8">8</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_9">9</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-success" id="btn_div">/</button>
+                            </div>
+                        </div>
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_4">4</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_5">5</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_6">6</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-success" id="btn_mul">x</button>
+                            </div>
+                        </div>
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_1">1</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_2">2</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_3">3</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-success" id="btn_sum">+</button>
+                            </div>
+                        </div>
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_0">0</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default" id="btn_pun">.</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-danger" id="btn_ig">=</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-success" id="btn_rest">-</button>
+                            </div>
+                        </div>
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button onclick="borrar()" type="button" class="btn btn-primary btn-lg btn-block" id="btn_c">Clear</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-danger btn-lg btn-block" id="btn_g">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Comentario Calculadora:</label>
+                                <textarea class="form-control" id="txtComentarioCalc" rows="1"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Pages/OperacionesCajaChica/OperacionCajaChica.js"></script>
+@Html.Partial("_EditarConfiguracionCajaChicaTipoCambio");
+<script src="~/Scripts/Pages/OperacionesCajaChica/_EditarConfiguracionCajaChicaTipoCambio.js"></script>
+
+<script>
+    var N = new Array();
+    var Nt = '0';
+    $(document).ready(function () {
+        $('#tResult').prop('disabled', true);
+        $('#tResult').css({ 'color': 'black', 'font-size': '1.3em', 'background': 'white' });
+    });
+
+
+
+    function borrar() {
+        $('#opr').text('')
+        $('#tResult').val('')
+        $('#txtComentarioCalc').val('')
+        Nt = '0'
+        N.length = 0
+    }
+
+
+    $('#btn_9').click(function () {
+        _get('9', '9')
+    })
+    $('#btn_8').click(function () {
+        _get('8', '8')
+    })
+    $('#btn_7').click(function () {
+        _get('7', '7')
+    })
+    $('#btn_6').click(function () {
+        _get('6', '6')
+    })
+    $('#btn_5').click(function () {
+        _get('5', '5')
+    })
+    $('#btn_4').click(function () {
+        _get('4', '4')
+    })
+    $('#btn_3').click(function () {
+        _get('3', '3')
+    })
+    $('#btn_2').click(function () {
+        _get('2', '2')
+    })
+    $('#btn_1').click(function () {
+        _get('1', '1')
+    })
+    $('#btn_0').click(function () {
+        _get('0', '0')
+    })
+
+    $('#btn_pun').click(function () {
+        _get('.', '.')
+    })
+
+
+
+
+    $('#btn_sum').click(function () {
+        $('#opr').text($('#opr').text() + '+')
+        N.push(Nt);
+        Nt = '0'
+        N.push('+')
+    })
+    $('#btn_rest').click(function () {
+        $('#opr').text($('#opr').text() + '-')
+        N.push(Nt);
+        N.push('-')
+        Nt = '0'
+    })
+    $('#btn_mul').click(function () {
+        $('#opr').text($('#opr').text() + '*')
+        N.push(Nt);
+        N.push('*')
+        Nt = '0'
+    })
+    $('#btn_div').click(function () {
+        $('#opr').text($('#opr').text() + '/')
+        N.push(Nt);
+        N.push('/')
+        Nt = '0'
+    })
+    $('#btn_ig').click(function () {
+        N.push(Nt);
+        Calc(N)
+        Nt = null
+    })
+
+    function _get(n, num) {
+        $('#opr').text($('#opr').text() + num)
+        if (Nt == '0') {
+            Nt = n
+        } else {
+            Nt += n
+        }
+    }
+
+    function Calc(v) {
+        try {
+            var r = eval(v.toString().replace(/[,null]/gi, ''))
+            if (r === 0) {
+                alert('Error en la Entrada');
+            } else {
+                $('#tResult').val(parseFloat(r).toFixed(2))
+            }
+        } catch (err) {
+            alert('Error en la Entrada');
+        }
+    }
+
+
+</script>
+<style>
+    #mydiv {
+        position: absolute;
+        z-index: 9;
+        background-color: #f1f1f1;
+        text-align: center;
+        border: 1px solid #d3d3d3;
+        top: 361px;
+        left: 1080px;
+    }
+
+    #mydivheader {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        background-color: #2196F3;
+        color: #fff;
+    }
+</style>
+
+<script>
+    //Make the DIV element draggagle:
+    dragElement(document.getElementById("mydiv"));
+
+    function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementById(elmnt.id + "header")) {
+            /* if present, the header is where you move the DIV from:*/
+            document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+        } else {
+            /* otherwise, move the DIV from anywhere inside the DIV:*/
+            elmnt.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            document.getElementById("txtComentarioCalc").focus();
+        }
+
+        function closeDragElement() {
+            /* stop moving when mouse button is released:*/
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+</script>

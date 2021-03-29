@@ -64,7 +64,7 @@
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                debugger;
+                //debugger;
 
                 if (data.lstReporte.length > 0) {
                     for (var i = 0; i < data.lstReporte.length; i++) {

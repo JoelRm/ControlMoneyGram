@@ -80,9 +80,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         @*<h6 class="collapse-header">Mantenimiento</h6>*@
                         <a class="collapse-item" href="@Url.Action("Index","Caja")">Configuración Caja</a>
+                        <a class="collapse-item" href="@Url.Action("Index","CajaChica")">Configuración Caja Chica</a>
                         @*@if (obUsuario.IdRol == 1)
-                        {*@
-                            <a class="collapse-item" href="@Url.Action("Index","Usuarios")">Usuarios</a>
+                    {*@
+                        <a class="collapse-item" href="@Url.Action("Index","Usuarios")">Usuarios</a>
                         @*}*@
                     </div>
                 </div>
@@ -104,16 +105,32 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item" disabled>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOperacionesCC"
+                   aria-expanded="true" aria-controls="collapseUtilities" style="width:100%">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Operaciones CC</span>
+                </a>
+                <div id="collapseOperacionesCC" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("CuadreCajaChica","OperacionCajaChica")">Cuadre Caja Chica</a>
+                        <a class="collapse-item" href="@Url.Action("Index","OperacionCajaChica")">Registro de Operación CC</a>
+                        <a class="collapse-item" href="@Url.Action("VerOperacionesCajaChica","OperacionCajaChica")">Ver Operaciónes CC</a>
+                        <a class="collapse-item" href="@Url.Action("VerOperacionesCajaChicaCalculadora","OperacionCajaChica")">Ver Operaciónes Calculadora CC</a>
+                    </div>
+                </div>
+            </li>
             <!-- Divider -->
             @*@if (obUsuario.IdRol == 1)
-            {*@
+        {*@
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReportes"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReportesCC"
                    aria-expanded="true" aria-controls="collapseUtilities" style="width:100%">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Reportes</span>
                 </a>
-                <div id="collapseReportes" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseReportesCC" class="collapse" aria-labelledby="headingUtilities"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="@Url.Action("ReporteOperaciones","Reporte")">Reporte Operaciones</a>
@@ -123,8 +140,24 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReportes"
+                   aria-expanded="true" aria-controls="collapseUtilities" style="width:100%">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Reportes CC</span>
+                </a>
+                <div id="collapseReportes" class="collapse" aria-labelledby="headingUtilities"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="@Url.Action("ReporteOperacionesCajaChica","ReporteCajaChica")">Reporte Operaciones CC</a>
+                        <a class="collapse-item" href="@Url.Action("ReporteOperacionesCajaChicaCalculadora","ReporteCajaChica")">Reporte Calculadora CC</a>
+                        <a class="collapse-item" href="@Url.Action("ReporteGananciaCajaChica","ReporteCajaChica")">Reporte Ganancia CC</a>
+                        <a class="collapse-item" href="@Url.Action("ReporteCuadreCajaChica","ReporteCajaChica")">Reporte Cuadre Caja CC</a>
+                    </div>
+                </div>
+            </li>
             @*}*@
-                
+
 
             <hr class="sidebar-divider d-none d-md-block">
 

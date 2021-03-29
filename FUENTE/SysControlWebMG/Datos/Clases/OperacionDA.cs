@@ -38,7 +38,7 @@ namespace Datos.Clases
                 new SqlParameter("@Usuario", Usuario)).SingleOrDefault();
             }
             return lstConfCaja;
-        }       
+        }
 
         public int GuardarOperacionCalculadora(CalculadoraCLS ope)
         {

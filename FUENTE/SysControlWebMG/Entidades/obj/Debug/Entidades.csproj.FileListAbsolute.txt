@@ -10,3 +10,8 @@ C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlW
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
 C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.pdb
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb

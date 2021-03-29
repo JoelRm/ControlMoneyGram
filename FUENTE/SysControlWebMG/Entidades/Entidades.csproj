@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="CalatogoCLS.cs" />
     <Compile Include="CalculadoraCLS.cs" />
+    <Compile Include="ConfiguracionCajaChicaCLS.cs" />
     <Compile Include="ConfiguracionCajaCLS.cs" />
     <Compile Include="ExportarExcelCLS.cs" />
     <Compile Include="FiltrosReporte.cs" />
+    <Compile Include="OperacionCajaChicaCLS.cs" />
     <Compile Include="OperacionCLS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReporteCLS.cs" />
