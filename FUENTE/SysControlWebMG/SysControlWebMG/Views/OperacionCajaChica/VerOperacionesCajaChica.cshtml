@@ -1,0 +1,51 @@
+﻿<script src="~/Content/MoneyGram/JavaScript/jquery.dataTables.min.js"></script>
+<script src="~/Content/MoneyGram/JavaScript/dataTables.bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Operaciones Caja Chica";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Lista de Operaciones Caja Chica</h1>
+    </div>
+    <div class="panel-body">
+        <div class="form-row">
+            <div class="form-group col-md-10"></div>
+            <div class="form-group col-md-2">
+                <button class="btn btn-danger" id="btnRefrescarO">Refrescar</button>
+            </div>
+        </div>
+        <div class="form-horizontal row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div id="div_tbListaOperacionesCajaChica" style="height: 100%;">
+                            <table id="tbListaOperacionesCajaChica" class="table table-bordered table-hover" style="width:1350px">
+                                <thead>
+                                    <tr>
+                                        <th>Operación</th>
+                                        <th>Movimiento</th>
+                                        <th>Salida</th>
+                                        <th>Ingreso</th>
+                                        <th>Tipo Cambio</th>
+                                        <th>Caja Chica (S/.)</th>
+                                        <th>Caja Chica ($)</th>
+                                        <th>Caja Chica (€)</th>
+                                        <th>Usuario</th>
+                                        <th>Hora</th>
+                                        <th>Estado</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodytbListaOperacionesCajaChica"></tbody>
+                            </table>
+                        </div>
+                        <div id="div_tbListaOperacionesCajaChica_pagination" style="padding-top: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Pages/OperacionesCajaChica/VerOperacionesCajaChica.js"></script>

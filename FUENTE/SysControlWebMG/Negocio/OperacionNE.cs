@@ -20,7 +20,7 @@ namespace Negocio
         {
             return obj.ObtenerConfCaja(Usuario);
         }
-        
+
         public int GuardarOperacion(OperacionCLS ope)
         {
             return obj.GuardarOperacion(ope);

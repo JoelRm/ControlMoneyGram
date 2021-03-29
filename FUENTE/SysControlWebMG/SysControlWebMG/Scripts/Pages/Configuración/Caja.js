@@ -90,7 +90,7 @@
 	}
 
 	function obtenerUltimaConfCaja() {
-		debugger;
+		//debugger;
 		$.ajax({
 			type: "POST",
 			url: data.urlObtenerUltimaConfCaja,
@@ -128,7 +128,6 @@
 			contentType: "application/json; charset=utf-8",
 			success: function (d) {
 				if (d.lstConfCaja != null) {
-					debugger;
 					document.getElementById("txtTCCompraDolar").value = d.lstConfCaja.TCCompraDolar.toFixed(3);
 					document.getElementById("txtTCCompraDolarReferencial").value = d.lstConfCaja.TCCompraDolarReferencial.toFixed(3);
 					document.getElementById("txtTCVentaDolar").value = d.lstConfCaja.TCVentaDolar.toFixed(3);
