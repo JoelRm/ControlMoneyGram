@@ -69,7 +69,43 @@
         <div class="panel-heading">Conteo de billetes</div>
         <div class="panel-body">
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="form-group col-lg-3">
+                                <label>Moneda</label>
+                                <select id="cboMoneda" class="form-control"></select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <br>
+                                <button id="btnAddItem" type="button" class="btn btn-success" title="Añadir">
+                                    <span class="fa fa-plus"> </span>
+                                </button>
+                                <button id="btnCalcular" type="button" class="btn btn-primary" title="Calcular">
+                                    <span class="fa fa-calculator"> </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <br>
+                            <div class="col-sm-6" id="divTablaCuadre">
+                                <table id="tbl_CuadreCaja" class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th width="4%"></th>
+                                            <th width="45%">Monto Billete</th>
+                                            <th width="45%">N° Billetes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="form-group col-md-12">
                     <div class="form-group col-md-3">
                         <label>Moneda</label>
                         <select id="cboMoneda" class="form-control"></select>
@@ -94,7 +130,7 @@
                         <label>Comentario</label>
                         <textarea class="form-control" id="txtComentario" rows="2"></textarea>
                     </div>
-                </div>
+                </div>*@
 
             </div>
         </div>

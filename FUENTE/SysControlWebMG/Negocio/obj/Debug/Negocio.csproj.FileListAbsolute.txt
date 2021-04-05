@@ -40,3 +40,17 @@ C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGr
 C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Negocio\obj\Debug\Negocio.dll
 C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\Negocio.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\Datos.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\Entidades.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\EntityFramework.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\Datos.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\Datos.dll.config
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\Entidades.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\bin\Debug\EntityFramework.xml
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\obj\Debug\Negocio.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Negocio\obj\Debug\Negocio.pdb
