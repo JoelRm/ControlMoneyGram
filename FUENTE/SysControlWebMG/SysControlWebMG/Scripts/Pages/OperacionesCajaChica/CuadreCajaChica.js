@@ -129,6 +129,7 @@
     //    ForceNumeros($("#txtTCVentaEuro_ME"));
     //}
     function FormatNumeros(e) {
+        debugger;
         var key = window.event ? e.which : e.keyCode;
         if (key < 48 || key > 57) {
             e.preventDefault();

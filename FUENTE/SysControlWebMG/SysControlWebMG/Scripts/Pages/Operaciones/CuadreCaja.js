@@ -8,12 +8,61 @@
     function init() {
         cargaInicial();
         obtenerConfCaja();
-        document.getElementById("txtMontoBillete").addEventListener("keypress", FormatNumeros, false);
-        document.getElementById("txtNumeroBilletes").addEventListener("keypress", FormatNumeros, false);
-        document.getElementById("btnAgregar").addEventListener("click", agregarCaja);
+        //document.getElementById("txtMontoBillete").addEventListener("keypress", FormatNumeros, false);
+        //document.getElementsByClassName("_Mbillete").addEventListener("keypress", FormatNumeros, false);
+        //document.getElementById("btnAgregar").addEventListener("click", agregarCaja);
+        document.getElementById('btnAddItem').addEventListener("click", addItem);
         document.getElementById("btnLimpiarCajaSolesManual").addEventListener("click", borrarTxt);
         document.getElementById("btnLimpiarCajaDolaresManual").addEventListener("click", borrarTxt);
         document.getElementById("btnLimpiarCajaEurosManual").addEventListener("click", borrarTxt);
+    }
+
+    function _(id) {
+        return document.getElementById(id);
+    }
+
+    const _TBodies = (idTable) => {
+        return _(idTable).tBodies[0];
+    }
+
+    function addItem() {
+        if (validaraddItem()) {
+            var row = '';
+            row = `<tr>
+                <td>
+                    <button onclick="app_CuadreCaja.deleteItem(this)" type="button" class="btn btn-danger" title="Eliminar"><span style="font-size:10pt;" class="fa fa-trash"></span></button>
+                </td>
+				<td><input type="number" class="form-control _Mbillete"></td>
+				<td><input type="number" class="form-control _Nbilletes"></td>
+		      </tr>`;
+            _TBodies('tbl_CuadreCaja').insertAdjacentHTML('beforeend', row);
+        } else {
+            toastr.error('El monto del billete ingresado no es válido.', 'Error');
+        }
+    }
+
+    function validaraddItem() {
+        resultado = false;
+        var numeroFilas = document.getElementById("tbl_CuadreCaja").rows.length;
+        if (numeroFilas > 1) {
+            var lista = document.getElementById('divTablaCuadre');
+            var item = lista.getElementsByClassName("_Mbillete");
+            for (i = 0; i < item.length; i++) {
+                var valor = item[i].value;
+                if (parseInt(valor) != 10 && parseInt(valor) != 20 && parseInt(valor) != 50 && parseInt(valor) != 100 && parseInt(valor) != 200 && parseInt(valor) != 500) {
+                    resultado = false;
+                } else {
+                    resultado = true;
+                }
+            }
+        } else {
+            resultado = true;
+        }
+        return resultado;
+    }
+
+    function deleteItem($control) {
+        $control.parentElement.parentElement.remove();
     }
 
     function borrarTxt() {
@@ -136,5 +185,9 @@
     }
     //funcion de inicio
     init();
+
+    return {
+        deleteItem: deleteItem
+    }
 
 })(window, document);
