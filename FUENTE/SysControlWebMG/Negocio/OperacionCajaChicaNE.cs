@@ -16,7 +16,6 @@ namespace Negocio
         {
             return obj.GuardarOperacionCajaChica(ope);
         }
-
         public int GuardarOperacionCajaChicaCalculadora(CalculadoraCLS ope)
         {
             return obj.GuardarOperacionCajaChicaCalculadora(ope);

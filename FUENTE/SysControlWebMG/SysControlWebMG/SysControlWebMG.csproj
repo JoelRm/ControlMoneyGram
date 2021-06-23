@@ -337,6 +337,7 @@
     <Content Include="Views\ReporteCajaChica\ReporteOperacionesCajaChica.cshtml" />
     <Content Include="Views\ReporteCajaChica\ReporteGananciaCajaChica.cshtml" />
     <Content Include="Views\ReporteCajaChica\ReporteCuadreCajaChica.cshtml" />
+    <Content Include="Views\Operacion\VerCuadreCaja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

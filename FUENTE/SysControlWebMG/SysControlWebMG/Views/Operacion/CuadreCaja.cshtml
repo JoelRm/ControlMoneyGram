@@ -78,9 +78,9 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <br>
-                                <button id="btnAddItem" type="button" class="btn btn-success" title="Añadir">
+                                @*<button id="btnAddItem" type="button" class="btn btn-success" title="Añadir">
                                     <span class="fa fa-plus"> </span>
-                                </button>
+                                </button>*@
                                 <button id="btnCalcular" type="button" class="btn btn-primary" title="Calcular">
                                     <span class="fa fa-calculator"> </span>
                                 </button>
@@ -88,16 +88,69 @@
                         </div>
                         <div class="row">
                             <br>
-                            <div class="col-sm-6" id="divTablaCuadre">
+                            <div class="col-sm-12" id="divTablaCuadre">
+                                @*<div class="col-sm-2">
+                                    <label>Deteriorados:</label>
+                                    <input type="text" class="form-control _500" id="TxtDeteriorados">
+                                </div>*@
                                 <table id="tbl_CuadreCaja" class="table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th width="4%"></th>
-                                            <th width="45%">Monto Billete</th>
-                                            <th width="45%">N° Billetes</th>
+                                            <th width="4%">Monto Billete</th>
+                                            <th width="20%">Suma</th>
+                                            <th width="5%"> </th>
+                                            <th width="4%">Monto Billete</th>
+                                            <th width="20%">Suma</th>
+                                            <th width="5%"> </th>
+                                            <th width="4%">Monto Billete</th>
+                                            <th width="20%">Suma</th>
+                                            <th width="5%"> </th>
+                                            <th width="4%">Deteriorados</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                            <td><label>500 :</label></td>
+                                            <td><input type="text" class="form-control _500" id="T_500"></td>
+                                            <td></td>
+                                            <td><label>200 :</label></td>
+                                            <td><input type="text" class="form-control _200" id="T_200"></td>
+                                            <td></td>
+                                            <td><label>100 :</label></td>
+                                            <td><input type="text" class="form-control _100" id="T_100"></td>
+                                            <td></td>
+                                            <td><input type="text" class="form-control _500" id="TxtDeteriorados"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label>50 :</label></td>
+                                            <td><input type="text" class="form-control _50" id="T_50"></td>
+                                            <td></td>
+                                            <td><label>20 :</label></td>
+                                            <td><input type="text" class="form-control _20" id="T_20"></td>
+                                            <td></td>
+                                            <td><label>10 :</label></td>
+                                            <td><input type="text" class="form-control _10" id="T_10"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label>5 :</label></td>
+                                            <td><input type="text" class="form-control _5" id="T_5"></td>
+                                            <td></td>
+                                            <td><label>2 :</label></td>
+                                            <td><input type="text" class="form-control _2" id="T_2"></td>
+                                            <td></td>
+                                            <td><label>1 :</label></td>
+                                            <td><input type="text" class="form-control _1" id="T_1"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label>0.5 :</label></td>
+                                            <td><input type="text" class="form-control _05" id="T_05"></td>
+                                            <td></td>
+                                            <td><label>0.2 :</label></td>
+                                            <td><input type="text" class="form-control _02" id="T_02"></td>
+                                            <td></td>
+                                            <td><label>0.1 :</label></td>
+                                            <td><input type="text" class="form-control _01" id="T_01"></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -105,32 +158,12 @@
                     </div>
                 </div>
 
-                @*<div class="form-group col-md-12">
-                    <div class="form-group col-md-3">
-                        <label>Moneda</label>
-                        <select id="cboMoneda" class="form-control"></select>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Monto de billete:</label>
-                        <input type="text" class="form-control" id="txtMontoBillete">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Número de billetes:</label>
-                        <input type="text" class="form-control" id="txtNumeroBilletes">
-                    </div>
-                    <div class="form-group col-md-1">
-                        <br>
-                        <button id="btnAgregar" type="button" class="form-control btn btn-success" title="Agregar">
-                            <span class="fa fa-plus"> </span>
-                        </button>
-                    </div>
-                </div>
                 <div class="form-group col-md-6" id="divComentario">
                     <div class="form-group col-md-12">
                         <label>Comentario</label>
                         <textarea class="form-control" id="txtComentario" rows="2"></textarea>
                     </div>
-                </div>*@
+                </div>
 
             </div>
         </div>

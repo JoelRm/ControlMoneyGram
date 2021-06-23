@@ -72,6 +72,39 @@ namespace Datos.Clases
             return CodResult;
         }
 
+        public int GuardarCuadreCaja(CuadreCajaCLS cuadre)
+        {
+            int CodResult = 0;
+            try
+            {
+
+                CuadreCajaCLS Cuadre = null;
+                using (var db = new BDControlMGEntities())
+                {
+                    Cuadre = db.Database.SqlQuery<CuadreCajaCLS>(
+                    "Usp_InsertCuadreCaja @CajaSolesSistema,@CajaSolesCuadre,@CajaDolaresSistema,@CajaDolaresCuadre,@CajaEurosSistema,@CajaEurosCuadre,@CantidadxBilletexMoneda,@NumeroBilletesDeteriorados,@UsuarioCreacion,@Comentario",
+                    new SqlParameter("@CajaSolesSistema", cuadre.CajaSolesSistema),
+                    new SqlParameter("@CajaSolesCuadre", cuadre.CajaSolesCuadre),
+                    new SqlParameter("@CajaDolaresSistema", cuadre.CajaDolaresSistema),
+                    new SqlParameter("@CajaDolaresCuadre", cuadre.CajaDolaresCuadre),
+                    new SqlParameter("@CajaEurosSistema", cuadre.CajaEurosSistema),
+                    new SqlParameter("@CajaEurosCuadre", cuadre.CajaEurosCuadre),
+                    new SqlParameter("@CantidadxBilletexMoneda", cuadre.CantidadxBilletexMoneda),
+                    new SqlParameter("@NumeroBilletesDeteriorados", cuadre.NumeroBilletesDeteriorados),
+                    new SqlParameter("@UsuarioCreacion", cuadre.UsuarioCreacion),
+                    new SqlParameter("@Comentario", cuadre.Comentario)                    
+                    ).SingleOrDefault();
+                    CodResult = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                CodResult = 0;
+            }
+
+            return CodResult;
+        }
+        
         public int GuardarOperacion(OperacionCLS ope)
         {
             int CodResult = 0;

@@ -16,8 +16,14 @@ namespace SysControlWebMG.Controllers
             ViewBag.Usuario = objUsuarioCLS;
             return View();
         }
-        
 
+        public ActionResult VerCuadreCaja()
+        {
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            ViewBag.Usuario = objUsuarioCLS;
+
+            return View();
+        }
         public ActionResult VerOperaciones()
         {
             objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
@@ -64,6 +70,15 @@ namespace SysControlWebMG.Controllers
             objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
             ope.UsuarioCreacion = objUsuarioCLS.Usser;
             int codigoRpt = objOperacion.GuardarOperacion(ope);
+            return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
+        }
+
+        [HttpPost()]
+        public async Task<JsonResult> GuardarCuadreCaja(CuadreCajaCLS cuadre)
+        {
+            objUsuarioCLS = (UsuariosCLS)HttpContext.Session["Usuario"];
+            cuadre.UsuarioCreacion = objUsuarioCLS.Usser;
+            int codigoRpt = objOperacion.GuardarCuadreCaja(cuadre);
             return Json(new { Code = codigoRpt, JsonRequestBehavior.AllowGet });
         }
 

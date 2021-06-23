@@ -175,6 +175,7 @@ namespace Datos.Clases
 
             return CodResult;
         }
+        
 
         public List<OperacionCajaChicaCLS> ObtenerListaOperacionesCajaChica()
         {

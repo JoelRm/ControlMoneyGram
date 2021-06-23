@@ -45,6 +45,7 @@
     <Compile Include="CalculadoraCLS.cs" />
     <Compile Include="ConfiguracionCajaChicaCLS.cs" />
     <Compile Include="ConfiguracionCajaCLS.cs" />
+    <Compile Include="CuadreCajaCLS.cs" />
     <Compile Include="ExportarExcelCLS.cs" />
     <Compile Include="FiltrosReporte.cs" />
     <Compile Include="OperacionCajaChicaCLS.cs" />

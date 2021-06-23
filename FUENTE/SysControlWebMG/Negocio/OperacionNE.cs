@@ -25,6 +25,11 @@ namespace Negocio
         {
             return obj.GuardarOperacion(ope);
         }
+        public int GuardarCuadreCaja(CuadreCajaCLS cuadre)
+        {
+            return obj.GuardarCuadreCaja(cuadre);
+        }
+        
         public int GuardarOperacionCalculadora(CalculadoraCLS ope)
         {
             return obj.GuardarOperacionCalculadora(ope);
