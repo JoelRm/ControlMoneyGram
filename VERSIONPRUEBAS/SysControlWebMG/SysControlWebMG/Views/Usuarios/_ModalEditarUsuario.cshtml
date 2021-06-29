@@ -1,0 +1,83 @@
+﻿@using Entidades
+@{
+    List<CalatogoCLS> listaRoles = (List<CalatogoCLS>)ViewBag.listaRoles;
+}
+<!--Inicio Modal Editar-->
+<div id="modalEditarUsuario" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    Editar Usuario
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-body pal">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nombre : </label>
+                            <input id="idUsuarioEditar" name="idUsuarioEditar" type="hidden" class="form-control" />
+                            <input id="NombreUsuarioEditar" name="NombreUsuarioEditar" type="text" placeholder="Ingrese Nombre" class="form-control" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>A. Paterno : </label>
+                            <input id="APaternoUsuarioEditar" name="APaternoUsuarioEditar" type="text" placeholder="Ingrese Ap. Paterno" class="form-control" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>A. Materno : </label>
+                            <input id="AMaternoUsuarioEditar" name="AMaternoUsuarioEditar" type="text" placeholder="Ingrese Ap. Materno" class="form-control" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>E-Mail : </label>
+                            <input id="EmailUsuarioEditar" name="EmailUsuarioEditar" type="text" placeholder="Ingrese E-Mail" class="form-control" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Teléfono : </label>
+                            <input id="TelefonoUsuarioEditar" name="TelefonoUsuarioEditar" type="text" placeholder="Ingrese Nro. Teléfono" maxlength="9" class="form-control" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Cargo : </label>
+                            <select id="idCargoUsarioEditar" class="form-control">
+                                @foreach (var item in listaRoles)
+                                {
+                                    <option value="@item.ValorItem">@item.NombreItem</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Ususario : </label>
+                            <input id="UsuarioEditar" name="UsuarioEditar" type="text" placeholder="Ingrese Usuario" class="form-control" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Contraseña : </label>
+                            <input id="ConraseniaEditar" name="ConraseniaEditar" type="password" placeholder="Ingrese Contraseña" class="form-control" autocomplete="off" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="CerrarPopUpUsuarioEditar" data-dismiss="modal" class="btn btn-danger">
+                    Cancelar
+                </button>
+                <button type="button" onclick="editarUsuario()" class="btn btn-primary">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin Modal Editar-->

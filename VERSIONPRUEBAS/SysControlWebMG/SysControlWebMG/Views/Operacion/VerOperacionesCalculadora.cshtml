@@ -1,0 +1,48 @@
+﻿
+@*<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>*@
+@*<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap.min.js"></script>*@
+
+<script src="~/Content/MoneyGram/JavaScript/jquery.dataTables.min.js"></script>
+<script src="~/Content/MoneyGram/JavaScript/dataTables.bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Operaciones Calculadora";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Lista de Operaciones Calculadora</h1>
+    </div>
+    <div class="panel-body">
+        <div class="form-row">
+            <div class="form-group col-md-10"></div>
+            <div class="form-group col-md-2">
+                <button class="btn btn-danger" id="btnActualizar">Actualizar</button>
+            </div>
+        </div>
+        <div class="form-horizontal row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div id="div_tbListaOperacionesCalculadora" style="height: 100%;">
+                            <table id="tbListaOperacionesCalculadora" class="table table-bordered table-hover" style="width:1350px">
+                                <thead>
+                                    <tr>
+                                        <th>Operación</th>
+                                        <th>Resultado</th>
+                                        <th>Comentario</th>
+                                        <th>Hora</th>
+                                        <th>Usuario</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyTbListaOperaCalc"></tbody>
+                            </table>
+                        </div>
+                        <div id="div_tbListaOperacionesCalculadora_pagination" style="padding-top: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Pages/Operaciones/VerOperacionesCalculadora.js"></script>

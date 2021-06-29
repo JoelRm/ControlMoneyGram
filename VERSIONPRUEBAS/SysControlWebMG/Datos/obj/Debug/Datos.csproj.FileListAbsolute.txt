@@ -1,0 +1,84 @@
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.dll.config
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.pdb
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\Entidades.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\Entidades.pdb
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.xml
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.pdb
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.dll.config
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.dll
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.pdb
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Entidades.dll
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.dll
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Entidades.pdb
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.xml
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.dll
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.pdb
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.dll.config
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.pdb
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Entidades.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\Entidades.pdb
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.xml
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.dll.config
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\Datos.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\Entidades.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\Entidades.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.xml
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Datos\obj\Debug\Datos.pdb
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\Datos.dll.config
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\Datos.dll
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\Datos.pdb
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\Entidades.dll
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\EntityFramework.dll
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\Entidades.pdb
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\EntityFramework.xml
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\obj\Debug\Datos.dll
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Datos\obj\Debug\Datos.pdb
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\Datos.dll.config
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\Datos.dll
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\Datos.pdb
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\Entidades.dll
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\EntityFramework.dll
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\Entidades.pdb
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\EntityFramework.xml
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\obj\Debug\Datos.dll
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Datos\obj\Debug\Datos.pdb

@@ -1,0 +1,33 @@
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.pdb
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\jrojamal\Desktop\MONEY GRAM\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.dll
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
+C:\Users\Edgar Camarena\Desktop\ProyectosPersonales\MoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.pdb
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
+C:\Users\joel.rojas\Documents\Proyectos - JRM\MONEY GRAM V2 - JRM\ControlMoneyGram\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
+C:\Users\Edgar Camarena\Desktop\Proyectos Personales\MoneyGram\Web\FUENTE\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Entidades\bin\Debug\Entidades.dll
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
+C:\Users\Cesar\Desktop\TEST\SysControlWebMG (1)\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Entidades\bin\Debug\Entidades.dll
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Entidades\obj\Debug\Entidades.dll
+C:\Users\Cesar\Desktop\Test 2\SysControlWebMG\SysControlWebMG\Entidades\obj\Debug\Entidades.pdb

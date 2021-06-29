@@ -1,0 +1,217 @@
+﻿@*@{
+        ViewBag.Title = "VerCuadreCajaChica";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>VerCuadreCajaChica</h2>*@
+
+@model List<Entidades.UsuariosCLS>  
+
+@{
+    ViewBag.Title = "Operación";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Cuadre de Caja Chica por Fechas </h1>
+    </div>
+    <div class="form-row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Fecha: </label>
+                <input type="date" id="fecha" class="form-control" />
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Usuario</label>
+                <select id="cboUsuario" class="form-control">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <option value=@Model[i].Usser> @Model[i].Usser </option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2" style="padding-top: 10px;">
+            <button type="button" id="btnBuscarCuadreCajaChica" class="btn btn-danger btn-lg px-3"><i class="fa fa-search" aria-hidden="true"></i> Buscar </button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>Caja Chica Soles(S/)</label>
+                <input type="text" class="form-control" id="txtCajaChicaActualSoles" disabled>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Caja Chica Dólares($)</label>
+                <input type="text" class="form-control" id="txtCajaChicaActualDolares" disabled>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Caja Chica Euros(€)</label>
+                <input type="text" class="form-control" id="txtCajaChicaActualEuros" disabled>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>Caja Chica Soles Manual(S/)</label>
+                @*<input type="text" class="form-control" id="txtCajaChicaSolesManual" disabled>*@
+                <div class="input-group">
+                    <input type="text" class="form-control" id="txtCajaChicaSolesManual" disabled>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Caja Chica Dólares Manual($)</label>
+                @*<input type="text" class="form-control" id="txtCajaChicaDolaresManual" disabled>*@
+                <div class="input-group">
+                    <input type="text" class="form-control" id="txtCajaChicaDolaresManual" disabled>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Caja Chica Euros Manual(€)</label>
+                @*<input type="text" class="form-control" id="txtCajaChicaEurosManual" disabled>*@
+                <div class="input-group">
+                    <input type="text" class="form-control" id="txtCajaChicaEurosManual" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label>Diferencia Soles(S/)</label>
+                <input type="text" class="form-control" id="txtTotalSoles" disabled>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Diferencia Dólares($)</label>
+                <input type="text" class="form-control" id="txtTotalDolares" disabled>
+            </div>
+            <div class="form-group col-md-3">
+                <label>Diferencia Euros(€)</label>
+                <input type="text" class="form-control" id="txtTotalEuros" disabled>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Conteo de billetes</div>
+            <div class="panel-body">
+                <div class="form-row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="form-group col-lg-3">
+                                    <label>Moneda</label>
+                                    <select id="cboMoneda" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <br>
+                                <div class="col-sm-12" id="divTablaCuadreSoles">
+                                    @*<div class="col-sm-2">
+                                            <label>Deteriorados:</label>
+                                            <input type="text" class="form-control _500" id="TxtDeteriorados">
+                                        </div>*@
+                                    <table id="tbl_CuadreCaja" class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="4%">Monto Billete</th>
+                                                <th width="20%">Suma</th>
+                                                <th width="5%"> </th>
+                                                <th width="4%">Monto Billete</th>
+                                                <th width="20%">Suma</th>
+                                                <th width="5%"> </th>
+                                                <th width="4%">Monto Billete</th>
+                                                <th width="20%">Suma</th>
+                                                <th width="5%"> </th>
+                                                <th width="4%">Deteriorados</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><label>500 :</label></td>
+                                                <td><input type="text" class="form-control _500" id="T_500" disabled></td>
+                                                <td></td>
+                                                <td><label>200 :</label></td>
+                                                <td><input type="text" class="form-control _200" id="T_200" disabled></td>
+                                                <td></td>
+                                                <td><label>100 :</label></td>
+                                                <td><input type="text" class="form-control _100" id="T_100" disabled></td>
+                                                <td></td>
+                                                <td><input type="text" class="form-control _500" id="TxtDeteriorados" disabled></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label>50 :</label></td>
+                                                <td><input type="text" class="form-control _50" id="T_50" disabled></td>
+                                                <td></td>
+                                                <td><label>20 :</label></td>
+                                                <td><input type="text" class="form-control _20" id="T_20" disabled></td>
+                                                <td></td>
+                                                <td><label>10 :</label></td>
+                                                <td><input type="text" class="form-control _10" id="T_10" disabled></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label>5 :</label></td>
+                                                <td><input type="text" class="form-control _5" id="T_5" disabled></td>
+                                                <td></td>
+                                                <td><label>2 :</label></td>
+                                                <td><input type="text" class="form-control _2" id="T_2" disabled></td>
+                                                <td></td>
+                                                <td><label>1 :</label></td>
+                                                <td><input type="text" class="form-control _1" id="T_1" disabled></td>
+                                            </tr>
+                                            <tr>
+                                                <td><label>0.5 :</label></td>
+                                                <td><input type="text" class="form-control _05" id="T_05" disabled></td>
+                                                <td></td>
+                                                <td><label>0.2 :</label></td>
+                                                <td><input type="text" class="form-control _02" id="T_02" disabled></td>
+                                                <td></td>
+                                                <td><label>0.1 :</label></td>
+                                                <td><input type="text" class="form-control _01" id="T_01" disabled></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6" id="divComentario">
+                        <div class="form-group col-md-12">
+                            <label>Comentario</label>
+                            <textarea class="form-control" id="txtComentario" rows="2" disabled></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="Hid_Soles_Billetesx200" />
+    <input type="hidden" id="Hid_Soles_Billetesx100" />
+    <input type="hidden" id="Hid_Soles_Billetesx50" />
+    <input type="hidden" id="Hid_Soles_Billetesx20" />
+    <input type="hidden" id="Hid_Soles_Billetesx10" />
+    <input type="hidden" id="Hid_Soles_Billetesx5" />
+    <input type="hidden" id="Hid_Soles_Billetesx2" />
+    <input type="hidden" id="Hid_Soles_Billetesx1" />
+    <input type="hidden" id="Hid_Soles_Billetesx05" />
+    <input type="hidden" id="Hid_Soles_Billetesx02" />
+    <input type="hidden" id="Hid_Soles_Billetesx01" />
+
+    <input type="hidden" id="Hid_Dolares_Billetesx100" />
+    <input type="hidden" id="Hid_Dolares_Billetesx50" />
+    <input type="hidden" id="Hid_Dolares_Billetesx20" />
+    <input type="hidden" id="Hid_Dolares_Billetesx10" />
+    <input type="hidden" id="Hid_Dolares_Billetesx5" />
+    <input type="hidden" id="Hid_Dolares_Billetesx1" />
+
+    <input type="hidden" id="Hid_Euros_Billetesx500" />
+    <input type="hidden" id="Hid_Euros_Billetesx200" />
+    <input type="hidden" id="Hid_Euros_Billetesx100" />
+    <input type="hidden" id="Hid_Euros_Billetesx50" />
+    <input type="hidden" id="Hid_Euros_Billetesx20" />
+    <input type="hidden" id="Hid_Euros_Billetesx10" />
+    <input type="hidden" id="Hid_Euros_Billetesx5" />
+
+    <script src="~/Scripts/Pages/OperacionesCajaChica/VerCuadreCajaChica.js"></script>

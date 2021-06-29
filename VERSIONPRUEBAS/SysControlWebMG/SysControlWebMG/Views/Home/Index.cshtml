@@ -1,0 +1,211 @@
+﻿@model Entidades.TotalCajasCLS
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Inicio</h1>
+    </div>
+    <div class="row">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Precio Dolar
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.TCCompraDolar</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Precio Euro
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.TCCompraEuro</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-euro-sign fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Earnings (Monthly) Card Example -->
+        <!-- Pending Requests Card Example -->
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Caja Soles
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.CajaActualSoles</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Caja Dolares
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.CajaActualDolares</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Caja Euro
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.CajaActualEuros</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Caja Chica Soles
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.CajaChicaActualSoles</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Caja Chica Dolares
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.CajaChicaActualDolares</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Caja Chica Euros
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.CajaChicaActualEuros</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                               Total Caja Soles
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.TotalActualSoles</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Total Caja Dolares
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.TotalActualDolares</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col ml-4">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Total Caja Euros
+                            </div>
+                            <div class="h3 mb-0 font-weight-bold text-gray-800">@Model.TotalActualEuros</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calculator fa-2x text-gray-300" style="padding-right: 22px!important;font-size: 4.5rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
